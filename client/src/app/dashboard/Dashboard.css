@@ -1,0 +1,35 @@
+.dashboard {
+  display: flex;
+  justify-content: center;
+  margin-top: 3em;
+}
+
+.dashboardItem {
+  margin-right: 3em;
+  border: lightgray solid 2px;
+}
+
+.dashboardItem:hover {
+  transform: scale(1.1);
+}
+
+.dashboardBox {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  color: white;
+  cursor: pointer;
+}
+
+.dashboardBox h3 {
+  position: absolute;
+  top: 1em;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dashboardImg {
+  height: 200px;
+  width: 200px;
+  background-size: cover;
+}

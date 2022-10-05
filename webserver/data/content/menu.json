@@ -1,0 +1,19 @@
+{
+  "menu": [
+    {
+      "id": 1,
+      "urlLink": "/home",
+      "title": "Home"
+    },
+    {
+      "id": 2,
+      "urlLink": "/search",
+      "title": "Search"
+    },
+    {
+      "id": 3,
+      "urlLink": "/profile",
+      "title": "Profile"
+    }
+  ]
+}

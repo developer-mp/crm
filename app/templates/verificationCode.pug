@@ -1,0 +1,14 @@
+extends base
+
+block content
+
+  body
+    div.content
+      div.content-greeting
+        p
+          | Hello 
+          b #{firstName} #{lastName}
+          | !
+        p Please confirm your email
+        a(href=`${url}`, target='_blank')
+          button.button(type='button') Confirm

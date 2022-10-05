@@ -1,0 +1,25 @@
+{
+  "dashboard": [
+    {
+      "id": 1,
+      "urlLink": "/search/1",
+      "title": "Info",
+      "img": "content/info.png",
+      "bgColor": "#1e3f66"
+    },
+    {
+      "id": 2,
+      "urlLink": "/search/2",
+      "title": "Analytics",
+      "img": "content/analytics.png",
+      "bgColor": "#3d8c40"
+    },
+    {
+      "id": 3,
+      "urlLink": "/search/3",
+      "title": "Projects",
+      "img": "content/projects.png",
+      "bgColor": "#7c5295"
+    }
+  ]
+}
