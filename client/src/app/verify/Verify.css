@@ -1,0 +1,23 @@
+.verify {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.verify img {
+  width: auto;
+  height: 20%;
+  margin-bottom: 2em;
+}
+
+.verify h1 {
+  font-size: 2rem;
+}
+
+.verify p {
+  font-size: 1.2rem;
+  margin-top: 1em;
+}

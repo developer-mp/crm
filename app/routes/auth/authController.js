@@ -4,7 +4,8 @@ import crypto from "crypto";
 import dotenv from "dotenv";
 dotenv.config();
 import AuthService from "../../services/auth/authService.js";
-// import EmailSender from "../../services/auth/sendEmail.js";
+
+const CLIENT_URL = process.env.CLIENT_URL;
 
 class AuthController {
   static async register(req, res) {
@@ -31,8 +32,25 @@ class AuthController {
           hashedPassword,
           hashedVerificationCode,
         ]);
-        const url = `http://localhost:3000/verifyemail/${verificationCode}`;
-        AuthService.sendVerificationEmail(firstName, lastName, email, url);
+        const url = `${CLIENT_URL}/verifyemail/${verificationCode}`;
+        try {
+          if (verificationCode) {
+            await AuthService.sendVerificationEmail(
+              firstName,
+              lastName,
+              email,
+              url
+            );
+            return res.status(200).json({
+              message: "Email with a verification code has been sent",
+            });
+          } else
+            return res.status(400).json({
+              message: "Error has happened while sending a verification email",
+            });
+        } catch (error) {
+          console.log(error);
+        }
         return res
           .status(200)
           .json({ message: `New user ${email} has been created` });
@@ -42,53 +60,38 @@ class AuthController {
     }
   }
 
-  // static async register(req, res) {
-  //   const { firstName, lastName, email, password } = req.body;
-  //   if (!firstName || !lastName || !email || !password)
-  //     return res.status(400).json({ message: "Please fill out all fields" });
-  //   const sqlSelectUser = "SELECT email FROM users WHERE email = $1";
-  //   const isUserExist = await pool.query(sqlSelectUser, [email]);
-  //   try {
-  //     if (isUserExist.rowCount === 0) {
-  //       const salt = await bcrypt.genSalt(10);
-  //       const hashedPassword = await bcrypt.hash(password, salt);
-  //       const verificationCode = crypto.randomBytes(32).toString("hex");
-  //       const hashedVerificationCode = await bcrypt.hash(
-  //         verificationCode,
-  //         salt
-  //       );
-  //       const sqlInsertUser =
-  //         "INSERT INTO users (firstName, lastName, email, password, verificationcode) values ($1, $2, $3, $4, $5)";
-  //       await pool.query(sqlInsertUser, [
-  //         firstName,
-  //         lastName,
-  //         email,
-  //         hashedPassword,
-  //         hashedVerificationCode,
-  //       ]);
-  //       // const redirectUrl = `http://localhost:5432/verifyemail/${verificationCode}`;
-  //       // try {
-  //       //   await new Email(newUser, redirectUrl).sendVerificationCode();
-  //       //   res.status(200).json({
-  //       //     message: "Email with a verification code has been sent",
-  //       //   });
-  //       // } catch (error) {
-  //       //   newUser.verificationCode = null;
-  //       //   await newUser.save();
-  //       //   return res.status(500).json({
-  //       //     status: "error",
-  //       //     message: "There was an error sending email, please try again",
-  //       //   });
-  //       // }
-  //       // AuthService.sendEmail();
-  //       return res
-  //         .status(200)
-  //         .json({ message: `New user ${email} has been created` });
-  //     } else return res.status(400).json({ message: "User already exists" });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
+  static async verifyEmail(req, res) {
+    try {
+      const salt = await bcrypt.genSalt(10);
+      const verificationCode = await bcrypt.hash(
+        req.params.verificationCode,
+        salt
+      );
+      const sqlSelectVerificationCode =
+        "SELECT verificationcode FROM users WHERE verificationcode = $1";
+      const isVerificationCodeExist = await pool.query(
+        sqlSelectVerificationCode,
+        [verificationCode]
+      );
+      if (
+        isVerificationCodeExist.rows[0].verificationcode !== verificationCode
+      ) {
+        return res.status(400).json({
+          message: "Can not verify email",
+        });
+      } else {
+        const verified = true;
+        const sqlInsertVerifiedUser =
+          "INSERT INTO users (verified) values ($1)";
+        await pool.query(sqlInsertVerifiedUser, [verified]);
+        return res.status(200).json({
+          message: "Email has been verified successfully",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   static async login(req, res) {
     const { email, password } = req.body;

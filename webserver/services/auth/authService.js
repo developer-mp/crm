@@ -14,6 +14,12 @@ class AuthService {
     });
   }
 
+  static async verifyEmailUserService(verificationCode) {
+    return await ApiService.apiCall("verifyemail/:verificationCode", {
+      verificationCode,
+    });
+  }
+
   static async loginUserService(email, password) {
     return await ApiService.apiCall("auth/login", { email, password });
   }

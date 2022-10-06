@@ -7,6 +7,7 @@ import "./Register.css";
 
 const RegisterContainer = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { loadingRegister, errorRegister, successRegister } = useSelector(
     (state) => state.user
@@ -19,15 +20,9 @@ const RegisterContainer = () => {
     watch,
   } = useForm({ mode: "onChange" });
 
-  const navigate = useNavigate();
-
   useEffect(() => {
-    if (successRegister) navigate("/login");
+    if (successRegister) navigate("/verify");
   }, [navigate, successRegister]);
-
-  // useEffect(() => {
-  //   if (successRegister) navigate("/verifyemail");
-  // }, [navigate, successRegister]);
 
   const password = useRef({});
   const firstName = useRef({});

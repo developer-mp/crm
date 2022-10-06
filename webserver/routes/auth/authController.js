@@ -49,6 +49,20 @@ class AuthController {
     }
   }
 
+  // static async verifyEmail(req, res) {
+  //   const verificationCode = req.body;
+  //   try {
+  //     await AuthService.verifyEmailUserService(verificationCode).then(() => {
+  //       res.status(200).json({
+  //         message: "Email has been verified successfully",
+  //       });
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //     return res.status(400).json({ message: "Error" });
+  //   }
+  // }
+
   static async login(req, res) {
     const { email, password } = req.body;
     const cookies = req.cookies;

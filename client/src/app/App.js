@@ -3,6 +3,8 @@ import "./App.css";
 import DashboardContainer from "./dashboard/DashboardContainer.js";
 import MenuContainer from "./menu/MenuContainer.js";
 import RegisterContainer from "./register/RegisterContainer.js";
+import VerifyContainer from "./verify/VerifyContainer.js";
+import VerifyEmailContainer from "./verifyEmail/VerifyEmailContainer.js";
 import LoginContainer from "./login/LoginContainer.js";
 import { useDispatch } from "react-redux";
 import { getDashboardItems } from "../actions/dashboardAction.js";
@@ -39,6 +41,11 @@ const App = () => {
           <Route path="/register" element={<RegisterContainer />} />
           <Route path="/login" element={<LoginContainer />} />
           <Route path="/" element={<ProtectedRoute />} />
+          <Route path="/verify" element={<VerifyContainer />} />
+          <Route
+            path="/verifyemail/:verificationCode"
+            element={<VerifyEmailContainer />}
+          />
           {/* <Route exact path="/" element={<MenuContainer />} />
           </Route> */}
         </Routes>
