@@ -7,12 +7,11 @@ import "./Login.css";
 
 const LoginContainer = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { loadingLogin, errorLogin, successLogin } = useSelector(
     (state) => state.user
   );
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (successLogin) navigate("/");

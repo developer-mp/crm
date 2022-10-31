@@ -1,0 +1,20 @@
+{
+  "lst": [
+    {
+      "id": 1,
+      "name": "Customers",
+      "key": "customer",
+      "role": "",
+      "subentities": [
+        {
+          "id": 101,
+          "name": "Customers",
+          "isEdit": false,
+          "isAdd": true,
+          "key": "customer/main",
+          "load": { "name": "BaseDetail", "type": "record" }
+        }
+      ]
+    }
+  ]
+}

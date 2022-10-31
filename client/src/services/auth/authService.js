@@ -12,6 +12,11 @@ class AuthService {
     });
   }
 
+  // static verifyEmailUserService(verificationcode) {
+  //   // return ApiService.noSecureCall
+  //   return ApiServiceNoSecureCall(`auth/verifyemail/${verificationcode}`, {});
+  // }
+
   static async loginUserService(email, password) {
     // return await ApiService.noSecureCall
     return await ApiServiceNoSecureCall("auth/login", {

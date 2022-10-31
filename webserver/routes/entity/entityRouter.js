@@ -1,8 +1,9 @@
-// const express = require("express");
-// const EntityController = require("./entityController");
+const express = require("express");
+const EntityController = require("./entityController");
 
-// const queryRouter = express.Router();
-// queryRouter.post("/add", EntityController.getEntityForAdd);
-// queryRouter.post("/update", EntityController.getEntityForUpdate);
+const entityRouter = express.Router();
 
-// module.exports = queryRouter;
+entityRouter.post("/add", EntityController.getEntityForAdd);
+entityRouter.post("/update", EntityController.getEntityForUpdate);
+
+export default entityRouter;

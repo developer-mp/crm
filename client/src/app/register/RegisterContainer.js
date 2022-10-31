@@ -14,6 +14,7 @@ const RegisterContainer = () => {
   );
 
   const {
+    reset,
     register,
     handleSubmit,
     formState: { errors },
@@ -22,7 +23,8 @@ const RegisterContainer = () => {
 
   useEffect(() => {
     if (successRegister) navigate("/verify");
-  }, [navigate, successRegister]);
+    reset();
+  }, [navigate, successRegister, reset]);
 
   const password = useRef({});
   const firstName = useRef({});

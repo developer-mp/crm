@@ -1,0 +1,67 @@
+{
+  "data": [
+    {
+      "subentity": "Construction",
+      "topic": "Customer Management",
+      "data": [
+        {
+          "name": "Id",
+          "filterType": 4,
+          "request": "PK",
+          "isSelected": false,
+          "column": "id",
+          "isFilter": true,
+          "isColumnSelected": true
+        },
+        {
+          "name": "Customer",
+          "filterType": 4,
+          "isSelected": false,
+          "column": "customer",
+          "isFilter": true,
+          "isColumnSelected": true
+        },
+        {
+          "name": "Customer Code",
+          "filterType": 4,
+          "isSelected": false,
+          "column": "customercode",
+          "isFilter": true,
+          "isColumnSelected": true
+        },
+        {
+          "name": "Website",
+          "filterType": 4,
+          "isSelected": false,
+          "column": "website",
+          "isFilter": true,
+          "isColumnSelected": true
+        },
+        {
+          "name": "Country",
+          "filterType": 4,
+          "isSelected": false,
+          "column": "country",
+          "isFilter": true,
+          "isColumnSelected": true
+        },
+        {
+          "name": "City",
+          "filterType": 4,
+          "isSelected": false,
+          "column": "city",
+          "isFilter": true,
+          "isColumnSelected": true
+        },
+        {
+          "name": "Headcount",
+          "filterType": 4,
+          "isSelected": false,
+          "column": "headcount",
+          "isFilter": true,
+          "isColumnSelected": true
+        }
+      ]
+    }
+  ]
+}

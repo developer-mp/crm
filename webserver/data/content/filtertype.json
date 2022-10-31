@@ -1,0 +1,283 @@
+{
+  "data": [
+    {
+      "id": 0,
+      "name": "All Records",
+      "isAll": false
+    },
+    {
+      "id": 1,
+      "name": "String",
+      "comparables": [
+        {
+          "name": "Equal",
+          "isPairComponent": false
+        },
+        {
+          "name": "Starts with",
+          "isPairComponent": false
+        },
+        {
+          "name": "Contains",
+          "isPairComponent": false
+        },
+        {
+          "name": "Between",
+          "isPairComponent": true
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "DropDown",
+      "comparables": [
+        {
+          "name": "Equal",
+          "isPairComponent": false
+        },
+        {
+          "name": "Not Equal",
+          "isPairComponent": false
+        },
+        {
+          "name": "Contains",
+          "isPairComponent": false
+        },
+        {
+          "name": "In",
+          "isPairComponent": false
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Date",
+      "comparables": [
+        {
+          "name": "Equal",
+          "isPairComponent": false
+        },
+        {
+          "name": "Not Equal",
+          "isPairComponent": false
+        },
+        {
+          "name": "Between",
+          "isPairComponent": true
+        },
+        {
+          "name": "Earlier than",
+          "isPairComponent": false
+        },
+        {
+          "name": "Later than",
+          "isPairComponent": false
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Integer",
+      "comparables": [
+        {
+          "name": "Equal",
+          "isPairComponent": false
+        },
+        {
+          "name": "Not Equal",
+          "isPairComponent": false
+        },
+        {
+          "name": "Between",
+          "isPairComponent": true
+        },
+        {
+          "name": "Less than",
+          "isPairComponent": false
+        },
+        {
+          "name": "Greater than",
+          "isPairComponent": false
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Number as String",
+      "comparables": [
+        {
+          "name": "Equal",
+          "isPairComponent": false
+        },
+        {
+          "name": "Starts with",
+          "isPairComponent": false
+        },
+        {
+          "name": "Contains",
+          "isPairComponent": false
+        },
+        {
+          "name": "Not Equal",
+          "isPairComponent": false
+        },
+        {
+          "name": "Between",
+          "isPairComponent": true
+        },
+        {
+          "name": "Less than",
+          "isPairComponent": false
+        },
+        {
+          "name": "Greater than",
+          "isPairComponent": false
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Money",
+      "comparables": [
+        {
+          "name": "Equal",
+          "isPairComponent": false
+        },
+        {
+          "name": "Not Equal",
+          "isPairComponent": false
+        },
+        {
+          "name": "Between",
+          "isPairComponent": true
+        },
+        {
+          "name": "Less than",
+          "isPairComponent": false
+        },
+        {
+          "name": "Greater than",
+          "isPairComponent": false
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Decimal",
+      "comparables": [
+        {
+          "name": "Equal",
+          "isPairComponent": false
+        },
+        {
+          "name": "Not Equal",
+          "isPairComponent": false
+        },
+        {
+          "name": "Between",
+          "isPairComponent": true
+        },
+        {
+          "name": "Less than",
+          "isPairComponent": false
+        },
+        {
+          "name": "Greater than",
+          "isPairComponent": false
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "DateRange",
+      "comparables": [
+        {
+          "name": "Includes",
+          "isPairComponent": false
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "StringRange",
+      "comparables": [
+        {
+          "name": "Between",
+          "isPairComponent": true
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "StringRange",
+      "comparables": [
+        {
+          "name": "Includes",
+          "isPairComponent": false
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Composite",
+      "comparables": [
+        {
+          "name": "Equal",
+          "isPairComponent": false
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Check",
+      "comparables": [
+        {
+          "name": "Equal",
+          "isPairComponent": false
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "TextArea",
+      "comparables": [
+        {
+          "name": "Equal",
+          "isPairComponent": false
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "MultiString",
+      "comparables": [
+        {
+          "name": "Equal",
+          "isPairComponent": false
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "name": "DynamicDropDown",
+      "comparables": [
+        {
+          "name": "Equal",
+          "isPairComponent": false
+        },
+        {
+          "name": "Not Equal",
+          "isPairComponent": false
+        },
+        {
+          "name": "Contains",
+          "isPairComponent": false
+        },
+        {
+          "name": "In",
+          "isPairComponent": false
+        }
+      ]
+    }
+  ]
+}

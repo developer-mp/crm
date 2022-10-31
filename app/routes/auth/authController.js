@@ -19,17 +19,19 @@ class AuthController {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
         const verificationCode = crypto.randomBytes(32).toString("hex");
-        const hashedVerificationCode = await bcrypt.hash(
-          verificationCode,
-          salt
-        );
+        const hashedVerificationCode = crypto
+          .createHash("sha256")
+          .update(verificationCode)
+          .digest("hex");
+        const role = "user";
         const sqlInsertUser =
-          "INSERT INTO users (firstName, lastName, email, password, verificationcode) values ($1, $2, $3, $4, $5)";
+          "INSERT INTO users (firstName, lastName, email, password, role, verificationcode) values ($1, $2, $3, $4, $5, $6)";
         await pool.query(sqlInsertUser, [
           firstName,
           lastName,
           email,
           hashedPassword,
+          role,
           hashedVerificationCode,
         ]);
         const url = `${CLIENT_URL}/verifyemail/${verificationCode}`;
@@ -62,28 +64,25 @@ class AuthController {
 
   static async verifyEmail(req, res) {
     try {
-      const salt = await bcrypt.genSalt(10);
-      const verificationCode = await bcrypt.hash(
-        req.params.verificationCode,
-        salt
-      );
+      const verificationCode = crypto
+        .createHash("sha256")
+        .update(req.params.verificationcode)
+        .digest("hex");
       const sqlSelectVerificationCode =
         "SELECT verificationcode FROM users WHERE verificationcode = $1";
       const isVerificationCodeExist = await pool.query(
         sqlSelectVerificationCode,
         [verificationCode]
       );
-      if (
-        isVerificationCodeExist.rows[0].verificationcode !== verificationCode
-      ) {
-        return res.status(400).json({
-          message: "Can not verify email",
-        });
+      if (isVerificationCodeExist.rowCount === 0) {
+        return res
+          .status(400)
+          .json({ message: "Verification code is not found" });
       } else {
         const verified = true;
-        const sqlInsertVerifiedUser =
-          "INSERT INTO users (verified) values ($1)";
-        await pool.query(sqlInsertVerifiedUser, [verified]);
+        const sqlUpdateVerifiedUser =
+          "UPDATE users SET verified = $1 WHERE verificationcode = $2";
+        await pool.query(sqlUpdateVerifiedUser, [verified, verificationCode]);
         return res.status(200).json({
           message: "Email has been verified successfully",
         });

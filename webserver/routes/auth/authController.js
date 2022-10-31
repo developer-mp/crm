@@ -11,25 +11,6 @@ const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
 const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET;
 
 class AuthController {
-  // static async register(req, res) {
-  //   const { firstName, lastName, email, password } = req.body;
-  //   try {
-  //     await AuthService.registerUserService(
-  //       firstName,
-  //       lastName,
-  //       email,
-  //       password
-  //     ).then(() => {
-  //       res.status(200).json({
-  //         message: "Registered successfully",
-  //       });
-  //     });
-  //   } catch (error) {
-  //     console.log(error);
-  //     return res.status(400).json({ message: "Error" });
-  //   }
-  // }
-
   static async register(req, res) {
     const { firstName, lastName, email, password } = req.body;
     try {
@@ -49,19 +30,19 @@ class AuthController {
     }
   }
 
-  // static async verifyEmail(req, res) {
-  //   const verificationCode = req.body;
-  //   try {
-  //     await AuthService.verifyEmailUserService(verificationCode).then(() => {
-  //       res.status(200).json({
-  //         message: "Email has been verified successfully",
-  //       });
-  //     });
-  //   } catch (error) {
-  //     console.log(error);
-  //     return res.status(400).json({ message: "Error" });
-  //   }
-  // }
+  static async verifyEmail(req, res) {
+    const verificationCode = req.params.verificationcode;
+    try {
+      await AuthService.verifyEmailUserService(verificationCode).then(() => {
+        res.status(200).json({
+          message: "Email has been verified successfully",
+        });
+      });
+    } catch (error) {
+      console.log(error);
+      return res.status(400).json({ message: "Error" });
+    }
+  }
 
   static async login(req, res) {
     const { email, password } = req.body;

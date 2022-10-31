@@ -1,3 +1,7 @@
 {
-  "data": [{ "code": 200, "key": "all", "restricred": false }]
+  "data": [
+    { "code": 200, "key": "all", "restricred": false },
+    { "code": 225, "key": "changepassword", "restricred": true },
+    { "code": 215, "key": "securityquestion", "restricred": true }
+  ]
 }

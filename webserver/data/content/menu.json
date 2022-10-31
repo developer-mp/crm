@@ -3,17 +3,45 @@
     {
       "id": 1,
       "urlLink": "/home",
-      "title": "Home"
+      "title": "Home",
+      "isGroup": false
     },
     {
       "id": 2,
       "urlLink": "/search",
-      "title": "Search"
+      "title": "Search",
+      "isGroup": false
     },
     {
       "id": 3,
-      "urlLink": "/profile",
-      "title": "Profile"
+      "urlLink": "/account",
+      "title": "Account",
+      "isGroup": true,
+      "items": [
+        {
+          "id": 31,
+          "urlLink": "/profile/profile",
+          "title": "My Profile"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "urlLink": "/admin",
+      "title": "Admin",
+      "isGroup": true,
+      "items": [
+        {
+          "id": 41,
+          "urlLink": "/admin/adduser",
+          "title": "Add User"
+        },
+        {
+          "id": 42,
+          "urlLink": "/admin/updateuser",
+          "title": "Update User"
+        }
+      ]
     }
   ]
 }

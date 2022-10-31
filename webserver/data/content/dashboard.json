@@ -3,22 +3,22 @@
     {
       "id": 1,
       "urlLink": "/search/1",
-      "title": "Info",
-      "img": "content/info.png",
+      "title": "Customers",
+      "img": "content/customer.png",
       "bgColor": "#1e3f66"
     },
     {
       "id": 2,
       "urlLink": "/search/2",
-      "title": "Analytics",
-      "img": "content/analytics.png",
+      "title": "Products",
+      "img": "content/product.png",
       "bgColor": "#3d8c40"
     },
     {
       "id": 3,
       "urlLink": "/search/3",
-      "title": "Projects",
-      "img": "content/projects.png",
+      "title": "Services",
+      "img": "content/service.png",
       "bgColor": "#7c5295"
     }
   ]

@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import AuthService from "./../services/auth/authService.js";
 import UserService from "../services/user/userService.js";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 axios.defaults.withCredentials = true;
 
 export const registerUser = createAsyncThunk(
@@ -23,13 +24,29 @@ export const registerUser = createAsyncThunk(
   }
 );
 
+// export const verifyEmail = createAsyncThunk(
+//   "auth/verifyEmail",
+//   (rejectWithValue) => {
+//     const { verificationcode } = useParams();
+//     try {
+//       return AuthService.verifyEmailUserService(verificationcode).then(
+//         (res) => {
+//           return res.data;
+//         }
+//       );
+//     } catch (error) {
+//       console.log(error);
+//       return rejectWithValue(error);
+//     }
+//   }
+// );
+
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
   ({ email, password }, { rejectWithValue }) => {
     try {
       return AuthService.loginUserService(email, password).then((res) => {
         UserService.storeToken(res.data.accessToken);
-        //console.log(res.data);
         return res.data;
       });
     } catch (error) {

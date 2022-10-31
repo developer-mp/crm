@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./routes/ProtectedRoute.js";
 import { useSelector } from "react-redux";
+
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
@@ -37,13 +38,13 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           {/* <Route path="/" element={<MenuContainer />} /> */}
-          {/* <Route path="/" element={<DashboardContainer />} /> */}
+          <Route path="/" element={<DashboardContainer />} />
           <Route path="/register" element={<RegisterContainer />} />
           <Route path="/login" element={<LoginContainer />} />
-          <Route path="/" element={<ProtectedRoute />} />
+          {/* <Route path="/" element={<ProtectedRoute />} /> */}
           <Route path="/verify" element={<VerifyContainer />} />
           <Route
-            path="/verifyemail/:verificationCode"
+            path="/verifyemail/:verificationcode"
             element={<VerifyEmailContainer />}
           />
           {/* <Route exact path="/" element={<MenuContainer />} />

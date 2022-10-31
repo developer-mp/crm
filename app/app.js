@@ -14,10 +14,6 @@ const PORT = process.env.PORT;
 app.use(Express.json());
 app.use(cors());
 app.use(Express.urlencoded({ extended: false }));
-// app.use(Express.static(path.join(__dirname, "views")));
-
-// app.set("view engine", "pug");
-// app.set("views", `${__dirname}/views`);
 
 AppServerRouter.setRouter(app);
 
