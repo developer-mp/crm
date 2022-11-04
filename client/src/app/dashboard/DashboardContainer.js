@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 const DashboardContainer = () => {
   const { dashboardItems } = useSelector((store) => store.dashboard);
-  const title = "Customers Management Console";
+  const title = "Management Console";
 
   return (
     <div className="dashboard">

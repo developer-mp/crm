@@ -1,0 +1,17 @@
+.panel-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 14px;
+  color: inherit;
+}
+
+.panel-default > .panel-heading {
+  cursor: pointer;
+  background-color: grey;
+  border-color: grey;
+  color: white;
+}
+
+.panel-heading {
+  padding: 5px 15px;
+}
