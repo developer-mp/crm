@@ -111,7 +111,7 @@
                 },
                 {
                   "label": "City",
-                  "dataField": "City",
+                  "dataField": "city",
                   "cols": 12,
                   "datatype": 1,
                   "isEdit": false,

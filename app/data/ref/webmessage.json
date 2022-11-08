@@ -1,0 +1,14 @@
+{
+  "data": [
+    { "code": 0, "text": "Undefined web server error" },
+    { "code": 1, "text": "Undefined App server error" },
+    { "code": 10, "text": "Password does not meet criteria" },
+    { "code": 11, "text": "Password cannot be same as user ID" },
+    { "code": 12, "text": "New password cannot be same as old password" },
+    { "code": 13, "text": "User doesn not have access" },
+    { "code": 14, "text": "Selected questions must be different" },
+    { "code": 17, "text": "No empty answer is allowed" },
+    { "code": 18, "text": "Invalid security question entry" },
+    { "code": 19, "text": "Record has been updated since you started" }
+  ]
+}

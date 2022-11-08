@@ -1,0 +1,30 @@
+{
+  "success": {
+    "status": {
+      "message": "Success",
+      "code": 200
+    },
+    "result": {
+      "data": []
+    }
+  },
+  "updated": {
+    "status": {
+      "message": "Success",
+      "code": 200
+    },
+    "session": {
+      "id": 1,
+      "message": "Updated"
+    },
+    "result": {
+      "data": []
+    }
+  },
+  "failed": {
+    "status": {
+      "message": "Failed",
+      "code": 400
+    }
+  }
+}

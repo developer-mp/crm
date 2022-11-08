@@ -1,0 +1,14 @@
+{
+  "baseUrl": "http://localhost:4366",
+  "environment": "DEV",
+  "timeout": 1200,
+  "timeoutWarning": 600,
+  "toastDuration": 20,
+  "featureToggles": {
+    "detailActions": true,
+    "queryList": true,
+    "editQuery": true,
+    "emailQuery": true,
+    "resultsActions": true
+  }
+}

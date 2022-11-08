@@ -1,0 +1,22 @@
+.data-grid .rt-noData {
+  display: none;
+}
+
+button.add-row {
+  float: left;
+}
+
+div.data-grid-actions {
+  display: flex;
+  justify-content: flex-end;
+  height: 30px;
+}
+
+div.data-grid-actions button {
+  height: 22px;
+}
+
+p.data-grid-instructions {
+  text-align: center;
+  flex: 1;
+}

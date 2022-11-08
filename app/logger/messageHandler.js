@@ -1,6 +1,6 @@
-const _ = require("lodash");
-const webmessage = require("../../data/ref/webmessage.json");
-const appmessage = require("../../data/ref/appmessage.json");
+import { lodash as _ } from "lodash";
+import webmessage from "../data/ref/webmessage.json" assert { type: "json" };
+import appmessage from "../data/ref/appmessage.json" assert { type: "json" };
 
 class MessageHandler {
   static getWebMessage(code) {
@@ -27,6 +27,7 @@ class MessageHandler {
       result = item.passthru ? message : item.text;
       isPassthru = item.passthru;
     }
+    const obj = { result, isPassthru };
     return { uiMessage: result, isPassthru };
   }
 }
