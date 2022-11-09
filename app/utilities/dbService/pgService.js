@@ -1,0 +1,29 @@
+import { Client } from "pg";
+import configInfo from "../common/configInfo.js";
+
+class pgService {
+  static query(rs) {
+    const conn = configInfo.pgConnection();
+    return new Promise((resolve, reject) => {
+      const client = new Client(conn);
+      client.connect();
+      client.query(rs.text, (err, result) => {
+        if (err) {
+          client.end();
+          logger.error(err);
+          reject(new Error("Postgres error..."));
+        }
+        client.end();
+        resolve({ record: result.rows, count: result.rowCount });
+      });
+    });
+  }
+
+  static prepareSelectAll(content) {
+    const { select, table, schema } = content;
+    const { column } = select;
+    const text = `select ${column} from ${schema}.${table}`;
+    return { text };
+  }
+}
+export default pgService;
