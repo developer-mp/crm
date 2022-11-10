@@ -1,5 +1,9 @@
 //import logger from
-import Filter from "./../utilities/common/filter";
+import Filter from "./../utilities/common/filter.js";
+//import { lodash as _ } from "lodash";
+
+import pkg from "lodash";
+const { lodash: _ } = pkg;
 
 class Helper {
   static findFilter(data) {

@@ -1,6 +1,6 @@
 import { lodash as _ } from "lodash";
-import messageHandler from "./messageHandler";
-import logger from "./winston";
+import messageHandler from "./messageHandler.js";
+import logger from "./winston.js";
 
 class WebError {
   static createError(message, type, arr = null) {

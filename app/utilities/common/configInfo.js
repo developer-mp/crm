@@ -5,7 +5,7 @@ class ConfigInfo {
     return {
       user: config.pgServer.user,
       password: config.pgServer.password,
-      database: config.pgService.database,
+      database: "console",
       host: config.pgServer.host,
       port: config.pgServer.port,
     };

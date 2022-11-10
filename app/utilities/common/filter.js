@@ -1,8 +1,6 @@
-import { filter } from "lodash";
-
 class Filter {
   static applyFilters(records = [], filters = {}) {
-    return records.filter((record) => filter.isRecordValid(record, filters));
+    return records.filter((record) => Filter.isRecordValid(record, filters));
   }
 
   static isRecordValid(record, filters) {

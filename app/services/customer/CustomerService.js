@@ -1,11 +1,19 @@
 import Helper from "./../../helper/Helper.js";
 //import ApiService from "../../utilities/api/ApiService.js";
+import SQL from "./../../utilities/sql/sql.js";
 
 class CustomerService {
-  static async selectAll(filters = []) {
-    return SQL.selectAll().then((response) => {
-      return Helper.applyFilter(response, filters);
-    });
+  // static async selectAll(filters = []) {
+  //   return SQL.selectAll().then((response) => {
+  //     return Helper.applyFilter(response, filters);
+  //   });
+  // }
+
+  static async selectAll(content) {
+    const { select, table, schema } = content;
+    const { column } = select;
+    const text = `select ${column} from ${schema}.${table}`;
+    return { text };
   }
 
   //   static async CustomerList(token)
