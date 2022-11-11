@@ -9,11 +9,8 @@ class CustomerService {
   //   });
   // }
 
-  static async selectAll(content) {
-    const { select, table, schema } = content;
-    const { column } = select;
-    const text = `select ${column} from ${schema}.${table}`;
-    return { text };
+  static async selectAll() {
+    return SQL.selectAll();
   }
 
   //   static async CustomerList(token)

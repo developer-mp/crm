@@ -1,6 +1,5 @@
 import Helper from "./../../helper/Helper.js";
 import CustomerService from "../../services/customer/CustomerService.js";
-import customersContent from "../../data/query/customers.json" assert { type: "json" };
 
 class CustomerController {
   // static async getList(req, res, next) {
@@ -15,9 +14,7 @@ class CustomerController {
   // }
 
   static async getList(req, res, next) {
-    //const { data } = req.body;
-    const { customers } = customersContent;
-    CustomerService.selectAll(customers)
+    CustomerService.selectAll()
       .then((result) => {
         res.json(result);
       })

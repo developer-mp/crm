@@ -1,35 +1,25 @@
-//import { Client } from "pg";
-import configInfo from "../common/configInfo.js";
-import pkg from "pg";
-const { Client } = pkg;
 //import logger from "./../../logger/winston.js";
 import pool from "../../db.js";
 
 class pgService {
-  static async query(rs) {
-    //const sqlSelectUser = "SELECT * FROM users";
-    const isUserExist = await pool.query(rs);
-    return isUserExist;
+  static query(rs) {
+    // const result = await pool.query(rs.text);
+    // return { record: result.rows, count: result.rowCount };
 
-    // const conn = configInfo.pgConnection();
-    // return new Promise((resolve, reject) => {
-    //   const client = new Client(conn);
-    //   client.connect();
-    //   client.query(rs.text, (err, result) => {
-    //     if (err) {
-    //       client.end();
-    //       //logger.error(err);
-    //       reject(new Error("Postgres error..."));
-    //     }
-    //     client.end();
-    //     resolve({ record: result.rows, count: result.rowCount });
-    //   });
-    // });
+    return new Promise((resolve, reject) => {
+      pool.query(rs.text, (err, result) => {
+        if (err) {
+          //logger.error(err);
+          reject(new Error("Postgres error..."));
+        }
+        resolve({ record: result.rows, count: result.rowCount });
+      });
+    });
   }
 
   static prepareSelectAll(content) {
     const { select, table, schema } = content;
-    const column = select;
+    const { column } = select;
     const text = `select ${column} from ${schema}.${table}`;
     return { text };
   }

@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "author": "",
+  "license": "ISC",
   "scripts": {
     "start-dev": "nodemon app.js",
     "start": "node app.js"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",

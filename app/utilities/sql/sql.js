@@ -1,16 +1,13 @@
 import pgService from "../dbService/pgService.js";
-import customers from "../../data/query/customers.json" assert { type: "json" };
+import customersData from "../../data/query/customers.json" assert { type: "json" };
 
 class SQL {
-  static selectAll() {
+  static async selectAll() {
+    const { customers } = customersData;
     const rs = pgService.prepareSelectAll(customers);
-    return pgService.query(rs).then((response) => {
-      const { record } = response;
-      // _.forEach(record, (item)=>{
-      //     this.recordDecrypt(item,decrPwd);
-      // }
-      return record;
-    });
+    const response = await pgService.query(rs);
+    const { record } = response;
+    return record;
   }
 }
 
