@@ -1,17 +1,19 @@
 import menuContent from "../../data/content/menu.json" assert { type: "json" };
 import dashboardContent from "../../data/content/dashboard.json" assert { type: "json" };
+import userCode from "../../data/ref/usercode.json" assert { type: "json" };
+import pkg from "lodash";
+const { find, cloneDeep } = pkg;
 
-// const _ = require("lodash");
 // const securityQuestion = require("../../data/ref/securityquestion.json");
-// const usercode = require("../../data/ref/usercode.json");
+
 // const permission = require("../../data/content/permission.json");
 // const role = require("../../data/ref/role.json");
 
 class UserMenu {
   // static getMenu(user) {
-  //   const { data } = menu;
-  //   // const item = _.find(data, { restricted: user.restricted, key: user.key });
-  //   // return _.clodeDeep(item.data);
+  //   const { data } = menuContent;
+  //   const item = find(data, { restricted: user.restricted, key: user.key });
+  //   return cloneDeep(data);
   // }
 
   static getMenu() {
@@ -24,15 +26,15 @@ class UserMenu {
     return dashboard;
   }
 
-  // static userCode(code) {
-  //   const { data } = userCode;
-  //   let item = _.find(data, { code });
-  //   if (item === undefined) {
-  //     item = _.find(data, { code: 200 });
-  //   }
-  //   console.log(item);
-  //   return item;
-  // }
+  static userCode(code) {
+    const { data } = userCode;
+    let item = _.find(data, { code });
+    if (item === undefined) {
+      item = _.find(data, { code: 200 });
+    }
+    console.log(item);
+    return item;
+  }
 
   //   static checkUserEndPointPermission (user){
   //     const item=this.userCode(user.code);
