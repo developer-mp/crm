@@ -13,8 +13,10 @@
 
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import dashboardReducer from "./slices/dashboardSlice.js";
+import searchEntitiesReducer from "./slices/searchSlice.js";
 import menuReducer from "./slices/menuSlice.js";
 import userReducer from "./slices/userSlice.js";
+//import searchEntitiesReducer from "./slices/searchSlice.js";
 import sessionStorage from "redux-persist/es/storage/session.js";
 import {
   persistStore,
@@ -36,6 +38,7 @@ const rootReducer = combineReducers({
   dashboard: dashboardReducer,
   menu: menuReducer,
   user: userReducer,
+  searchEntities: searchEntitiesReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

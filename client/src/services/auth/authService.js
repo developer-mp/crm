@@ -1,10 +1,9 @@
-//import ApiService from "../app/apiService.js";
-import { ApiServiceNoSecureCall } from "../app/apiService.js";
+import ApiService from "../app/apiService.js";
 
 class AuthService {
   static registerUserService(firstName, lastName, email, password) {
     // return ApiService.noSecureCall
-    return ApiServiceNoSecureCall("auth/register", {
+    return ApiService.noSecureCall("auth/register", {
       firstName,
       lastName,
       email,
@@ -19,7 +18,7 @@ class AuthService {
 
   static async loginUserService(email, password) {
     // return await ApiService.noSecureCall
-    return await ApiServiceNoSecureCall("auth/login", {
+    return await ApiService.noSecureCall("auth/login", {
       email,
       password,
     });
@@ -27,7 +26,7 @@ class AuthService {
 
   static async logoutUserService() {
     // return await ApiService.noSecureCall
-    return await ApiServiceNoSecureCall("auth/logout", {});
+    return await ApiService.noSecureCall("auth/logout", {});
   }
 }
 

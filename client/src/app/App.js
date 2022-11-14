@@ -6,8 +6,10 @@ import RegisterContainer from "./register/RegisterContainer.js";
 import VerifyContainer from "./verify/VerifyContainer.js";
 import VerifyEmailContainer from "./verifyEmail/VerifyEmailContainer.js";
 import LoginContainer from "./login/LoginContainer.js";
+import SearchConfigContainer from "./search/config/SearchConfigContainer.js";
 import { useDispatch } from "react-redux";
 import { getDashboardItems } from "../actions/dashboardAction.js";
+import { fetchSearchEntities } from "../actions/searchAction.js";
 import { getMenuItems } from "../actions/menuAction.js";
 import { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -24,6 +26,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(getDashboardItems());
+    dispatch(fetchSearchEntities());
     dispatch(getMenuItems());
     // if (user.accessToken) {
     //   axios.defaults.headers.common[
@@ -47,6 +50,7 @@ const App = () => {
             path="/verifyemail/:verificationcode"
             element={<VerifyEmailContainer />}
           />
+          <Route path="/entities" element={<SearchConfigContainer />} />
           {/* <Route exact path="/" element={<MenuContainer />} />
           </Route> */}
         </Routes>
@@ -60,7 +64,8 @@ export default App;
 // import React from "react";
 // import "./App.css";
 // import axios from "axios";
-// axios.defaults.withCredentials = true;
+// import { fetchSearchEntities } from './../actions/searchAction';
+axios.defaults.withCredentials = true;
 
 // const App = () => {
 //   const createCookie = () => {
