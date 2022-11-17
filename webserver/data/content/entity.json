@@ -2,13 +2,62 @@
   "lst": [
     {
       "id": 1,
-      "name": "Customers",
+      "name": "Customers Management",
       "key": "customer",
       "role": "",
       "subentities": [
         {
           "id": 101,
           "name": "Customers",
+          "isEdit": false,
+          "isAdd": true,
+          "key": "customer/main",
+          "load": { "name": "BaseDetail", "type": "record" }
+        },
+        {
+          "id": 102,
+          "name": "Sales",
+          "isEdit": false,
+          "isAdd": true,
+          "key": "customer/main",
+          "filters": [
+            {
+              "id": 1021,
+              "name": "Current year",
+              "isEdit": false,
+              "isAdd": true,
+              "key": "customer/main",
+              "load": { "name": "BaseDetail", "type": "record" }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Product Catalog",
+      "key": "product",
+      "role": "",
+      "subentities": [
+        {
+          "id": 201,
+          "name": "Products",
+          "isEdit": false,
+          "isAdd": true,
+          "key": "customer/main",
+          "load": { "name": "BaseDetail", "type": "record" }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Service Catalog",
+      "key": "service",
+      "role": "",
+      "subentities": [
+        {
+          "id": 301,
+          "name": "Services",
           "isEdit": false,
           "isAdd": true,
           "key": "customer/main",

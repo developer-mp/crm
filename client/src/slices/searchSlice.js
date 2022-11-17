@@ -11,13 +11,13 @@ const searchEntitiesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchSearchEntities.pending, (state) => {
-      state.dashboardItems1 = [];
+      state.searchEntities = [];
     });
     builder.addCase(fetchSearchEntities.fulfilled, (state, { payload }) => {
-      state.dashboardItems1 = payload;
+      state.searchEntities = payload;
     });
     builder.addCase(fetchSearchEntities.rejected, (state) => {
-      state.dashboardItems1 = [];
+      state.searchEntities = [];
     });
   },
 });

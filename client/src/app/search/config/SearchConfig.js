@@ -1,155 +1,136 @@
-// import React, { Component } from "react";
-// import SelectDropdown from "./SelectDropdown.js";
-// import { Button } from "react-bootstrap";
-// import pkg from "lodash";
-// const { find } = pkg;
+import SelectDropdown from "./SelectDropdown.js";
+import { useSelector } from "react-redux";
+import { Button } from "react-bootstrap";
+import { useState, useEffect } from "react";
+import "./SearchConfig.css";
+import pkg from "lodash";
+const { find } = pkg;
 
-// class SearchConfig extends Component {
-//   constructor(props) {
-//     super(props);
-//     const { entityId } = this.props;
-//     props.fetchSearchEntities();
-//     this.state = this.determineSelected(parseInt(entityId) || undefined);
-//   }
+const SearchConfigContainer = (props) => {
+  const { entityId } = props;
 
-//   componentDidUpdate(prevProps) {
-//     if (prevProps.entities !== this.props.entities) {
-//       this.setState((state) => this.determineSelected(state.entityId));
-//     }
-//   }
+  const { searchEntities } = useSelector((store) => store.searchEntities);
 
-//   determineSelected(initialEntityId, initialSubentityId, initialFilterId) {
-//     const { entities } = this.props;
-//     const entity = this.getElement(entities, initialEntityId);
-//     const subentity = this.getElement(entity.subentities, initialSubentityId);
-//     const filter = this.getElement(subentity.filters, initialFilterId);
-//     const add = entity.add || subentity.add || filter.add;
-//     return {
-//       entityId: entity.id,
-//       subentityId: subentity.id,
-//       filterId: filter.id,
-//       add,
-//     };
-//   }
-//   getElement(array, id) {
-//     if (array && array.length > 0) {
-//       return find(array, (item) => item.id === id) || array[0];
-//     }
-//     return { id, name: "" };
-//   }
+  const entitiesList = searchEntities.list;
 
-//   handleSelectEntity = (value) => {
-//     this.setState(this.determineSelected(value));
-//     this.props.clearQueryFilters();
-//   };
+  const determineSelected = (
+    initialEntityId,
+    initialSubentityId,
+    initialFilterId
+  ) => {
+    const { entities } = entitiesList;
+    const entity = getElement(entities, initialEntityId);
+    const subentity = getElement(entity.subentities, initialSubentityId);
+    const filter = getElement(subentity.filters, initialFilterId);
+    const add = entity.add || subentity.add || filter.add;
+    return {
+      entityId: entity.id,
+      subentityId: subentity.id,
+      filterId: filter.id,
+      add,
+    };
+  };
 
-//   handleSelectSubentity = (value) => {
-//     this.setState((state) => this.determineSelected(state.entityId, value));
-//     this.props.clearQueryFilters();
-//   };
+  const getElement = (array, id) => {
+    if (array && array.length > 0) {
+      return find(array, (item) => item.id === id) || array[0];
+    }
+    return { id, name: "" };
+  };
 
-//   handleSelectFilter = (value) => {
-//     this.setState((state) =>
-//       this.determineSelected(state.entityId, state.subentityId, value)
-//     );
-//     this.props.clearQueryFilters();
-//   };
+  // const { ElementEntityId, ElementSubentityId, ElementFilterId } =
+  //   determineSelected();
 
-//   getFilters = (event) => {
-//     const searchId = this.getSelectedSearchId();
-//     this.props.getQueryFilters(searchId);
-//     event.preventDefault();
-//   };
+  // const [searchEntityId, setSearchEntityId] = useState(
+  //   determineSelected(parseInt(entityId) || undefined)
+  // );
 
-//   getSelectedSearchId() {
-//     const { entities } = this.props;
-//     const entity = this.getElement(entities, this.state.entityId);
-//     const subentity = this.getElement(
-//       entity.subentities,
-//       this.state.subentityId
-//     );
-//     const filter = this.getElement(subentity.filters, this.state.filterId);
-//     return filter.id || subentity.id || entity.id;
-//   }
+  // const [searchSubentityId, setSearchSubentityId] = useState([]);
+  // const [searchFilterId, setSearchFilterId] = useState([]);
 
-//   buildOptions() {
-//     const { entities } = this.props;
-//     const { entityId, subentityId } = this.state;
-//     const entity = find(entities, (entity) => entity.id === entityId);
-//     const subentities = entity ? entity.subentities : [];
-//     const subentity = find(
-//       subentities,
-//       (subentity) => subentity.id === subentityId
-//     );
-//     const filters = subentity ? subentity.filters : [];
-//     return { entities, subentities, filters };
-//   }
+  // useEffect = (prevProps) => {
+  //   if (prevProps.entities !== props.entities) {
+  //     setEntityId(determineSelected(searchEntityId));
+  //   }
+  // };
 
-//   handleClearList = () => {
-//     this.props.clearQueryFilters();
-//   };
+  // const handleSelectEntity = (value) => {
+  //   setSearchEntityId(determineSelected(value));
+  //   props.clearQueryFilters();
+  // };
 
-//   handleNewQuery = () => {
-//     const searchId = this.getSelectedSearchId();
-//     this.props.newQuery(searchId);
-//   };
+  // const handleSelectSubentity = (value) => {
+  //   setSearchSubentityId(determineSelected(entityId, value));
+  //   props.clearQueryFilters();
+  // };
 
-//   render() {
-//     const { entityId, subentityId, filterId } = this.list;
-//     const { entities, subentities, filters } = this.buildOptions();
-//     const show = entities.length !== 0;
+  // const handleSelectFilter = (value) => {
+  //   setSearchFilterId(determineSelected(entityId, ElementSubentityId, value));
+  //   props.clearQueryFilters();
+  // };
 
-//     return (
-//       <div>
-//         <form>
-//           <SelectDropdown
-//             label="Area"
-//             name="entity"
-//             selectedId={entityId}
-//             updateSelection={this.handleSelectEntity}
-//             items={entities}
-//           />
-//           <SelectDropdown
-//             label="Topic"
-//             name="subentity"
-//             selectedId={subentityId}
-//             updateSelection={this.handleSelectEntity}
-//             items={subentities}
-//           />
-//           <SelectDropdown
-//             label="Subtopic"
-//             name="filter"
-//             selectedId={filterId}
-//             updateSelection={this.handleSelectEntity}
-//             items={filters}
-//           />
-//           {/* <FeatureToggle featureName="queryList"></FeatureToggle> */}
-//           {show && (
-//             <Button
-//               bsStyle="primary"
-//               className="left10"
-//               onClick={this.handleNewQuery}
-//             >
-//               Query
-//             </Button>
-//           )}
-//         </form>
-//         {/* <QueryFiltersContainer /> */}
-//       </div>
-//     );
-//   }
-// }
+  // const getFilters = (event) => {
+  //   const searchId = getSelectedSearchId();
+  //   props.getQueryFilters(searchId);
+  //   event.preventDefault();
+  // };
 
-// export default SearchConfig;
+  // const getSelectedSearchId = () => {
+  //   const { entities } = props;
+  //   const entity = getElement(entities, entityId);
+  //   const subentity = getElement(entity.subentities, entityId);
+  //   const filter = getElement(subentity.filters, this.state.filterId);
+  //   return filter.id || subentity.id || entity.id;
+  // };
 
-const SearchConfig = (props) => {
-  const { name } = props.list;
+  const handleClearList = () => {
+    props.clearQueryFilters();
+  };
+
+  const handleSearch = () => {};
+
+  const buildOptions = () => {
+    const entities = entitiesList;
+    const entity = find(entities, (entity) => entity.id === entityId);
+    const subentities = entity ? entity.subentities : [];
+    const subentity = find(subentities, (subentity) => subentity.id === 102);
+    const filters = subentity ? subentity.filters : [];
+    return { entities, subentities, filters };
+  };
+
+  const { entities, subentities, filters } = buildOptions();
+  const show = entitiesList?.length !== 0;
 
   return (
     <div>
-      <h3>{name}</h3>
+      <SelectDropdown
+        label="Section"
+        name="entity"
+        // selectedId={searchEntityId}
+        // updateSelection={handleSelectEntity}
+        items={entities}
+      />
+      <SelectDropdown
+        label="Topic"
+        name="subentity"
+        // selectedId={searchSubentityId}
+        // updateSelection={handleSelectSubentity}
+        items={subentities}
+      />
+      <SelectDropdown
+        label="Subtopic"
+        name="filter"
+        // selectedId={searchFilterId}
+        // updateSelection={handleSelectFilter}
+        items={filters}
+      />
+      {show && (
+        <Button className="search-button" onClick={handleSearch}>
+          Search
+        </Button>
+      )}
     </div>
   );
 };
 
-export default SearchConfig;
+export default SearchConfigContainer;

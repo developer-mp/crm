@@ -6,7 +6,7 @@ import RegisterContainer from "./register/RegisterContainer.js";
 import VerifyContainer from "./verify/VerifyContainer.js";
 import VerifyEmailContainer from "./verifyEmail/VerifyEmailContainer.js";
 import LoginContainer from "./login/LoginContainer.js";
-import SearchConfigContainer from "./search/config/SearchConfigContainer.js";
+import Search from "./search/Search.js";
 import { useDispatch } from "react-redux";
 import { getDashboardItems } from "../actions/dashboardAction.js";
 import { fetchSearchEntities } from "../actions/searchAction.js";
@@ -14,7 +14,7 @@ import { getMenuItems } from "../actions/menuAction.js";
 import { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./routes/ProtectedRoute.js";
-import { useSelector } from "react-redux";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
@@ -50,9 +50,7 @@ const App = () => {
             path="/verifyemail/:verificationcode"
             element={<VerifyEmailContainer />}
           />
-          <Route path="/entities" element={<SearchConfigContainer />} />
-          {/* <Route exact path="/" element={<MenuContainer />} />
-          </Route> */}
+          <Route path="/search/:entityId" element={<Search />} />
         </Routes>
       </BrowserRouter>
     </div>

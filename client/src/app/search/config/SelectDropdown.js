@@ -1,26 +1,24 @@
-import { FormLabel, FormControl, FormGroup } from "react-bootstrap";
+import { Form } from "react-bootstrap";
+import "./SelectDropdown.css";
 
-const SelectDropdown = () => {
+const SelectDropdown = (props) => {
   const handleChange = (e) => {
-    this.props.updateSelection(parseInt(e.target.value));
+    props.updateSelection(parseInt(e.target.value));
   };
-  const { name, label, selectedId, items } = this.props;
-  if (items.length === 0) return null;
+  const { name, label, selectedId, items } = props;
+
   return (
-    <FormGroup controlId={name}>
-      <FormLabel>{label}</FormLabel>
-      <FormControl
-        componentClass="select"
-        onChange={handleChange}
-        value={selectedId}
-      >
-        {items.map((item) => (
-          <option key={item.id} value={item.id}>
-            {item.name}
-          </option>
-        ))}
-      </FormControl>
-    </FormGroup>
+    <Form.Group controlId={name}>
+      <Form.Label className="select-dropdown-label">{label}</Form.Label>
+      <Form.Select onChange={handleChange} value={selectedId}>
+        {items &&
+          items.map((item) => (
+            <option key={item.id} value={item.id}>
+              {item.name}
+            </option>
+          ))}
+      </Form.Select>
+    </Form.Group>
   );
 };
 
