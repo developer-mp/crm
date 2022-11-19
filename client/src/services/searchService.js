@@ -6,9 +6,9 @@ class SearchService {
     return ApiService.noSecureCall("search/entities", {});
   }
 
-  //   static getQueryList(searchId) {
-  //     return ApiService.secureCall("search/querylist", { searchId });
-  //   }
+  static getQueryList(searchId) {
+    return ApiService.noSecureCall("search/querylist", { searchId });
+  }
 
   //   static getSearchConfiguration(searchId, queryFilterId) {
   //     return ApiService.secureCall("search/queryfilter", {

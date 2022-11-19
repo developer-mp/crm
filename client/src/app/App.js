@@ -7,6 +7,7 @@ import VerifyContainer from "./verify/VerifyContainer.js";
 import VerifyEmailContainer from "./verifyEmail/VerifyEmailContainer.js";
 import LoginContainer from "./login/LoginContainer.js";
 import Search from "./search/Search.js";
+import Query from "../app/query/Query.js";
 import { useDispatch } from "react-redux";
 import { getDashboardItems } from "../actions/dashboardAction.js";
 import { fetchSearchEntities } from "../actions/searchAction.js";
@@ -51,6 +52,7 @@ const App = () => {
             element={<VerifyEmailContainer />}
           />
           <Route path="/search/:entityId" element={<Search />} />
+          <Route path="/query" element={<Query />} />
         </Routes>
       </BrowserRouter>
     </div>
@@ -63,7 +65,6 @@ export default App;
 // import "./App.css";
 // import axios from "axios";
 // import { fetchSearchEntities } from './../actions/searchAction';
-axios.defaults.withCredentials = true;
 
 // const App = () => {
 //   const createCookie = () => {

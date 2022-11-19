@@ -18,7 +18,7 @@ const Search = (props) => {
     <div>
       <div className="workplace">
         <div className="sideA">
-          <AccordionPanel title="Search" name={["", "sideMinA"]} bs="primary">
+          <AccordionPanel title="Search" name={["", "sideMinA"]}>
             <SearchConfig entityId={entityId} />
           </AccordionPanel>
         </div>

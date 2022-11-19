@@ -1,4 +1,5 @@
-const _ = require("lodash");
+import pkg from "lodash";
+const { filter, forEach, set, find, isArray, includes, join, split } = pkg;
 
 class SearchEntityResult {
   static getQueryDetail(entity, info) {
@@ -36,16 +37,16 @@ class SearchEntityResult {
   }
 
   static applyColumns(list, arr) {
-    const data = _.filter(
+    const data = filter(
       list,
       (o) => o.isColumnSelected && o.request === undefined
     );
-    _.forEach(data, (obj) => {
-      _.set(obj, "isColumnSelected", false);
+    forEach(data, (obj) => {
+      set(obj, "isColumnSelected", false);
     });
 
-    _.forEach(arr, (name) => {
-      const item = _.find(list, { column: name });
+    forEach(arr, (name) => {
+      const item = find(list, { column: name });
       if (item !== undefined) {
         item.isColumnSelected = true;
       }
@@ -53,9 +54,9 @@ class SearchEntityResult {
   }
 
   static applyFilters(list, arr) {
-    _.forEach(arr, (obj) => {
+    forEach(arr, (obj) => {
       const { key, comparable, value } = obj;
-      const item = _.find(list, { column: key });
+      const item = find(list, { column: key });
       if (item !== undefined) {
         item.isSelected = true;
         item.filterComparator = comparable;
@@ -68,17 +69,17 @@ class SearchEntityResult {
     const { id, firstName, lastName, email, securityRole, password, isactive } =
       detail;
     let role = securityRole;
-    if (_.isArray(role)) {
-      if (_.includes(role, "Admin")) {
+    if (isArray(role)) {
+      if (includes(role, "Admin")) {
         role = ["Admin"];
       }
-      if (_.includes(role, "Power User")) {
+      if (includes(role, "Power User")) {
         role = ["Power User"];
       }
-      if (_.includes(role, "User")) {
+      if (includes(role, "User")) {
         role = ["User"];
       }
-      role = _.join(role, ".");
+      role = join(role, ".");
     }
     const item = {
       id: id,
@@ -101,7 +102,7 @@ class SearchEntityResult {
       firstName: info.forstName,
       lastName: info.lastName,
       email: info.email,
-      securityRole: _.split(info.role, ";"),
+      securityRole: split(info.role, ";"),
       isActive: info.isactive ? "Yes" : "No",
     };
     return item;

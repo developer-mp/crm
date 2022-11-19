@@ -1,8 +1,6 @@
 import entity from "../../data/content/entity.json" assert { type: "json" };
-//import { lodash as _ } from "lodash";
 import pkg from "lodash";
-const { lodash: _ } = pkg;
-const { cloneDeep } = pkg;
+const { cloneDeep, find, flatMap, map, filter } = pkg;
 
 class SearchEntity {
   static getEntityList() {
@@ -10,62 +8,60 @@ class SearchEntity {
     return cloneDeep(lst);
   }
 
-  // static findEntity(id) {
-  //   const arr = this.getEntityList();
-  //   let entity = _.find(arr, { id });
-  //   let subentity = { name: "" };
-  //   let key = "";
+  static findEntity(id) {
+    const arr = this.getEntityList();
+    let entity = find(arr, { id });
+    let subentity = { name: "" };
+    let key = "";
 
-  //   if (entity !== undefined) {
-  //     key = entity.key ? entity.key : entity.name;
-  //     return {
-  //       entity: entity.name,
-  //       subentity: "",
-  //       topic: "",
-  //       key,
-  //       rolekey: entity.rolekey,
-  //       block: entity.block,
-  //       load: entity.load,
-  //     };
-  //   }
+    if (entity !== undefined) {
+      key = entity.key ? entity.key : entity.name;
+      return {
+        entity: entity.name,
+        subentity: "",
+        topic: "",
+        key,
+        rolekey: entity.rolekey,
+        block: entity.block,
+        load: entity.load,
+      };
+    }
 
-  //   entity = _.find(arr, (item) => _.find(item.subentities, { id }));
-  //   if (entity !== undefined) {
-  //     subentity = _.find(entity.subentities, { id });
-  //     key = subentity.key ? subentity.key : `${entity.name}.${subentity.name}`;
-  //     return {
-  //       entity: entity.name,
-  //       subentity: subentity.name,
-  //       topic: "",
-  //       key,
-  //       rolekey: subentity.rolekey,
-  //       block: subentity.block,
-  //       load: subentity.load,
-  //     };
-  //   }
+    entity = find(arr, (item) => find(item.subentities, { id }));
+    if (entity !== undefined) {
+      subentity = find(entity.subentities, { id });
+      key = subentity.key ? subentity.key : `${entity.name}.${subentity.name}`;
+      return {
+        entity: entity.name,
+        subentity: subentity.name,
+        topic: "",
+        key,
+        rolekey: subentity.rolekey,
+        block: subentity.block,
+        load: subentity.load,
+      };
+    }
 
-  //   let result = _.flatMap(arr, ({ name, subentities }) =>
-  //     _.map(subentities, (item) => ({ name, ...item }))
-  //   );
-  //   result = _.filter(result, (item) => item.filters.length > 0);
-  //   subentity = _.find(result, (item) => _.find(item.filters, { id }));
-  //   const topic = _.find(subentity.filters, { id });
-  //   entity = _.find(arr, (item) =>
-  //     _.find(item.subentities, { id: subentity.id })
-  //   );
-  //   key = topic.key
-  //     ? topic.key
-  //     : `${entity.name}.${subentity.name}.${topic.name}`;
-  //   return {
-  //     entity: entity.name,
-  //     subentity: subentity.name,
-  //     topic: topic.name,
-  //     key,
-  //     rolekey: topic.rolekey,
-  //     block: topic.block,
-  //     load: topic.load,
-  //   };
-  // }
+    let result = flatMap(arr, ({ name, subentities }) =>
+      map(subentities, (item) => ({ name, ...item }))
+    );
+    result = filter(result, (item) => item.filters?.length > 0);
+    subentity = find(result, (item) => find(item.filters, { id }));
+    const topic = find(subentity.filters, { id });
+    entity = find(arr, (item) => find(item.subentities, { id: subentity.id }));
+    key = topic.key
+      ? topic.key
+      : `${entity.name}.${subentity.name}.${topic.name}`;
+    return {
+      entity: entity.name,
+      subentity: subentity.name,
+      topic: topic.name,
+      key,
+      rolekey: topic.rolekey,
+      block: topic.block,
+      load: topic.load,
+    };
+  }
 
   // static getSearchFilter(filters) {
   //   const filter = {};
