@@ -14,6 +14,7 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import dashboardReducer from "./slices/dashboardSlice.js";
 import searchEntitiesReducer from "./slices/searchSlice.js";
+import queryFiltersReducer from "./slices/queryFiltersSlice.js";
 import menuReducer from "./slices/menuSlice.js";
 import userReducer from "./slices/userSlice.js";
 //import searchEntitiesReducer from "./slices/searchSlice.js";
@@ -39,6 +40,7 @@ const rootReducer = combineReducers({
   menu: menuReducer,
   user: userReducer,
   searchEntities: searchEntitiesReducer,
+  queryFilters: queryFiltersReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

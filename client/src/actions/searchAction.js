@@ -16,13 +16,15 @@ export const fetchSearchEntities = createAsyncThunk(
 
 export const fetchQueryFilters = createAsyncThunk(
   "search/fetchQueryFilters",
-  async ({ searchId }, rejectWithValue) => {
+  async (searchId, { rejectWithValue }) => {
     try {
-      return await SearchService.getQueryList(searchId).then((json) => {
-        return json.data;
-      });
+      return await SearchService.getSearchConfiguration(searchId).then(
+        (json) => {
+          return json.data;
+        }
+      );
     } catch (error) {
-      return rejectWithValue();
+      rejectWithValue(error);
     }
   }
 );

@@ -37,21 +37,35 @@ class SearchService {
   //   });
   // }
 
+  // static async queryFilter(request) {
+  //   const {
+  //     //user,
+  //     searchId,
+  //     queryFilterId,
+  //   } = request;
+  //   const search = SearchEntity.findEntity(searchId);
+  //   const list = IndexContent.getQueryFilterList({ search });
+  //   if (queryFilterId === null || queryFilterId === 0) {
+  //     return Promise.resolve({ list, info: {} });
+  //   }
+  //   const data = {
+  //     data: { QueryID: queryFilterId },
+  //     //user_info: user,
+  //   };
+  //   const endpoint = "queryload";
+  //   const response = await ApiService.apiCall(endpoint, data);
+  //   const { QueryDetails, QueryColumns, QueryFilters } = response.result;
+  //   const info = SearchEntityResult.queryInfo(QueryDetails);
+  //   SearchEntityResult.applyColumns(list, QueryColumns);
+  //   SearchEntityResult.applyColumns(list, QueryFilters);
+  //   return { list, info };
+  // }
+
   static async queryFilter(request) {
-    const { user, searchId, queryFilterId } = request;
+    const { searchId } = request;
     const search = SearchEntity.findEntity(searchId);
     const list = IndexContent.getQueryFilterList({ search });
-    if (queryFilterId === null || queryFilterId === 0) {
-      return Promise.resolve({ list, info: {} });
-    }
-    const data = { data: { QueryID: queryFilterId }, user_info: user };
-    const endpoint = "queryload";
-    const response = await ApiService.apiCall(endpoint, data);
-    const { QueryDetails, QueryColumns, QueryFilters } = response.result;
-    const info = SearchEntityResult.queryInfo(QueryDetails);
-    SearchEntityResult.applyColumns(list, QueryColumns);
-    SearchEntityResult.applyColumns(list, QueryFilters);
-    return { list, info };
+    return { list };
   }
 
   // static queryDelete(request) {

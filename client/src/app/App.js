@@ -10,7 +10,10 @@ import Search from "./search/Search.js";
 import Query from "../app/query/Query.js";
 import { useDispatch } from "react-redux";
 import { getDashboardItems } from "../actions/dashboardAction.js";
-import { fetchSearchEntities } from "../actions/searchAction.js";
+import {
+  fetchSearchEntities,
+  fetchQueryFilters,
+} from "../actions/searchAction.js";
 import { getMenuItems } from "../actions/menuAction.js";
 import { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -29,6 +32,7 @@ const App = () => {
     dispatch(getDashboardItems());
     dispatch(fetchSearchEntities());
     dispatch(getMenuItems());
+    dispatch(fetchQueryFilters());
     // if (user.accessToken) {
     //   axios.defaults.headers.common[
     //     "Authorization"

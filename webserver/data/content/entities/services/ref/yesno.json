@@ -1,0 +1,12 @@
+{
+  "data": [
+    {
+      "subentity": "",
+      "topic": "",
+      "data": [
+        { "value": "Y", "text": "Y" },
+        { "value": "N", "text": "N" }
+      ]
+    }
+  ]
+}

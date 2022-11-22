@@ -6,10 +6,11 @@ class EntityContent {
     const subentity = query.subentity === undefined ? "" : query.subentity;
     const topic = query.topic === undefined ? "" : query.topic;
     let item = find(arr, { subentity, topic });
-    if (item === undefined) {
-      item = find(arr, { subentity: "Edits", topic: "" });
-    }
-    return cloneDeep(item.data);
+    // if (item === undefined) {
+    //   item = find(arr, { subentity: "Edits", topic: "" });
+    // }
+    return cloneDeep({ item });
+    //return cloneDeep(item.data);
   }
 
   // static assignAvailableList(lst, nme, arr) {

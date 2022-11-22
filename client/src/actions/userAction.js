@@ -18,7 +18,6 @@ export const registerUser = createAsyncThunk(
         return res.data;
       });
     } catch (error) {
-      console.log(error);
       return rejectWithValue(error);
     }
   }
@@ -50,7 +49,6 @@ export const loginUser = createAsyncThunk(
         return res.data;
       });
     } catch (error) {
-      console.log(error);
       return rejectWithValue(error);
     }
   }
@@ -66,7 +64,6 @@ export const logoutUser = createAsyncThunk(
         return res.data;
       });
     } catch (error) {
-      console.log(error);
       return rejectWithValue(error);
     }
   }

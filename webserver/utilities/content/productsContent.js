@@ -1,7 +1,7 @@
-const detail = require("../../data/content/entities/products/detail.json");
-const filter = require("../../data/content/entities/products/filter.json");
-const yesno = require("../../data/content/entities/products/ref/yesno.json");
-const processMode = require("../../data/content/entities/products/ref/processMode.json");
+import detail from "../../data/content/entities/products/detail.json" assert { type: "json" };
+import filter from "../../data/content/entities/products/filter.json" assert { type: "json" };
+import yesno from "../../data/content/entities/products/ref/yesno.json" assert { type: "json" };
+import processMode from "../../data/content/entities/products/ref/processMode.json" assert { type: "json" };
 
 class ProductsContent {
   static getDetailContent() {

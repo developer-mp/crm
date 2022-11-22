@@ -45,7 +45,7 @@ class SearchEntity {
     let result = flatMap(arr, ({ name, subentities }) =>
       map(subentities, (item) => ({ name, ...item }))
     );
-    result = filter(result, (item) => item.filters?.length > 0);
+    result = filter(result, (item) => item.filters.length > 0);
     subentity = find(result, (item) => find(item.filters, { id }));
     const topic = find(subentity.filters, { id });
     entity = find(arr, (item) => find(item.subentities, { id: subentity.id }));

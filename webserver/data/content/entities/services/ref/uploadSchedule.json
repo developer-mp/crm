@@ -1,0 +1,12 @@
+{
+  "data": [
+    {
+      "subentity": "Construction",
+      "topic": "Customer Management",
+      "data": [
+        { "value": "Daily", "text": "Daily" },
+        { "value": "Weekly", "text": "Weekly" }
+      ]
+    }
+  ]
+}

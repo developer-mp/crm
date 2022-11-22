@@ -2,15 +2,23 @@ import EntityContent from "./entityContent.js";
 import CustomersContent from "./customersContent.js";
 import ProductsContent from "./productsContent.js";
 import ServicesContent from "./servicesContent.js";
-const logger = require("../../logger/winston");
+//import logger from "../../logger/winston.js";
 import pkg from "lodash";
 const { forEach } = pkg;
 
 class IndexContent {
+  // static getQueryFilterList(params) {
+  //   const { search } = params;
+  //   const { entity } = search;
+  //   const result = EntityContent.getData(this.getFilterContent(entity), search);
+  //   this.assignFilterOption(result, search);
+  //   return result;
+  // }
+
   static getQueryFilterList(params) {
     const { search } = params;
     const { entity } = search;
-    const result = EntityContent.getData(search, this.getFilterContent(entity));
+    const result = this.getFilterContent(entity);
     this.assignFilterOption(result, search);
     return result;
   }
@@ -42,7 +50,7 @@ class IndexContent {
         EntityContent.assignAvailableList(result, item.column, options);
       });
     } catch (e) {
-      logger.error(`Error in assignFilterOption: ${e}`);
+      //logger.error(`Error in assignFilterOption: ${e}`);
     }
   }
 
@@ -105,13 +113,13 @@ class IndexContent {
     try {
       let lst = {};
       switch (entity) {
-        case "Customers":
+        case "Customers Management":
           lst = CustomersContent.getFilterContent();
           break;
-        case "Products":
+        case "Product Catalog":
           lst = ProductsContent.getFilterContent();
           break;
-        case "Services":
+        case "Service Catalog":
           lst = ServicesContent.getFilterContent();
           break;
         default:
@@ -119,7 +127,7 @@ class IndexContent {
       }
       return lst;
     } catch (e) {
-      logger.error(`Error: ${e}`);
+      //logger.error(`Error: ${e}`);
       return [];
     }
   }

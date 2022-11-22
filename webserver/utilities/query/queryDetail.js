@@ -1,5 +1,5 @@
 const _ = require("lodash");
-const logger = require("../../logger/winston");
+//const logger = require("../../logger/winston");
 
 class QueryDetail {
   static setDetailResult(items, data, search) {
@@ -12,7 +12,8 @@ class QueryDetail {
         try {
           this.setDetailBlockResult(item, items, search);
         } catch (e) {
-          logger.error(`Error ${item.name} - ${e}`);
+          return e;
+          //logger.error(`Error ${item.name} - ${e}`);
         }
       }
     });
@@ -54,7 +55,8 @@ class QueryDetail {
         cat.value = value;
       }
     } catch (e) {
-      logger.error(`Error ${e}`);
+      return e;
+      //logger.error(`Error ${e}`);
     }
   }
 
@@ -120,7 +122,8 @@ class QueryDetail {
         section.push(newLine);
       });
     } catch (e) {
-      logger.error(`Error ${e}`);
+      return e;
+      //logger.error(`Error ${e}`);
     }
   }
 

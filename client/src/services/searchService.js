@@ -6,20 +6,28 @@ class SearchService {
     return ApiService.noSecureCall("search/entities", {});
   }
 
-  static getQueryList(searchId) {
-    return ApiService.noSecureCall("search/querylist", { searchId });
+  // static getQueryList(searchId) {
+  //   return ApiService.noSecureCall("search/querylist", { searchId });
+  // }
+
+  // static getSearchConfiguration(searchId, queryFilterId) {
+  //   return ApiService.secureCall("search/queryfilter", {
+  //     searchId,
+  //     queryFilterId,
+  //   });
+  // }
+
+  // static getSearchConfiguration() {
+  //   return ApiService.nonSecureCall("search/entities", {});
+  // }
+
+  static getSearchConfiguration(searchId) {
+    return ApiService.noSecureCall("search/queryfilter", searchId);
   }
 
-  //   static getSearchConfiguration(searchId, queryFilterId) {
-  //     return ApiService.secureCall("search/queryfilter", {
-  //       searchId,
-  //       queryFilterId,
-  //     });
-  //   }
-
-  //   static getFilterTypes() {
-  //     return ApiService.secureCall("content/filtertype", {});
-  //   }
+  // static getFilterTypes() {
+  //   return ApiService.secureCall("content/filtertype", {});
+  // }
 
   //   static getQueryResultGridContent(searchId) {
   //     return ApiService.secureCall("content/resultgrid", { searchId });

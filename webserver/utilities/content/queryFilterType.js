@@ -1,4 +1,4 @@
-const filterType = require("../../data/content/filtertype.json");
+import filterType from "../../data/content/filtertype.json" assert { type: "json" };
 
 class QueryFilterType {
   static getFilterTypes() {

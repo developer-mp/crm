@@ -1,23 +1,23 @@
-const { createLogger, transports, format } = require("winston");
-const config = require("../config");
+// import { createLogger, transports, format } from "winston";
+// import logger from "../config.json" assert { type: "json" };
 
-const options = config.logger;
+// const options = logger;
 
-const logger = createLogger({
-  format: format.combine(format.timestamp(), format.json()),
-  transports: [
-    new transports.File(options.file),
-    new transports.File(options.errorfile),
-    new transports.File(options.console),
-  ],
-  exceptionHandlers: [new transports.File(options.exceptionfile)],
-  exitError: false,
-});
+// const errorLogger = createLogger({
+//   format: format.combine(format.timestamp(), format.json()),
+//   transports: [
+//     new transports.File(options.file),
+//     new transports.File(options.errorfile),
+//     new transports.File(options.console),
+//   ],
+//   exceptionHandlers: [new transports.File(options.exceptionfile)],
+//   exitError: false,
+// });
 
-logger.stream = {
-  write(message, encoding) {
-    logger.info(message);
-  },
-};
+// errorLogger.stream = {
+//   write(message, encoding) {
+//     errorLogger.info(message);
+//   },
+// };
 
-module.exports = logger;
+// export default errorLogger;
