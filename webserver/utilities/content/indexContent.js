@@ -16,11 +16,11 @@ class IndexContent {
   // }
 
   static getQueryFilterList(params) {
-    const { search } = params;
-    const { entity } = search;
-    const result = this.getFilterContent(entity);
-    this.assignFilterOption(result, search);
-    return result;
+    const { entityName } = params;
+    // const { entity } = search;
+    const filterContent = this.getFilterContent(entityName);
+    // this.assignFilterOption(result, search);
+    return filterContent;
   }
 
   // static getQueryFilterPKList(search) {

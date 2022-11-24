@@ -11,56 +11,60 @@ class SearchEntity {
   static findEntity(id) {
     const arr = this.getEntityList();
     let entity = find(arr, { id });
-    let subentity = { name: "" };
-    let key = "";
-
-    if (entity !== undefined) {
-      key = entity.key ? entity.key : entity.name;
-      return {
-        entity: entity.name,
-        subentity: "",
-        topic: "",
-        key,
-        rolekey: entity.rolekey,
-        block: entity.block,
-        load: entity.load,
-      };
+    if (!entity) {
+      return [];
     }
+    // let subentity = { name: "" };
+    // let key = "";
 
-    entity = find(arr, (item) => find(item.subentities, { id }));
-    if (entity !== undefined) {
-      subentity = find(entity.subentities, { id });
-      key = subentity.key ? subentity.key : `${entity.name}.${subentity.name}`;
-      return {
-        entity: entity.name,
-        subentity: subentity.name,
-        topic: "",
-        key,
-        rolekey: subentity.rolekey,
-        block: subentity.block,
-        load: subentity.load,
-      };
-    }
+    // if (entity !== undefined) {
+    //   key = entity.key ? entity.key : entity.name;
+    //   return {
+    //     entity: entity.name,
+    //     subentity: "",
+    //     topic: "",
+    //     key,
+    //     rolekey: entity.rolekey,
+    //     block: entity.block,
+    //     load: entity.load,
+    //   };
+    // }
 
-    let result = flatMap(arr, ({ name, subentities }) =>
-      map(subentities, (item) => ({ name, ...item }))
-    );
-    result = filter(result, (item) => item.filters.length > 0);
-    subentity = find(result, (item) => find(item.filters, { id }));
-    const topic = find(subentity.filters, { id });
-    entity = find(arr, (item) => find(item.subentities, { id: subentity.id }));
-    key = topic.key
-      ? topic.key
-      : `${entity.name}.${subentity.name}.${topic.name}`;
-    return {
-      entity: entity.name,
-      subentity: subentity.name,
-      topic: topic.name,
-      key,
-      rolekey: topic.rolekey,
-      block: topic.block,
-      load: topic.load,
-    };
+    // entity = find(arr, (item) => find(item.subentities, { id }));
+    // if (entity !== undefined) {
+    //   subentity = find(entity.subentities, { id });
+    //   key = subentity.key ? subentity.key : `${entity.name}.${subentity.name}`;
+    //   return {
+    //     entity: entity.name,
+    //     subentity: subentity.name,
+    //     topic: "",
+    //     key,
+    //     rolekey: subentity.rolekey,
+    //     block: subentity.block,
+    //     load: subentity.load,
+    //   };
+    // }
+
+    // let result = flatMap(arr, ({ name, subentities }) =>
+    //   map(subentities, (item) => ({ name, ...item }))
+    // );
+    // result = filter(result, (item) => item.filters.length > 0);
+    // subentity = find(result, (item) => find(item.filters, { id }));
+    // const topic = find(subentity.filters, { id });
+    // entity = find(arr, (item) => find(item.subentities, { id: subentity.id }));
+    // key = topic.key
+    //   ? topic.key
+    //   : `${entity.name}.${subentity.name}.${topic.name}`;
+    // return {
+    //   entity: entity.name,
+    //   subentity: subentity.name,
+    //   topic: topic.name,
+    //   key,
+    //   rolekey: topic.rolekey,
+    //   block: topic.block,
+    //   load: topic.load,
+    // };
+    return entity.name;
   }
 
   // static getSearchFilter(filters) {

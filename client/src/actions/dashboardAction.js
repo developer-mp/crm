@@ -9,7 +9,7 @@ export const getDashboardItems = createAsyncThunk(
         return json.userMenu.dashboard;
       });
     } catch (error) {
-      return rejectWithValue();
+      return rejectWithValue(error);
     }
   }
 );

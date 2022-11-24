@@ -21,8 +21,8 @@ class SearchService {
   //   return ApiService.nonSecureCall("search/entities", {});
   // }
 
-  static getSearchConfiguration(searchId) {
-    return ApiService.noSecureCall("search/queryfilter", searchId);
+  static async getSearchConfiguration(entityId) {
+    return await ApiService.noSecureCall("search/queryfilter", entityId);
   }
 
   // static getFilterTypes() {

@@ -40,9 +40,6 @@ const Query = (props) => {
       <AccordionPanel title="Select Filters">
         <QueryFilters />
       </AccordionPanel>
-      <AccordionPanel title="Select Columns">
-        {/* <QueryColumns /> */}
-      </AccordionPanel>
       <Button onClick={search}>Search</Button>
     </div>
   );

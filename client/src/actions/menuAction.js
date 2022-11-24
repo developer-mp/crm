@@ -9,7 +9,7 @@ export const getMenuItems = createAsyncThunk(
         return json.userMenu.menu;
       });
     } catch (error) {
-      return rejectWithValue();
+      return rejectWithValue(error);
     }
   }
 );

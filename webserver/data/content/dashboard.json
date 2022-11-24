@@ -5,21 +5,21 @@
       "urlLink": "/search/1",
       "title": "Customers",
       "img": "content/customer.png",
-      "bgColor": "#1e3f66"
+      "bgColor": "#fe9bb1"
     },
     {
       "id": 2,
       "urlLink": "/search/2",
       "title": "Products",
       "img": "content/product.png",
-      "bgColor": "#3d8c40"
+      "bgColor": "#ffb885"
     },
     {
       "id": 3,
       "urlLink": "/search/3",
       "title": "Services",
       "img": "content/service.png",
-      "bgColor": "#7c5295"
+      "bgColor": "#a09df2"
     }
   ]
 }

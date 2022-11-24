@@ -61,11 +61,11 @@ class SearchService {
   //   return { list, info };
   // }
 
-  static async queryFilter(request) {
-    const { searchId } = request;
-    const search = SearchEntity.findEntity(searchId);
-    const list = IndexContent.getQueryFilterList({ search });
-    return { list };
+  static async findQueryFilter(params) {
+    const { entityId } = params;
+    const entityName = SearchEntity.findEntity(entityId);
+    const filterList = IndexContent.getQueryFilterList({ entityName });
+    return { filterList };
   }
 
   // static queryDelete(request) {

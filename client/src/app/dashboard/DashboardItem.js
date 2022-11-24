@@ -1,21 +1,13 @@
-//import { withRouter } from "react-router-dom";
-// import { useNavigate } from "react-router-dom2";
+import { useNavigate } from "react-router-dom";
 import "./Dashboard.css";
 
 const DashboardItem = (props) => {
-  // const handleLink = () => {
-  //   let { history, data } = props;
-  //   history.push({
-  //     pathname: data.urlLink,
-  //   });
-  // };
+  const navigate = useNavigate();
 
-  // let navigate = useNavigate();
-
-  // const handleLink = () => {
-  //   let { data } = props;
-  //   navigate(data.urlLink, { replace: true });
-  // };
+  const handleLink = () => {
+    let { data } = props;
+    navigate(data.urlLink);
+  };
 
   const { img, title, bgColor } = props.data;
 
@@ -24,15 +16,11 @@ const DashboardItem = (props) => {
     backgroundImage: "url(" + img + ")",
   };
   return (
-    <div className="dashboardItem">
-      {/* <div className="dashboardBox" onClick={handleLink}> */}
-      <div className="dashboardImg" style={divStyle}></div>
+    <div className="dashboardItem" onClick={handleLink}>
       <h3>{title}</h3>
-      {/* </div> */}
+      <div className="dashboardImg" style={divStyle}></div>
     </div>
   );
 };
 
 export default DashboardItem;
-
-//export default withRouter(DashboardItem);

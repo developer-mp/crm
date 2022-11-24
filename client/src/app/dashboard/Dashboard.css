@@ -1,12 +1,30 @@
+.d h3 {
+  text-align: center;
+  margin-top: 3em;
+  font-size: 1.8em;
+}
+
 .dashboard {
   display: flex;
   justify-content: center;
-  margin-top: 3em;
 }
 
 .dashboardItem {
-  margin-right: 3em;
   border: lightgray solid 2px;
+  border-radius: 1em;
+  text-align: center;
+  margin-top: 2em;
+  background-color: white;
+  cursor: pointer;
+}
+
+.dashboardItem:not(:last-child) {
+  margin-right: 3em;
+}
+
+.dashboardItem h3 {
+  font-size: 1.2em;
+  margin-top: 0.4em;
 }
 
 .dashboardItem:hover {
@@ -18,7 +36,6 @@
   height: 200px;
   position: relative;
   color: white;
-  cursor: pointer;
 }
 
 .dashboardBox h3 {
@@ -32,4 +49,5 @@
   height: 200px;
   width: 200px;
   background-size: cover;
+  border-radius: 1em;
 }

@@ -27,7 +27,7 @@
           "isSelected": false,
           "column": "customercode",
           "isFilter": true,
-          "isColumnSelected": true
+          "isColumnSelected": false
         },
         {
           "name": "Website",
@@ -35,7 +35,7 @@
           "isSelected": false,
           "column": "website",
           "isFilter": true,
-          "isColumnSelected": true
+          "isColumnSelected": false
         },
         {
           "name": "Country",
@@ -43,7 +43,7 @@
           "isSelected": false,
           "column": "country",
           "isFilter": true,
-          "isColumnSelected": true
+          "isColumnSelected": false
         },
         {
           "name": "City",
@@ -51,7 +51,7 @@
           "isSelected": false,
           "column": "city",
           "isFilter": true,
-          "isColumnSelected": true
+          "isColumnSelected": false
         },
         {
           "name": "Headcount",
@@ -59,7 +59,7 @@
           "isSelected": false,
           "column": "headcount",
           "isFilter": true,
-          "isColumnSelected": true
+          "isColumnSelected": false
         }
       ]
     }

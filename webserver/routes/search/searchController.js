@@ -24,13 +24,9 @@ class SearchController {
   //     .catch(next);
   // }
 
-  static getQueryFilter(req, res, next) {
-    const searchId = req.body;
-    //const { searchId } = req.body;
-    // const params = {
-    //   searchId,
-    // };
-    SearchService.queryFilter(searchId)
+  static async getQueryFilter(req, res, next) {
+    const entityId = req.body;
+    await SearchService.findQueryFilter(entityId)
       .then((result) => {
         res.json(result);
       })
