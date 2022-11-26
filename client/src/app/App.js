@@ -1,65 +1,9 @@
-import "./App.css";
-//import RoutesContainer from "./routes/RoutesContainer";
-import DashboardContainer from "./dashboard/DashboardContainer.js";
-import MenuContainer from "./menu/MenuContainer.js";
-import RegisterContainer from "./register/RegisterContainer.js";
-import VerifyContainer from "./verify/VerifyContainer.js";
-import VerifyEmailContainer from "./verifyEmail/VerifyEmailContainer.js";
-import LoginContainer from "./login/LoginContainer.js";
-import Search from "./search/Search.js";
-import Query from "../app/query/Query.js";
-import { useDispatch } from "react-redux";
-import { getDashboardItems } from "../actions/dashboardAction.js";
-import {
-  fetchSearchEntities,
-  fetchQueryFilters,
-} from "../actions/searchAction.js";
-import { getMenuItems } from "../actions/menuAction.js";
-import { useEffect } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ProtectedRoute from "./routes/ProtectedRoute.js";
+import RouteItems from "./routes/RouteItems.js";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-import axios from "axios";
-axios.defaults.withCredentials = true;
+import "./App.css";
 
 const App = () => {
-  const dispatch = useDispatch();
-  // const user = useSelector((state) => state.user.accessToken);
-  // console.log(user.accessToken);
-
-  useEffect(() => {
-    dispatch(getDashboardItems());
-    dispatch(fetchSearchEntities());
-    dispatch(getMenuItems());
-    dispatch(fetchQueryFilters());
-    // if (user.accessToken) {
-    //   axios.defaults.headers.common[
-    //     "Authorization"
-    //   ] = `Bearer ${user.accessToken}`;
-    // }
-  }, [dispatch]);
-
-  return (
-    <div>
-      <BrowserRouter>
-        <Routes>
-          {/* <Route path="/" element={<MenuContainer />} /> */}
-          <Route path="/" element={<DashboardContainer />} />
-          <Route path="/register" element={<RegisterContainer />} />
-          <Route path="/login" element={<LoginContainer />} />
-          {/* <Route path="/" element={<ProtectedRoute />} /> */}
-          <Route path="/verify" element={<VerifyContainer />} />
-          <Route
-            path="/verifyemail/:verificationcode"
-            element={<VerifyEmailContainer />}
-          />
-          <Route path="/search/:entityId" element={<Search />} />
-          <Route path="/query" element={<Query />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
-  );
+  return <RouteItems />;
 };
 
 export default App;
@@ -68,8 +12,13 @@ export default App;
 // import "./App.css";
 // import axios from "axios";
 // import { fetchSearchEntities } from './../actions/searchAction';
+// import axios from "axios";
+// axios.defaults.withCredentials = true;
 
 // const App = () => {
+
+// const user = useSelector((state) => state.user.accessToken);
+// console.log(user.accessToken);
 //   const createCookie = () => {
 //     axios
 //       .post("http://localhost:4366/api/auth/createToken", {

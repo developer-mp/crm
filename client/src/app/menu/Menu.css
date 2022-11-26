@@ -1,0 +1,13 @@
+.navbar-brand {
+  font-size: 1em !important;
+}
+
+.dropdown-item {
+  font-size: 0.9em !important;
+}
+
+.navbar-text a {
+  margin-left: 2em;
+  text-decoration: none;
+  color: #707173 !important;
+}

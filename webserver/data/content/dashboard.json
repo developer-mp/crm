@@ -4,22 +4,43 @@
       "id": 1,
       "urlLink": "/search/1",
       "title": "Customers",
-      "img": "content/customer.png",
-      "bgColor": "#fe9bb1"
+      "img": "content/customers.png",
+      "bgColor": "#06b6fe"
     },
     {
       "id": 2,
       "urlLink": "/search/2",
       "title": "Products",
-      "img": "content/product.png",
-      "bgColor": "#ffb885"
+      "img": "content/products.png",
+      "bgColor": "#ef6b8b"
     },
     {
       "id": 3,
       "urlLink": "/search/3",
       "title": "Services",
-      "img": "content/service.png",
-      "bgColor": "#a09df2"
+      "img": "content/services.png",
+      "bgColor": "#ffab5e"
+    },
+    {
+      "id": 4,
+      "urlLink": "/search/4",
+      "title": "Projects",
+      "img": "content/projects.png",
+      "bgColor": "#db73e0"
+    },
+    {
+      "id": 5,
+      "urlLink": "/search/5",
+      "title": "Insights",
+      "img": "content/insights.png",
+      "bgColor": "#77cb03"
+    },
+    {
+      "id": 6,
+      "urlLink": "/search/6",
+      "title": "Contacts",
+      "img": "content/contacts.png",
+      "bgColor": "#fbc741"
     }
   ]
 }

@@ -1,15 +1,13 @@
+import { useSelector } from "react-redux";
 import DashboardItem from "./DashboardItem.js";
 import "./Dashboard.css";
-import { useSelector } from "react-redux";
 
-const DashboardContainer = () => {
+const Dashboard = () => {
   const { dashboardItems } = useSelector((store) => store.dashboard);
-  const title = "Catalog";
 
   return (
-    <div className="d">
-      <h3>{title}</h3>
-      <div className="dashboard">
+    <div className="dashboard-container">
+      <div className="dashboard-container-wrapper">
         {dashboardItems.map((item) => (
           <DashboardItem data={item} key={item.id} />
         ))}
@@ -18,4 +16,4 @@ const DashboardContainer = () => {
   );
 };
 
-export default DashboardContainer;
+export default Dashboard;

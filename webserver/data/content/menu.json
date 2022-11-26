@@ -2,13 +2,13 @@
   "menu": [
     {
       "id": 1,
-      "urlLink": "/home",
+      "urlLink": "/",
       "title": "Home",
       "isGroup": false
     },
     {
       "id": 2,
-      "urlLink": "/search",
+      "urlLink": "/search/1",
       "title": "Search",
       "isGroup": false
     },
@@ -20,7 +20,7 @@
       "items": [
         {
           "id": 31,
-          "urlLink": "/profile/profile",
+          "urlLink": "/account/profile",
           "title": "My Profile"
         }
       ]

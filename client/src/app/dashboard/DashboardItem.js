@@ -16,9 +16,13 @@ const DashboardItem = (props) => {
     backgroundImage: "url(" + img + ")",
   };
   return (
-    <div className="dashboardItem" onClick={handleLink}>
-      <h3>{title}</h3>
-      <div className="dashboardImg" style={divStyle}></div>
+    <div className="dashboard-item">
+      <div className="dashboard-item-box" onClick={handleLink}>
+        <div className="dashboard-item-img" style={divStyle} />
+      </div>
+      <div>
+        <h3>{title}</h3>
+      </div>
     </div>
   );
 };
