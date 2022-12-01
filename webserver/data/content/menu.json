@@ -21,7 +21,12 @@
         {
           "id": 31,
           "urlLink": "/account/profile",
-          "title": "My Profile"
+          "title": "Profile"
+        },
+        {
+          "id": 32,
+          "urlLink": "/account/settings",
+          "title": "Settings"
         }
       ]
     },
@@ -33,13 +38,13 @@
       "items": [
         {
           "id": 41,
-          "urlLink": "/admin/adduser",
-          "title": "Add User"
+          "urlLink": "/admin/users",
+          "title": "Manage Users"
         },
         {
           "id": 42,
-          "urlLink": "/admin/updateuser",
-          "title": "Update User"
+          "urlLink": "/admin/analytics",
+          "title": "Analytics"
         }
       ]
     }

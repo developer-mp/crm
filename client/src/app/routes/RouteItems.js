@@ -11,6 +11,10 @@ import Search from "../search/Search.js";
 import Query from "../query/Query.js";
 import { getDashboardItems } from "../../actions/dashboardAction.js";
 import { getMenuItems } from "../../actions/menuAction.js";
+import {
+  fetchSearchEntities,
+  fetchQueryFilters,
+} from "../../actions/searchAction.js";
 
 const RouteItems = () => {
   const dispatch = useDispatch();
@@ -18,8 +22,8 @@ const RouteItems = () => {
   useEffect(() => {
     dispatch(getDashboardItems());
     dispatch(getMenuItems());
-    // dispatch(fetchSearchEntities());
-    // dispatch(fetchQueryFilters());
+    dispatch(fetchSearchEntities());
+    dispatch(fetchQueryFilters());
     // if (user.accessToken) {
     //   axios.defaults.headers.common[
     //     "Authorization"

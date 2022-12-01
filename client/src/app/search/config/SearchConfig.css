@@ -1,6 +1,6 @@
 .search-button {
-  background-color: lightsteelblue !important;
-  color: black !important;
-  border: lightgray solid 1px !important;
+  background-color: #1665c1 !important;
+  border: none !important;
   margin-top: 2em;
+  font-size: 0.9em !important;
 }

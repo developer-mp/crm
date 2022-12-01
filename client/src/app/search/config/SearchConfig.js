@@ -1,7 +1,8 @@
 import SelectDropdown from "./SelectDropdown.js";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import { openQuery } from "../../../actions/window.js";
 import "./SearchConfig.css";
 import pkg from "lodash";
 const { find } = pkg;
@@ -10,6 +11,7 @@ const SearchConfigContainer = (props) => {
   const { entityId } = props;
 
   const { searchEntities } = useSelector((store) => store.searchEntities);
+  const dispatch = useDispatch();
 
   const entitiesList = searchEntities.list;
 
@@ -73,19 +75,22 @@ const SearchConfigContainer = (props) => {
   //   event.preventDefault();
   // };
 
-  // const getSelectedSearchId = () => {
-  //   const { entities } = props;
-  //   const entity = getElement(entities, entityId);
-  //   const subentity = getElement(entity.subentities, entityId);
-  //   const filter = getElement(subentity.filters, this.state.filterId);
-  //   return filter.id || subentity.id || entity.id;
-  // };
+  const getSelectedSearchId = () => {
+    const { entities } = props;
+    const entity = getElement(entities, entityId);
+    const subentity = getElement(entity.subentities, entityId);
+    const filter = getElement(subentity.filters, this.state.filterId);
+    return filter.id || subentity.id || entity.id;
+  };
 
   // const handleClearList = () => {
   //   props.clearQueryFilters();
   // };
 
-  const handleSearch = () => {};
+  const handleNewQuery = () => {
+    const searchId = { entityId };
+    dispatch(openQuery(searchId));
+  };
 
   const buildOptions = () => {
     const entities = entitiesList;
@@ -138,7 +143,7 @@ const SearchConfigContainer = (props) => {
         />
       )}
       {entitiesList && showElement(entitiesList) && (
-        <Button className="search-button" onClick={handleSearch}>
+        <Button className="search-button" onClick={handleNewQuery}>
           Search
         </Button>
       )}

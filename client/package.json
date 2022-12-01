@@ -15,6 +15,7 @@
     "cuid": "^2.1.8",
     "fetch": "^1.1.0",
     "file-saver": "^2.0.5",
+    "immer": "^9.0.16",
     "json2csv": "^5.0.7",
     "react": "^18.2.0",
     "react-bootstrap": "^2.6.0",
