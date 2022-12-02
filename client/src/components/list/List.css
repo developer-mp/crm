@@ -1,0 +1,15 @@
+.list-group {
+  width: 400px;
+  margin-top: 2em;
+}
+
+.list-group-item {
+  background-color: #f6f6f6 !important;
+}
+
+.list-group-item.active {
+  background-color: #0e47a1 !important;
+  color: white !important;
+  padding: 0.85em;
+  border: none;
+}

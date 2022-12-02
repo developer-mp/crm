@@ -2,13 +2,15 @@ import SelectDropdown from "./SelectDropdown.js";
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import { openQuery } from "../../../actions/window.js";
+import { useNavigate } from "react-router-dom";
+// import { openQuery } from "../../../actions/window.js";
 import "./SearchConfig.css";
 import pkg from "lodash";
 const { find } = pkg;
 
 const SearchConfigContainer = (props) => {
   const { entityId } = props;
+  const navigate = useNavigate();
 
   const { searchEntities } = useSelector((store) => store.searchEntities);
   const dispatch = useDispatch();
@@ -88,8 +90,9 @@ const SearchConfigContainer = (props) => {
   // };
 
   const handleNewQuery = () => {
-    const searchId = { entityId };
-    dispatch(openQuery(searchId));
+    // const searchId = { entityId };
+    // dispatch(openQuery(searchId));
+    navigate("/details");
   };
 
   const buildOptions = () => {

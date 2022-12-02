@@ -1,8 +1,9 @@
 import React from "react";
 import { Button, SplitButton, MenuItem } from "react-bootstrap";
-import AccordionPanel from "../../components/panel/AccordionPanel.js";
+// import AccordionPanel from "../../components/panel/AccordionPanel.js";
 import QueryFilters from "./filter/QueryFilters.js";
 import QueryColumns from "./columns/QueryColumns.js";
+import "./Query.css";
 
 const Query = (props) => {
   const saveQueryButton = () => {
@@ -36,11 +37,13 @@ const Query = (props) => {
   };
   const { search } = props;
   const configArea = (
-    <div className="search-area">
-      <AccordionPanel title="Select Filters">
+    <div>
+      {/* <AccordionPanel title="Select Filters">
         <QueryFilters />
-      </AccordionPanel>
-      <Button onClick={search}>Search</Button>
+      </AccordionPanel> */}
+      <Button className="query-button" onClick={search}>
+        Query
+      </Button>
     </div>
   );
 

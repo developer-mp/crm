@@ -199,18 +199,18 @@
 //   }
 // };
 
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import cuid from "cuid";
+// import { createAsyncThunk } from "@reduxjs/toolkit";
+// import cuid from "cuid";
 
-export const openQuery = createAsyncThunk(
-  "window/openQuery",
-  (rejectWithValue) => {
-    try {
-      const windowId = cuid();
-      const type = "Query";
-      return { windowId, type };
-    } catch (error) {
-      return rejectWithValue(error);
-    }
-  }
-);
+// export const openQuery = createAsyncThunk(
+//   "window/openQuery",
+//   (rejectWithValue) => {
+//     try {
+//       const windowId = cuid();
+//       const type = "Query";
+//       return { windowId, type };
+//     } catch (error) {
+//       return rejectWithValue(error);
+//     }
+//   }
+// );

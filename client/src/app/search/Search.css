@@ -1,3 +1,6 @@
 .search {
-  font-size: 1em;
+  margin-top: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
