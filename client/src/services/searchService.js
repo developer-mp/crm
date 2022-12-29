@@ -45,13 +45,13 @@ class SearchService {
   //     return ApiService.secureCall("content/detail", { searchId });
   //   }
 
-  //   static getItemDetails(searchId, key, requestKeys) {
-  //     return ApiService.secureCall("query/detail", {
-  //       searchId,
-  //       PK: key,
-  //       requestKeys,
-  //     });
-  //   }
+  static getItemDetails(searchId, key, requestKeys) {
+    return ApiService.noSecureCall("query/detail", {
+      // searchId,
+      // PK: key,
+      // requestKeys,
+    });
+  }
 
   //   static saveQuery(query) {
   //     return ApiService.secureCall("search/querysave", query);

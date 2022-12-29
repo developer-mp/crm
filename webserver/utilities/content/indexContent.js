@@ -4,7 +4,7 @@ import ProductsContent from "./productsContent.js";
 import ServicesContent from "./servicesContent.js";
 //import logger from "../../logger/winston.js";
 import pkg from "lodash";
-const { forEach } = pkg;
+const { forEach, filter, startsWith, map, orderBy } = pkg;
 
 class IndexContent {
   // static getQueryFilterList(params) {
@@ -23,15 +23,15 @@ class IndexContent {
     return filterContent;
   }
 
-  // static getQueryFilterPKList(search) {
-  //   const { entity } = search;
-  //   const result = entityContent.getData(search, this.getFilterContent(entity));
-  //   const pkLst = _.filter(
-  //     result,
-  //     (item) => request && _.startsWith(item.request, "PK")
-  //   );
-  //   return _.map(_.orderBy(pkLst, ["request"]), "request");
-  // }
+  static getQueryFilterPKList(search) {
+    const { entity } = search;
+    const result = EntityContent.getData(search, this.getFilterContent(entity));
+    const pkLst = filter(
+      result,
+      (item) => request && startsWith(item.request, "PK")
+    );
+    return map(orderBy(pkLst, ["request"]), "request");
+  }
 
   static assignFilterOption(result, search) {
     const { entity } = search;
@@ -70,44 +70,46 @@ class IndexContent {
   //   }
   // }
 
-  // static getQueryDetailContent(search) {
-  //   try {
-  //     const { entity } = search;
-  //     const result = entityContent.getData(
-  //       search,
-  //       this.getQueryDetailContent(entity)
-  //     );
-  //     const ddLst = entityContent.getDetailDropDownTypeList(result);
-  //     this.assignOption(search, ddLst);
-  //     return result;
-  //   } catch (e) {
-  //     logger.error(`Error in getQueryDetailContent: ${e}`);
-  //     return [];
-  //   }
-  // }
+  static getQueryDetailContent(search) {
+    try {
+      const entity = search;
+      // const { entity } = search;
+      const result =
+        // EntityContent.getData(
+        // search,
+        this.getDetailContent(entity);
+      // );
+      // const ddLst = EntityContent.getDetailDropDownTypeList(result);
+      // this.assignOption(search, ddLst);
+      return result;
+    } catch (e) {
+      // logger.error(`Error in getQueryDetailContent: ${e}`);
+      return [];
+    }
+  }
 
-  // static getDetailContent(entity) {
-  //   try {
-  //     let lst = {};
-  //     switch (entity) {
-  //       case "Customers":
-  //         lst = customersContent.getDetailContent();
-  //         break;
-  //       case "Products":
-  //         lst = productsContent.getDetailContent();
-  //         break;
-  //       case "Services":
-  //         lst = servicesContent.getDetailContent();
-  //         break;
-  //       default:
-  //         break;
-  //     }
-  //     return lst;
-  //   } catch (e) {
-  //     logger.error(`Error in getDetailContent: ${e}`);
-  //     return [];
-  //   }
-  // }
+  static getDetailContent(entity) {
+    try {
+      let lst = {};
+      switch (entity) {
+        case "Customers Management":
+          lst = CustomersContent.getDetailContent();
+          break;
+        case "Product Catalog":
+          lst = ProductsContent.getDetailContent();
+          break;
+        case "Service Catalog":
+          lst = ServicesContent.getDetailContent();
+          break;
+        default:
+          break;
+      }
+      return lst;
+    } catch (e) {
+      logger.error(`Error in getDetailContent: ${e}`);
+      return [];
+    }
+  }
 
   static getFilterContent(entity) {
     try {
@@ -155,22 +157,22 @@ class IndexContent {
     }
   }
 
-  // static setQueryDetailDynamicDDL(content, availableList) {
-  //   try {
-  //     const ddLst = entityContent.getDetailDropDownTypeList(content, 15);
-  //     _.forEach(ddLst, (item) => {
-  //       const arr = availableList[item.dataField];
-  //       let options = [];
-  //       if (arr.length > 0) {
-  //         options = this.lowerArrProperties(arr);
-  //       }
-  //       item.availableList = options;
-  //     });
-  //   } catch (e) {
-  //     logger.error(`Error: ${e}`);
-  //     return [];
-  //   }
-  // }
+  static setQueryDetailDynamicDDL(content, availableList) {
+    try {
+      const ddLst = EntityContent.getDetailDropDownTypeList(content, 15);
+      forEach(ddLst, (item) => {
+        const arr = availableList[item.dataField];
+        let options = [];
+        if (arr.length > 0) {
+          options = this.lowerArrProperties(arr);
+        }
+        item.availableList = options;
+      });
+    } catch (e) {
+      logger.error(`Error: ${e}`);
+      return [];
+    }
+  }
 
   // static lowerArrProperties(arr) {
   //   const arrNew = [];

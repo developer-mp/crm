@@ -11,6 +11,7 @@ import Search from "../search/Search.js";
 import DataGrid from "./../details/dataGrid/DataGrid.js";
 import { getDashboardItems } from "../../actions/dashboardAction.js";
 import { getMenuItems } from "../../actions/menuAction.js";
+import { createDetails } from "./../../actions/details.js";
 import {
   fetchSearchEntities,
   fetchQueryFilters,
@@ -24,6 +25,7 @@ const RouteItems = () => {
     dispatch(getMenuItems());
     dispatch(fetchSearchEntities());
     dispatch(fetchQueryFilters());
+    dispatch(createDetails());
     // if (user.accessToken) {
     //   axios.defaults.headers.common[
     //     "Authorization"

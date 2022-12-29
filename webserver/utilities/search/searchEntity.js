@@ -1,6 +1,6 @@
 import entity from "../../data/content/entity.json" assert { type: "json" };
 import pkg from "lodash";
-const { cloneDeep, find, flatMap, map, filter } = pkg;
+const { cloneDeep, find, flatMap, map, filter, each, forOwn, forEach } = pkg;
 
 class SearchEntity {
   static getEntityList() {
@@ -14,58 +14,99 @@ class SearchEntity {
     if (!entity) {
       return [];
     }
-    // let subentity = { name: "" };
-    // let key = "";
-
-    // if (entity !== undefined) {
-    //   key = entity.key ? entity.key : entity.name;
-    //   return {
-    //     entity: entity.name,
-    //     subentity: "",
-    //     topic: "",
-    //     key,
-    //     rolekey: entity.rolekey,
-    //     block: entity.block,
-    //     load: entity.load,
-    //   };
-    // }
-
-    // entity = find(arr, (item) => find(item.subentities, { id }));
-    // if (entity !== undefined) {
-    //   subentity = find(entity.subentities, { id });
-    //   key = subentity.key ? subentity.key : `${entity.name}.${subentity.name}`;
-    //   return {
-    //     entity: entity.name,
-    //     subentity: subentity.name,
-    //     topic: "",
-    //     key,
-    //     rolekey: subentity.rolekey,
-    //     block: subentity.block,
-    //     load: subentity.load,
-    //   };
-    // }
-
-    // let result = flatMap(arr, ({ name, subentities }) =>
-    //   map(subentities, (item) => ({ name, ...item }))
-    // );
-    // result = filter(result, (item) => item.filters.length > 0);
-    // subentity = find(result, (item) => find(item.filters, { id }));
-    // const topic = find(subentity.filters, { id });
-    // entity = find(arr, (item) => find(item.subentities, { id: subentity.id }));
-    // key = topic.key
-    //   ? topic.key
-    //   : `${entity.name}.${subentity.name}.${topic.name}`;
-    // return {
-    //   entity: entity.name,
-    //   subentity: subentity.name,
-    //   topic: topic.name,
-    //   key,
-    //   rolekey: topic.rolekey,
-    //   block: topic.block,
-    //   load: topic.load,
-    // };
     return entity.name;
   }
+  //   let subentity = "";
+  //   let key = "";
+  //   let load = "";
+
+  //   if (entity !== undefined && !entity.subentities) {
+  //     return {
+  //       entity: entity.name,
+  //       subentity,
+  //       key,
+  //       load,
+  //     };
+  //   }
+
+  //   // else if (
+  //   //   entity !== undefined &&
+  //   //   entity.subentities &&
+  //   //   !entity.subentities[1].filters
+  //   // ) {
+
+  //   if (entity !== undefined && !entity.subentities) {
+  //     subentity = entity.subentities.map(function (x) {
+  //       return x.name;
+  //     });
+  //     key = entity.subentities.map(function (x) {
+  //       return x.key;
+  //     });
+  //     load = entity.subentities.map(function (x) {
+  //       return x.load;
+  //     });
+  //     return {
+  //       entity: entity.name,
+  //       subentity: subentity,
+  //       key,
+  //       load,
+  //     };
+  //   }
+  //   // } else {
+  //   let result = flatMap(arr, ({ name, subentities }) =>
+  //     map(subentities, (item) => ({ name, ...item }))
+  //   );
+  //   result = filter(result, (item) => item.filters.length > 0);
+  //   subentity = entity.subentities.map(function (x) {
+  //     return x.name;
+  //   });
+  //   key = entity.subentities[1].filters.map(function (x) {
+  //     return x.key;
+  //   });
+  //   load = entity.subentities[1].filters.map(function (x) {
+  //     return x.load;
+  //   });
+  //   return {
+  //     entity: entity.name,
+  //     subentity,
+  //     key,
+  //     load,
+  //   };
+  // }
+
+  //   entity = find(arr, (item) => find(item.subentities, { id }));
+  // if (entity !== undefined && entity.subentities) {
+  //   subentity = find(entity.subentities, { id });
+  //   // subentity = entity.subentities;
+  //   // return subentity.name;
+
+  //   key = subentity.key ? subentity.key : `${entity.name}.${subentity.name}`;
+  //   return {
+  //     entity: entity.name,
+  //     subentity: subentity.name,
+  //     key,
+  //     load: subentity.load,
+  //   };
+  // }
+
+  // let result = flatMap(arr, ({ name, subentities }) =>
+  //   map(subentities, (item) => ({ name, ...item }))
+  // );
+  // result = filter(result, (item) => item.filters.length > 0);
+  // subentity = find(result, (item) => find(item.filters, { id }));
+  // const topic = find(subentity.filters, { id });
+  // entity = find(arr, (item) => find(item.subentities, { id: subentity.id }));
+  // key = topic.key
+  //   ? topic.key
+  //   : `${entity.name}.${subentity.name}.${topic.name}`;
+  // return {
+  //   entity: entity.name,
+  //   subentity: subentity.name,
+  //   topic: topic.name,
+  //   key,
+  //   rolekey: topic.rolekey,
+  //   load: topic.load,
+  // };
 
   // static getSearchFilter(filters) {
   //   const filter = {};
@@ -84,18 +125,18 @@ class SearchEntity {
   //   }));
   // }
 
-  // static getResultCode(entity, code, requestKeys, pks) {
-  //   if (pks.length === 1) return { id: code };
-  //   const arr = [];
-  //   _.each(pks, (item) => {
-  //     if (requestKeys[item]) {
-  //       arr.push(requestKeys[item]);
-  //     } else {
-  //       arr.push("");
-  //     }
-  //   });
-  //   return { id: arr };
-  // }
+  static getResultCode(entity, code, requestKeys, pks) {
+    if (pks.length === 1) return { id: code };
+    const arr = [];
+    each(pks, (item) => {
+      if (requestKeys[item]) {
+        arr.push(requestKeys[item]);
+      } else {
+        arr.push("");
+      }
+    });
+    return { id: arr };
+  }
 
   // static buildAppRequest(id, filters, name, topic) {
   //   const record = { pk: id };

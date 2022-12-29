@@ -11,7 +11,7 @@ class ApiService {
     return await axios
       .post(url, data, { withCredentials: true })
       .then((res) => {
-        res.data;
+        return res.data;
       });
   }
 }

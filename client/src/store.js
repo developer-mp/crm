@@ -17,6 +17,7 @@ import searchEntitiesReducer from "./slices/searchSlice.js";
 import queryFiltersReducer from "./slices/queryFiltersSlice.js";
 import menuReducer from "./slices/menuSlice.js";
 import userReducer from "./slices/userSlice.js";
+import detailReducer from "./slices/details.js";
 //import searchEntitiesReducer from "./slices/searchSlice.js";
 import sessionStorage from "redux-persist/es/storage/session.js";
 import {
@@ -41,6 +42,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   searchEntities: searchEntitiesReducer,
   queryFilters: queryFiltersReducer,
+  detail: detailReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

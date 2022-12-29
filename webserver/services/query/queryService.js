@@ -1,115 +1,156 @@
-const SearchEntity = require("../../utilities/search/searchEntity");
-const QueryDetail = require("../../utilities/query/queryDetail");
-const IndexContent = require("../../utilities/content/indexContent");
-const ApiService = require("../../utilities/user/messageHandler");
-const UpdateEndpoint = require("../../utilities/content/queryUpdateEndpoint");
+import SearchEntity from "../../utilities/search/searchEntity.js";
+import QueryDetail from "../../utilities/query/queryDetail.js";
+import IndexContent from "../../utilities/content/indexContent.js";
+import ApiService from "../../utilities/api/apiService.js";
+import UpdateEndpoint from "../../utilities/content/queryUpdateEndpoint.js";
+import axios from "axios";
+import pkg from "lodash";
+const { merge, forEach } = pkg;
 
 class QueryService {
-  static queryResult(request) {
-    const { searchId, filters } = request;
-    const search = SearchEntity.findEntity(searchId);
-    const entity = search.key;
-    const flt = SearchEntity.getSearchFilter(filters);
-    const data = { data: { entity, filters: flt } };
-    const endpoint = `${entity}`;
-    return ApiService.apiCall(endpoint, data).then((response) => {
-      const arrCnt = response.result.data.length;
-      const cnt =
-        response.result.total_cnt !== undefined
-          ? response.result.total_cnt
-          : arrCnt;
-      return { list: response.result.data, records: cnt };
-    });
-  }
+  // static queryResult(request) {
+  //   const { searchId, filters } = request;
+  //   const search = SearchEntity.findEntity(searchId);
+  //   const entity = search.key;
+  //   const flt = SearchEntity.getSearchFilter(filters);
+  //   const data = { data: { entity, filters: flt } };
+  //   const endpoint = `${entity}`;
+  //   return ApiService.apiCall(endpoint, data).then((response) => {
+  //     const arrCnt = response.result.data.length;
+  //     const cnt =
+  //       response.result.total_cnt !== undefined
+  //         ? response.result.total_cnt
+  //         : arrCnt;
+  //     return { list: response.result.data, records: cnt };
+  //   });
+  // }
 
-  static queryDetail(request) {
-    const { searchId, PK, requestKeys } = request;
-    const search = SearchEntity.findEntity(searchId);
-    const { key, load, topic } = search;
-    const pks = IndexContent.getQueryFilterPKList(search);
-    const code = SearchEntity.getResultCode(key, PK, requestKeys, pks);
-    const data = { data: { ...code, topic }, detail: load };
-    const endpoint = `${key}/load`;
+  static async queryDetail() {
+    // const { searchId, PK, requestKeys } = request;
+    const search = SearchEntity.findEntity(1);
+    // const { key, load, topic } = search;
+    // const pks = IndexContent.getQueryFilterPKList(search);
+    // const code = SearchEntity.getResultCode(key, PK, requestKeys, pks);
+    // const data = { data: { ...topic }, detail: load };
+    // const endpoint = `${key}/load`;
     let content = IndexContent.getQueryDetailContent(search);
-    if (PK === 0) {
-      content = QueryDetail.applyFilterForAdd(content, load);
-      const ddlendpoint = UpdateEndpoint.getDDLEndpoint(topic);
-      if (!ddlendpoint) return Promise.resolve({ list: content });
+    // if (PK === 0) {
+    //   content = QueryDetail.applyFilterForAdd(content, load);
+    //   const ddlendpoint = UpdateEndpoint.getDDLEndpoint(topic);
+    //   if (!ddlendpoint) return Promise.resolve({ list: content });
 
-      const endpointD = `${key}/${ddlendpoint}`;
-      return ApiService.apiCall(endpointD, data).then((response) => {
-        if (response.ddls != undefined) {
-          IndexContent.setQueryDetailDynamicDDL(content, response.ddls);
-        }
-        return { list: content };
-      });
-    }
-    if (search.rolekey && requestKeys[search.rolekey]) {
-      const role = requestKeys[search.rolekey];
-      content = QueryDetail.applyRoleFilter(content, role);
-    }
-    if (data.data.topic === "") {
-      data.data.topic = undefined;
-    }
+    //   const endpointD = `${key}/${ddlendpoint}`;
+    //   return ApiService.apiCall(endpointD, data).then((response) => {
+    //     if (response.ddls != undefined) {
+    //       IndexContent.setQueryDetailDynamicDDL(content, response.ddls);
+    //     }
+    //     return { list: content };
+    //   });
+    // }
+    // if (search.rolekey && requestKeys[search.rolekey]) {
+    //   const role = requestKeys[search.rolekey];
+    //   content = QueryDetail.applyRoleFilter(content, role);
+    // }
+    // if (data.data.topic === "") {
+    //   data.data.topic = undefined;
+    // }
 
-    return ApiService.apiCall(endpoint, data).then((response) => {
-      content = QueryDetail.applyCRMFilter(
-        content,
-        search,
-        response.result,
-        "salesforce"
-      );
-      if (response.ddls != undefined) {
-        IndexContent.setQueryDetailDynamicDDL(content, response.data);
+    // return ApiService.apiCall(endpoint, data).then((response) => {
+    //   content = QueryDetail.applyCRMFilter(
+    //     content,
+    //     search,
+    //     response.result,
+    //     "salesforce"
+    //   );
+    // if (response.ddls != undefined) {
+    //   IndexContent.setQueryDetailDynamicDDL(content, response.data);
+    // }
+    // QueryDetail.setDetailResult(content, response.result, search);
+    // return { list: content };
+    // });
+
+    // const endpoint = `${key}/load`;
+    // const endpoint = "customer/load";
+    // const resp = await ApiService.apiCall(endpoint, {});
+    // console.log(resp);
+    // if (resp !== undefined) return Promise.resolve({ resp });
+
+    const endpoint = "customer/load";
+    return await ApiService.apiCall(endpoint, {}).then((response) => {
+      // content = QueryDetail.applyCRMFilter(
+      //   content,
+      //   search,
+      //   response,
+      //   "salesfoce"
+      // );
+      // if (response.ddls != undefined) {
+      //   IndexContent.setQueryDetailDynamicDDL(content, response.ddls);
+      // }
+      // const mergedObject = merge(content, response);
+      // content = QueryDetail.setDetailResult(content, response);
+      // return { list: content };
+
+      // return content;
+
+      function getValueByKey(object, key) {
+        return object[key];
       }
-      QueryDetail.setDetailResult(content, response.result, search);
-      return { list: content };
+
+      let dataFieldArr = content[0].info[0].record.map((v) => v.dataField);
+
+      content[0].info[0].record.forEach((el) => {
+        for (var i = 0; i < dataFieldArr.length; i++) {
+          if (el.dataField === dataFieldArr[i])
+            el.value = getValueByKey(response[0], dataFieldArr[i]);
+        }
+      });
+      return content[0].info[0].record;
     });
   }
 
-  static queryUpdate(request) {
-    const { searchId, PK, filters, name } = request;
-    const search = SearchEntity.findEntity(searchId);
-    const { key, load, topic } = search;
-    const el = SearchEntity.buildAppRequest(PK, filters, name, topic);
-    const apprequest = { data: el, detail: load };
-    const endpointsuffix = UpdateEndpoint.getUpdateEndpoint(name);
-    const endpoint = `${key}/${endpointsuffix}`;
+  // static queryUpdate(request) {
+  //   const { searchId, PK, filters, name } = request;
+  //   const search = SearchEntity.findEntity(searchId);
+  //   const { key, load, topic } = search;
+  //   const el = SearchEntity.buildAppRequest(PK, filters, name, topic);
+  //   const apprequest = { data: el, detail: load };
+  //   const endpointsuffix = UpdateEndpoint.getUpdateEndpoint(name);
+  //   const endpoint = `${key}/${endpointsuffix}`;
 
-    return ApiService.apiCall(endpoint, apprequest).then((response) => {
-      const { session, result } = response;
-      const record = { data: filters, name };
-      return { record, session };
-    });
-  }
+  //   return ApiService.apiCall(endpoint, apprequest).then((response) => {
+  //     const { session, result } = response;
+  //     const record = { data: filters, name };
+  //     return { record, session };
+  //   });
+  // }
 
-  static queryDelete(request) {
-    const { searchId, PK, filters, name } = request;
-    const search = SearchEntity.findEntity(searchId);
-    const { key, load } = search;
-    const el = SearchEntity.buildAppRequest(PK, filters, name, topic);
-    const data = { data: el, detail: load };
-    const endpoint = `${key}/delete`;
-    return ApiService.apiCall(endpoint, data).then((response) => {
-      const { session } = response;
-      const record = { data: filters, name };
-      return { record, session };
-    });
-  }
+  // static queryDelete(request) {
+  //   const { searchId, PK, filters, name } = request;
+  //   const search = SearchEntity.findEntity(searchId);
+  //   const { key, load } = search;
+  //   const el = SearchEntity.buildAppRequest(PK, filters, name, topic);
+  //   const data = { data: el, detail: load };
+  //   const endpoint = `${key}/delete`;
+  //   return ApiService.apiCall(endpoint, data).then((response) => {
+  //     const { session } = response;
+  //     const record = { data: filters, name };
+  //     return { record, session };
+  //   });
+  // }
 
-  static queryRefresh(request) {
-    const { searchId, PK, filters, name } = request;
-    const search = SearchEntity.findEntity(searchId);
-    const { key, load } = search;
-    const el = SearchEntity.buildAppRequest(PK, filters, name, topic);
-    const data = { data: el, detail: load };
-    const endpoint = `${key}/refresh`;
-    return ApiService.apiCall(endpoint, data).then((response) => {
-      const { session } = response;
-      const record = { data: filters, name };
-      return { record, session };
-    });
-  }
+  // static queryRefresh(request) {
+  //   const { searchId, PK, filters, name } = request;
+  //   const search = SearchEntity.findEntity(searchId);
+  //   const { key, load } = search;
+  //   const el = SearchEntity.buildAppRequest(PK, filters, name, topic);
+  //   const data = { data: el, detail: load };
+  //   const endpoint = `${key}/refresh`;
+  //   return ApiService.apiCall(endpoint, data).then((response) => {
+  //     const { session } = response;
+  //     const record = { data: filters, name };
+  //     return { record, session };
+  //   });
+  // }
 }
 
 export default QueryService;

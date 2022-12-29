@@ -1,22 +1,19 @@
-const _ = require("lodash");
+import pkg from "lodash";
+const { forEach, forOwn, remove, filter, find, cloneDeep } = pkg;
 //const logger = require("../../logger/winston");
 
 class QueryDetail {
-  static setDetailResult(items, data, search) {
-    _.forEach(data, (item) => {
-      if (item.type === "record") {
-        this.setDetailRecordResult(item, items);
-      } else if (item.type === "list") {
-        this.setDetailListResult(item, items);
-      } else if (item.type === "block") {
-        try {
-          this.setDetailBlockResult(item, items, search);
-        } catch (e) {
-          return e;
-          //logger.error(`Error ${item.name} - ${e}`);
-        }
-      }
-    });
+  static setDetailResult(items, data) {
+    // items.info[0].record.forEach((el) => (el.value = data[0].customer));
+    // forEach(data, (item) => {
+    //   if (item.type === "record") {
+    //     this.setDetailRecordResult(item, items);
+    //   } else if (item.type === "list") {
+    //     this.setDetailListResult(item, items);
+    //   }
+    //logger.error(`Error ${item.name} - ${e}`);
+    // });
+    // items.info[0].record.forEach((el) => (el.value = data[0].customer));
   }
 
   static setDetailRecordResult(item, items) {
@@ -26,8 +23,8 @@ class QueryDetail {
       .flatten()
       .find((el) => el.name === name);
     if (result !== undefined) {
-      _.forEach(item.data, (el) => {
-        _.forOwn(el, (value, key) => {
+      forEach(item.data, (el) => {
+        forOwn(el, (value, key) => {
           this.assignRecordItem(result.record, key, value);
         });
       });
@@ -39,21 +36,23 @@ class QueryDetail {
         .flatten()
         .find((el) => el.name === name);
       if (result !== undefined && result.record) {
-        _.forEach(item.data, (el) => {
-          _.forOwn(el, (value, key) => {
+        forEach(item.data, (el) => {
+          forOwn(el, (value, key) => {
             this.assignRecordItem(result.record, key, value);
           });
         });
       }
     }
+    // return result;
   }
 
   static assignRecordItem(lst, key, value) {
     try {
-      const cat = _.find(lst, { dataField: key });
+      const cat = find(lst, { dataField: key });
       if (cat !== undefined) {
         cat.value = value;
       }
+      // return cat;
     } catch (e) {
       return e;
       //logger.error(`Error ${e}`);
@@ -74,95 +73,95 @@ class QueryDetail {
   }
 
   static applyRoleFilter(items, role) {
-    const content = _.filter(items, (obj) => obj.role.includes(role));
-    _.forEach(content, (item) => {
-      _.remove(item.section, (obj) => !obj.role.includes(role));
+    const content = filter(items, (obj) => obj.role.includes(role));
+    forEach(content, (item) => {
+      remove(item.section, (obj) => !obj.role.includes(role));
     });
-    _.forEach(content, (item) => {
-      _.forEach(item.section, (elem) => {
-        _.forEach(elem.list, (el) => {
-          _.remove(el.record, (obj) => !obj.role.includes(role));
-          _.remove(el.column, (obj) => !obj.role.includes(role));
+    forEach(content, (item) => {
+      forEach(item.section, (elem) => {
+        forEach(elem.list, (el) => {
+          remove(el.record, (obj) => !obj.role.includes(role));
+          remove(el.column, (obj) => !obj.role.includes(role));
         });
       });
     });
     return content;
   }
 
-  static setDetailBlockResult(item, items, search) {
-    const { name, results } = item;
-    try {
-      if (search.block === undefined || search.block.length === 0) return;
-      const { section } = _.find(items, { Panel: name });
-      const block = _.find(search.block, { panel: name });
-      if (block === undefined || block.name === undefined) return;
-      const element = _.find(section, { name: block.name });
-      if (element === undefined) return;
-      const showAll = block.showAll !== undefined && block.showAll;
-      const line = _.cloneDeep(element);
-      _.remove(section, (obj) => obj.name === block.name);
-      let newLine = {};
-      _.forEach(results, (row, ind) => {
-        const record = _.find(row, { name: block.name });
-        const { value } = _.find(record.data, { key: block.key });
-        const collapsed = ind !== 0 && !showAll;
-        newLine = {
-          ..._.cloneDeep(line),
-          title: value,
-          index: ind,
-          defaultCollapsed: ind !== 0 && !showAll,
-        };
-        _.forEach(row, (obj) => {
-          if (obj.type === "record") {
-            this.setDetailBlockResult(obj, newLine, ind);
-          } else if (obj.type === "list") {
-            this.setDetailBlockListResult(obj, newLine, ind);
-          }
-        });
-        section.push(newLine);
-      });
-    } catch (e) {
-      return e;
-      //logger.error(`Error ${e}`);
-    }
-  }
+  // static setDetailBlockResult(item, items, search) {
+  //   const { name, results } = item;
+  //   try {
+  //     if (search.block === undefined || search.block.length === 0) return;
+  //     const { section } = find(items, { Panel: name });
+  //     const block = find(search.block, { panel: name });
+  //     if (block === undefined || block.name === undefined) return;
+  //     const element = find(section, { name: block.name });
+  //     if (element === undefined) return;
+  //     const showAll = block.showAll !== undefined && block.showAll;
+  //     const line = cloneDeep(element);
+  //     remove(section, (obj) => obj.name === block.name);
+  //     let newLine = {};
+  //     forEach(results, (row, ind) => {
+  //       const record = find(row, { name: block.name });
+  //       const { value } = find(record.data, { key: block.key });
+  //       const collapsed = ind !== 0 && !showAll;
+  //       newLine = {
+  //         ...cloneDeep(line),
+  //         title: value,
+  //         index: ind,
+  //         defaultCollapsed: ind !== 0 && !showAll,
+  //       };
+  //       forEach(row, (obj) => {
+  //         if (obj.type === "record") {
+  //           this.setDetailBlockResult(obj, newLine, ind);
+  //         } else if (obj.type === "list") {
+  //           this.setDetailBlockListResult(obj, newLine, ind);
+  //         }
+  //       });
+  //       section.push(newLine);
+  //     });
+  //   } catch (e) {
+  //     return e;
+  //     //logger.error(`Error ${e}`);
+  //   }
+  // }
 
-  static findLineRecord(line, name) {
-    if (line.name === name) return line;
-    const result = _.find(line.list, { name });
-    if (result !== undefined && result.record) return result;
-    return undefined;
-  }
+  // static findLineRecord(line, name) {
+  //   if (line.name === name) return line;
+  //   const result = _.find(line.list, { name });
+  //   if (result !== undefined && result.record) return result;
+  //   return undefined;
+  // }
 
-  static setDetailBlockRecordResult(item, line, ind) {
-    const { data, name } = item;
-    const result = this.findLineRecord(line, name);
-    if (result !== undefined) {
-      result.name = `${name}###${ind}`;
-      _.forEach(data, (el) => {
-        this.assignRecordItem(result.record, el);
-      });
-    }
-  }
+  // static setDetailBlockRecordResult(item, line, ind) {
+  //   const { data, name } = item;
+  //   const result = this.findLineRecord(line, name);
+  //   if (result !== undefined) {
+  //     result.name = `${name}###${ind}`;
+  //     _.forEach(data, (el) => {
+  //       this.assignRecordItem(result.record, el);
+  //     });
+  //   }
+  // }
 
-  static setDetailBlockListResult(item, line, ind) {
-    const { data, name } = item;
-    const result = _.find(line.list, { name });
-    if (result !== undefined) {
-      result.name = `${name}###${ind}`;
-      result.data = data;
-    }
-  }
+  // static setDetailBlockListResult(item, line, ind) {
+  //   const { data, name } = item;
+  //   const result = _.find(line.list, { name });
+  //   if (result !== undefined) {
+  //     result.name = `${name}###${ind}`;
+  //     result.data = data;
+  //   }
+  // }
 
-  static listUI(arr, name) {
-    return _.map(arr, (item) => item[name]);
-  }
+  // static listUI(arr, name) {
+  //   return _.map(arr, (item) => item[name]);
+  // }
 
   static applyFilterForAdd(items, load) {
     const name = load.name ? load.name : "BaseDetail";
-    const content = _.filter(items, (obj) => obj.isBaseAdd);
-    _.forEach(content, (item) => {
-      _.remove(item.section, (obj) => obj.name !== name);
+    const content = filter(items, (obj) => obj.isBaseAdd);
+    forEach(content, (item) => {
+      remove(item.section, (obj) => obj.name !== name);
     });
     return content;
   }
@@ -172,7 +171,7 @@ class QueryDetail {
     if (entity !== "Products" || subentity !== "" || topic !== "") {
       return items;
     }
-    const customer = _.find(result, (item) => item.name === "CustomerHeading");
+    const customer = find(result, (item) => item.name === "CustomerHeading");
     if (customer === undefined) {
       return items;
     }
@@ -182,7 +181,7 @@ class QueryDetail {
     ) {
       return items;
     }
-    const content = _.filter(items, (obj) => obj.Panel !== crm);
+    const content = filter(items, (obj) => obj.Panel !== crm);
     return content;
   }
 }

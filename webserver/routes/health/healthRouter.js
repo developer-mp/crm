@@ -1,7 +1,7 @@
-const express = require("express");
-const HealthController = require("./healthController");
+import Express from "express";
+import HealthController from "./healthController.js";
 
-const healthRouter = express.Router();
+const healthRouter = Express.Router();
 
 healthRouter.get("/", HealthController.getTestItem);
 

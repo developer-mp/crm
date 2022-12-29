@@ -3,7 +3,7 @@
     "table": "customers",
     "schema": "public",
     "select": {
-      "column": "customer, customercode, website, country, city, category, headcount",
+      "column": "id, customer, customercode, website, country, city, category, headcount",
       "where": "id=$1"
     },
     "insert": {

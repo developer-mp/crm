@@ -1,4 +1,5 @@
-const _ = require("lodash");
+import pkg from "lodash";
+const { map } = pkg;
 const messageHandler = require("../utilities/user/messageHandler");
 const logger = require("./winston");
 
@@ -47,7 +48,7 @@ class WebError {
   static getErrorArr(errors, isPassthru, endpoint) {
     if (!isPassthru) return null;
     const list =
-      errors && _.map(errors, (item) => `${item.Keyword} ${item.Value}`);
+      errors && map(errors, (item) => `${item.Keyword} ${item.Value}`);
     return list;
   }
 

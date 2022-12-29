@@ -1,14 +1,15 @@
-const _ = require("lodash");
-const updateMapping = require("../../data/ref/queryupdatemapping.json");
-const sectionDeleteMapping = require("../../data/ref/querysectiondeletemapping.json");
-const ddlMapping = require("../../data/ref/queryddlmapping.json");
+import pkg from "lodash";
+const { find } = pkg;
+import updateMapping from "../../data/ref/queryupdatemapping.json" assert { type: "json" };
+import sectionDeleteMapping from "../../data/ref/querysectiondeletemapping.json" assert { type: "json" };
+import ddlMapping from "../../data/ref/queryddlmapping.json" assert { type: "json" };
 
 const baseEndpoint = "update";
 const baseSectionDeleteEndpoint = "update";
 
 class QueryUpdateEndpoint {
   static getUpdateEndpoint(name) {
-    const item = _.find(updateMapping.data, { name });
+    const item = find(updateMapping.data, { name });
     if (item === undefined) {
       return baseEndpoint;
     }
@@ -16,7 +17,7 @@ class QueryUpdateEndpoint {
   }
 
   static getSectionDeleteEndpoint(name) {
-    const item = _.find(sectionDeleteMapping.data, { name });
+    const item = find(sectionDeleteMapping.data, { name });
     if (item === undefined) {
       return baseSectionDeleteEndpoint;
     }
@@ -24,7 +25,7 @@ class QueryUpdateEndpoint {
   }
 
   static getDDLEndpoint(name) {
-    const item = _.find(ddlMapping.data, { name });
+    const item = find(ddlMapping.data, { name });
     if (item === undefined) {
       return undefined;
     }

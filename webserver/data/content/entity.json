@@ -11,22 +11,22 @@
           "name": "Customers",
           "isEdit": false,
           "isAdd": true,
-          "key": "customer/main",
-          "load": { "name": "BaseDetail", "type": "record" }
+          "key": "customer/customers",
+          "load": { "name": "BaseDetail", "type": "record" },
+          "filters": []
         },
         {
           "id": 102,
           "name": "Sales",
           "isEdit": false,
           "isAdd": true,
-          "key": "customer/main",
           "filters": [
             {
               "id": 1021,
               "name": "Current year",
               "isEdit": false,
               "isAdd": true,
-              "key": "customer/main",
+              "key": "customer/sales/cy",
               "load": { "name": "BaseDetail", "type": "record" }
             }
           ]
@@ -45,7 +45,8 @@
           "isEdit": false,
           "isAdd": true,
           "key": "customer/main",
-          "load": { "name": "BaseDetail", "type": "record" }
+          "load": { "name": "BaseDetail", "type": "record" },
+          "filters": []
         }
       ]
     },
@@ -61,7 +62,8 @@
           "isEdit": false,
           "isAdd": true,
           "key": "customer/main",
-          "load": { "name": "BaseDetail", "type": "record" }
+          "load": { "name": "BaseDetail", "type": "record" },
+          "filters": []
         }
       ]
     }
