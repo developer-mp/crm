@@ -4,30 +4,21 @@
       "id": 1,
       "name": "Customers Management",
       "key": "customer",
-      "role": "",
       "subentities": [
         {
           "id": 101,
           "name": "Customers",
-          "isEdit": false,
-          "isAdd": true,
           "key": "customer/customers",
-          "load": { "name": "BaseDetail", "type": "record" },
-          "filters": []
+          "topics": []
         },
         {
           "id": 102,
           "name": "Sales",
-          "isEdit": false,
-          "isAdd": true,
-          "filters": [
+          "topics": [
             {
               "id": 1021,
               "name": "Current year",
-              "isEdit": false,
-              "isAdd": true,
-              "key": "customer/sales/cy",
-              "load": { "name": "BaseDetail", "type": "record" }
+              "key": "customer/sales/cy"
             }
           ]
         }
@@ -37,16 +28,13 @@
       "id": 2,
       "name": "Product Catalog",
       "key": "product",
-      "role": "",
       "subentities": [
         {
           "id": 201,
           "name": "Products",
-          "isEdit": false,
-          "isAdd": true,
           "key": "customer/main",
           "load": { "name": "BaseDetail", "type": "record" },
-          "filters": []
+          "topics": []
         }
       ]
     },
@@ -54,16 +42,13 @@
       "id": 3,
       "name": "Service Catalog",
       "key": "service",
-      "role": "",
       "subentities": [
         {
           "id": 301,
           "name": "Services",
-          "isEdit": false,
-          "isAdd": true,
           "key": "customer/main",
           "load": { "name": "BaseDetail", "type": "record" },
-          "filters": []
+          "topics": []
         }
       ]
     }

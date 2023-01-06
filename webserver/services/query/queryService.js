@@ -8,22 +8,21 @@ import pkg from "lodash";
 const { merge, forEach } = pkg;
 
 class QueryService {
-  // static queryResult(request) {
-  //   const { searchId, filters } = request;
-  //   const search = SearchEntity.findEntity(searchId);
-  //   const entity = search.key;
-  //   const flt = SearchEntity.getSearchFilter(filters);
-  //   const data = { data: { entity, filters: flt } };
-  //   const endpoint = `${entity}`;
-  //   return ApiService.apiCall(endpoint, data).then((response) => {
-  //     const arrCnt = response.result.data.length;
-  //     const cnt =
-  //       response.result.total_cnt !== undefined
-  //         ? response.result.total_cnt
-  //         : arrCnt;
-  //     return { list: response.result.data, records: cnt };
-  //   });
-  // }
+  static async queryResult() {
+    // const { searchId } = request;
+    const search = SearchEntity.findEntity(101);
+    return search;
+    // const entity = search.key;
+    // const data = { data: { entity } };
+    // const endpoint = `${entity}`;
+    // return ApiService.apiCall(endpoint, data).then((response) => {
+    //   const arrCnt = response.result.data.length;
+    //   const cnt =
+    //     response.result.total_cnt !== undefined
+    //       ? response.result.total_cnt
+    //       : arrCnt;
+    //   return { list: response.result.data, records: cnt };
+  }
 
   static async queryDetail() {
     // const { searchId, PK, requestKeys } = request;
@@ -33,7 +32,7 @@ class QueryService {
     // const code = SearchEntity.getResultCode(key, PK, requestKeys, pks);
     // const data = { data: { ...topic }, detail: load };
     // const endpoint = `${key}/load`;
-    let content = IndexContent.getQueryDetailContent(search);
+    // let content = IndexContent.getQueryDetailContent(search);
     // if (PK === 0) {
     //   content = QueryDetail.applyFilterForAdd(content, load);
     //   const ddlendpoint = UpdateEndpoint.getDDLEndpoint(topic);
@@ -75,37 +74,37 @@ class QueryService {
     // console.log(resp);
     // if (resp !== undefined) return Promise.resolve({ resp });
 
-    const endpoint = "customer/load";
-    return await ApiService.apiCall(endpoint, {}).then((response) => {
-      // content = QueryDetail.applyCRMFilter(
-      //   content,
-      //   search,
-      //   response,
-      //   "salesfoce"
-      // );
-      // if (response.ddls != undefined) {
-      //   IndexContent.setQueryDetailDynamicDDL(content, response.ddls);
-      // }
-      // const mergedObject = merge(content, response);
-      // content = QueryDetail.setDetailResult(content, response);
-      // return { list: content };
+    // const endpoint = "customer/load";
+    // return await ApiService.apiCall(endpoint, {}).then((response) => {
+    // content = QueryDetail.applyCRMFilter(
+    //   content,
+    //   search,
+    //   response,
+    //   "salesfoce"
+    // );
+    // if (response.ddls != undefined) {
+    //   IndexContent.setQueryDetailDynamicDDL(content, response.ddls);
+    // }
+    // const mergedObject = merge(content, response);
+    // content = QueryDetail.setDetailResult(content, response);
+    // return { list: content };
 
-      // return content;
+    return search;
 
-      function getValueByKey(object, key) {
-        return object[key];
-      }
+    //   function getValueByKey(object, key) {
+    //     return object[key];
+    //   }
 
-      let dataFieldArr = content[0].info[0].record.map((v) => v.dataField);
+    //   let dataFieldArr = content[0].info[0].record.map((v) => v.dataField);
 
-      content[0].info[0].record.forEach((el) => {
-        for (var i = 0; i < dataFieldArr.length; i++) {
-          if (el.dataField === dataFieldArr[i])
-            el.value = getValueByKey(response[0], dataFieldArr[i]);
-        }
-      });
-      return content[0].info[0].record;
-    });
+    //   content[0].info[0].record.forEach((el) => {
+    //     for (var i = 0; i < dataFieldArr.length; i++) {
+    //       if (el.dataField === dataFieldArr[i])
+    //         el.value = getValueByKey(response[0], dataFieldArr[i]);
+    //     }
+    //   });
+    //   return content[0].info[0].record;
+    // });
   }
 
   // static queryUpdate(request) {

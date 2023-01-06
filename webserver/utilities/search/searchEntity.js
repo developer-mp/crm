@@ -10,69 +10,83 @@ class SearchEntity {
 
   static findEntity(id) {
     const arr = this.getEntityList();
-    let entity = find(arr, { id });
-    if (!entity) {
-      return [];
+    let modArr = [];
+
+    for (let i = 0; i < 3; i++) {
+      modArr.push({
+        id: arr[i]?.id,
+        key: arr[i]?.key,
+      });
+      for (let j = 0; j < 3; j++) {
+        modArr.push({
+          id: arr[i]?.subentities[j]?.id,
+          key: arr[i]?.subentities[j]?.key,
+        });
+        for (let k = 0; k < 3; k++) {
+          modArr.push({
+            id: arr[i]?.subentities[j]?.topics[k]?.id,
+            key: arr[i]?.subentities[j]?.topics[k]?.key,
+          });
+        }
+      }
     }
-    return entity.name;
+
+    let entity = modArr.find((x) => x.id === id).key;
+    return entity;
+
+    // return arr[0].subentities[1].id;
+
+    // //   if (!entity) {
+    // //     return [];
+    // //   }
+    // //   return entity.name;
+    // // }
+    // let subentity = "";
+    // let topic = "";
+    // let key = "";
+
+    // if (entity !== undefined) {
+    //   return {
+    //     entity: entity.name,
+    //     subentity,
+    //     topic,
+    //     key: entity.key,
+    //   };
+    // }
   }
-  //   let subentity = "";
-  //   let key = "";
-  //   let load = "";
-
-  //   if (entity !== undefined && !entity.subentities) {
-  //     return {
-  //       entity: entity.name,
-  //       subentity,
-  //       key,
-  //       load,
-  //     };
-  //   }
-
-  //   // else if (
-  //   //   entity !== undefined &&
-  //   //   entity.subentities &&
-  //   //   !entity.subentities[1].filters
-  //   // ) {
-
-  //   if (entity !== undefined && !entity.subentities) {
-  //     subentity = entity.subentities.map(function (x) {
-  //       return x.name;
-  //     });
-  //     key = entity.subentities.map(function (x) {
-  //       return x.key;
-  //     });
-  //     load = entity.subentities.map(function (x) {
-  //       return x.load;
-  //     });
-  //     return {
-  //       entity: entity.name,
-  //       subentity: subentity,
-  //       key,
-  //       load,
-  //     };
-  //   }
-  //   // } else {
-  //   let result = flatMap(arr, ({ name, subentities }) =>
-  //     map(subentities, (item) => ({ name, ...item }))
-  //   );
-  //   result = filter(result, (item) => item.filters.length > 0);
+  // } else if (entity !== undefined && entity.subentities && entity.subentities.topics) {
   //   subentity = entity.subentities.map(function (x) {
   //     return x.name;
   //   });
-  //   key = entity.subentities[1].filters.map(function (x) {
+  //   key = entity.subentities.map(function (x) {
   //     return x.key;
-  //   });
-  //   load = entity.subentities[1].filters.map(function (x) {
-  //     return x.load;
   //   });
   //   return {
   //     entity: entity.name,
-  //     subentity,
+  //     subentity: subentity,
+  //     topic,
   //     key,
-  //     load,
   //   };
-  // }
+  // } else {
+  // let result = flatMap(arr, ({ name, subentities }) =>
+  //   map(subentities, (item) => ({ name, ...item }))
+  // );
+  // result = filter(result, (item) => item.filters.length > 0);
+  // subentity = entity.subentities.map(function (x) {
+  //   return x.name;
+  // });
+  // key = entity.subentities[1].filters.map(function (x) {
+  //   return x.key;
+  // });
+  // load = entity.subentities[1].filters.map(function (x) {
+  //   return x.load;
+  // });
+  // return {
+  //   entity: entity.name,
+  //   subentity,
+  //   key,
+  //   load,
+  // };
 
   //   entity = find(arr, (item) => find(item.subentities, { id }));
   // if (entity !== undefined && entity.subentities) {

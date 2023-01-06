@@ -1,20 +1,20 @@
 import QueryService from "../../services/query/queryService.js";
-import UserUtility from "../../utilities/user/userMenu.js";
-import ApiService from "../../utilities/api/apiService.js";
-import axios from "axios";
+// import UserUtility from "../../utilities/user/userMenu.js";
+// import ApiService from "../../utilities/api/apiService.js";
+// import axios from "axios";
 
 class QueryController {
-  // static queryResult(req, res, next) {
-  //   const { user } = req;
-  //   const { searchId, filters } = req.body;
-  //   UserUtility.checkUserEndpointPermission(req.user);
-  //   const params = { user: user.user, searchId, filters };
-  //   QueryService.queryResult(params)
-  //     .then((result) => {
-  //       res.json(result);
-  //     })
-  //     .catch(next);
-  // }
+  static queryResult(req, res, next) {
+    // const { user } = req;
+    // const { searchId } = req.body;
+    // UserUtility.checkUserEndpointPermission(req.user);
+    // const params = { user: user.user, searchId };
+    QueryService.queryResult()
+      .then((result) => {
+        res.json(result);
+      })
+      .catch(next);
+  }
 
   static async queryDetail(req, res, next) {
     // const { user } = req;
