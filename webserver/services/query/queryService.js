@@ -10,18 +10,12 @@ const { merge, forEach } = pkg;
 class QueryService {
   static async queryResult() {
     // const { searchId } = request;
-    const search = SearchEntity.findEntity(101);
-    return search;
-    // const entity = search.key;
-    // const data = { data: { entity } };
-    // const endpoint = `${entity}`;
-    // return ApiService.apiCall(endpoint, data).then((response) => {
-    //   const arrCnt = response.result.data.length;
-    //   const cnt =
-    //     response.result.total_cnt !== undefined
-    //       ? response.result.total_cnt
-    //       : arrCnt;
-    //   return { list: response.result.data, records: cnt };
+    const searchKey = SearchEntity.findEntity(101);
+    // const data = { data: { searchKey } };
+    const endpoint = searchKey;
+    return ApiService.apiCall(endpoint, {}).then((res) => {
+      return res;
+    });
   }
 
   static async queryDetail() {

@@ -8,7 +8,7 @@ import VerifyContainer from "../verify/VerifyContainer.js";
 import VerifyEmailContainer from "../verifyEmail/VerifyEmailContainer.js";
 import LoginContainer from "../login/LoginContainer.js";
 import Search from "../search/Search.js";
-import DataGrid from "./../details/dataGrid/DataGrid.js";
+import Result from "./../result/Result.js";
 import { getDashboardItems } from "../../actions/dashboardAction.js";
 import { getMenuItems } from "../../actions/menuAction.js";
 import { createDetails } from "./../../actions/details.js";
@@ -47,7 +47,8 @@ const RouteItems = () => {
           element={<VerifyEmailContainer />}
         />
         <Route path="/search/:entityId" element={<Search />} />
-        <Route path="/details" element={<DataGrid />} />
+        {/* <Route path="/details" element={<DataGrid />} /> */}
+        <Route path="/result" element={<Result />} />
       </Routes>
     </BrowserRouter>
   );

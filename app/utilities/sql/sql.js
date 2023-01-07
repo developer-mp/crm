@@ -6,8 +6,7 @@ class SQL {
     const { customers } = customersData;
     const rs = pgService.prepareSelectAll(customers);
     const response = await pgService.query(rs);
-    const { record } = response;
-    return record;
+    return response;
   }
 }
 

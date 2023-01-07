@@ -2,23 +2,48 @@
   "lst": [
     {
       "id": 1,
-      "name": "Customers Management",
-      "key": "customer",
+      "name": "Customer Management",
       "subentities": [
         {
           "id": 101,
           "name": "Customers",
-          "key": "customer/customers",
-          "topics": []
+          "key": "customer",
+          "filters": []
         },
         {
           "id": 102,
-          "name": "Sales",
-          "topics": [
+          "name": "Campaigns",
+          "filters": [
             {
               "id": 1021,
-              "name": "Current year",
-              "key": "customer/sales/cy"
+              "name": "Marketing",
+              "key": "customer/campaign/marketing"
+            },
+            {
+              "id": 1022,
+              "name": "Advertising",
+              "key": "customer/campaign/ad"
+            },
+            {
+              "id": 1023,
+              "name": "Loyalty programs",
+              "key": "customer/campaign/loyalty"
+            }
+          ]
+        },
+        {
+          "id": 103,
+          "name": "Reports",
+          "filters": [
+            {
+              "id": 1031,
+              "name": "Finance",
+              "key": "customer/report/finance"
+            },
+            {
+              "id": 1032,
+              "name": "Annual meetings",
+              "key": "customer/report/meeting"
             }
           ]
         }
@@ -26,29 +51,36 @@
     },
     {
       "id": 2,
-      "name": "Product Catalog",
+      "name": "Product Management",
       "key": "product",
       "subentities": [
         {
           "id": 201,
           "name": "Products",
-          "key": "customer/main",
+          "key": "product",
           "load": { "name": "BaseDetail", "type": "record" },
-          "topics": []
+          "filters": []
+        },
+        {
+          "id": 201,
+          "name": "Products",
+          "key": "product",
+          "load": { "name": "BaseDetail", "type": "record" },
+          "filters": []
         }
       ]
     },
     {
       "id": 3,
-      "name": "Service Catalog",
+      "name": "Service Management",
       "key": "service",
       "subentities": [
         {
           "id": 301,
           "name": "Services",
-          "key": "customer/main",
+          "key": "service",
           "load": { "name": "BaseDetail", "type": "record" },
-          "topics": []
+          "filters": []
         }
       ]
     }

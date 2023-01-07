@@ -4,8 +4,10 @@ import { Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 // import { openQuery } from "../../../actions/window.js";
+import { getResult } from "./../../../actions/result.js";
 import "./SearchConfig.css";
 import pkg from "lodash";
+
 const { find } = pkg;
 
 const SearchConfigContainer = (props) => {
@@ -92,7 +94,8 @@ const SearchConfigContainer = (props) => {
   const handleNewQuery = () => {
     // const searchId = { entityId };
     // dispatch(openQuery(searchId));
-    navigate("/details");
+    dispatch(getResult());
+    navigate("/result");
   };
 
   const buildOptions = () => {

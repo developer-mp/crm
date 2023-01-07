@@ -37,7 +37,7 @@ export const fetchQueryFilters = createAsyncThunk(
     try {
       return await SearchService.getSearchConfiguration(entityId).then(
         (json) => {
-          console.log(json.data);
+          // console.log(json.data);
           return json.data;
         }
       );
