@@ -8,12 +8,44 @@ import pkg from "lodash";
 const { merge, forEach } = pkg;
 
 class QueryService {
-  static async queryResult() {
-    // const { searchId } = request;
-    const searchKey = SearchEntity.findEntity(101);
+  static async queryResult(request) {
+    const searchId = 101;
+    const searchKey = SearchEntity.findEntity(searchId);
     // const data = { data: { searchKey } };
+    let data = IndexContent.findDataContent(searchId);
     const endpoint = searchKey;
     return ApiService.apiCall(endpoint, {}).then((res) => {
+      // function getValueByKey(object, key) {
+      //   return object[key];
+      // }
+
+      let dataFieldArr = data.map((v) => v.dataField);
+
+      let dataFieldArrNotSelected = data
+        .filter((el) => el.isSelected === false)
+        .map((v) => v.dataField);
+
+      // data.forEach((el) => {
+      //   for (var i = 0; i < dataFieldArr.length; i++) {
+      //     if (el.dataField === dataFieldArr[i])
+      //       el.value = getValueByKey(res.record[0], dataFieldArr[i]);
+      //   }
+      // });
+
+      for (var i = 0; i < res.record.length; i++) {
+        res.record[i]["newKey"] = res.record[i]["id"];
+        delete res.record[i]["id"];
+      }
+
+      for (var i = 0; i < res.record.length; i++) {
+        for (var j = 0; j < dataFieldArr.length; j++) {
+          for (var k = 0; k < dataFieldArrNotSelected.length; k++) {
+            if (Object.keys(res.record[i])[j] === dataFieldArrNotSelected[k]) {
+              delete res.record[i][dataFieldArrNotSelected[k]];
+            }
+          }
+        }
+      }
       return res;
     });
   }
@@ -82,8 +114,6 @@ class QueryService {
     // const mergedObject = merge(content, response);
     // content = QueryDetail.setDetailResult(content, response);
     // return { list: content };
-
-    return search;
 
     //   function getValueByKey(object, key) {
     //     return object[key];

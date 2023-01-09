@@ -1,67 +1,59 @@
 {
-  "data": [
+  "list": [
     {
-      "subentity": "Construction",
-      "topic": "Customer Management",
+      "id": 101,
+      "entity": "Customer Management",
+      "subentity": "Customers",
+      "topic": "",
       "data": [
         {
-          "name": "Id",
-          "filterType": 4,
-          "request": "PK",
-          "isSelected": false,
-          "column": "id",
-          "isFilter": true,
-          "isColumnSelected": true
+          "label": "Id",
+          "dataField": "id",
+          "isSelected": true
         },
         {
-          "name": "Customer",
-          "filterType": 4,
-          "isSelected": false,
-          "column": "customer",
-          "isFilter": true,
-          "isColumnSelected": true
+          "label": "Customer",
+          "dataField": "customer",
+          "isSelected": true
         },
         {
-          "name": "Customer Code",
-          "filterType": 4,
-          "isSelected": false,
-          "column": "customercode",
-          "isFilter": true,
-          "isColumnSelected": false
+          "label": "Customer Code",
+          "dataField": "customercode",
+          "isSelected": true
         },
         {
-          "name": "Website",
-          "filterType": 4,
-          "isSelected": false,
-          "column": "website",
-          "isFilter": true,
-          "isColumnSelected": false
+          "label": "Website",
+          "dataField": "website",
+          "isSelected": true
         },
         {
-          "name": "Country",
-          "filterType": 4,
-          "isSelected": false,
-          "column": "country",
-          "isFilter": true,
-          "isColumnSelected": false
+          "label": "Country",
+          "dataField": "country",
+          "isSelected": true
         },
         {
-          "name": "City",
-          "filterType": 4,
-          "isSelected": false,
-          "column": "city",
-          "isFilter": true,
-          "isColumnSelected": false
+          "label": "City",
+          "dataField": "city",
+          "isSelected": true
         },
         {
-          "name": "Headcount",
-          "filterType": 4,
-          "isSelected": false,
-          "column": "headcount",
-          "isFilter": true,
-          "isColumnSelected": false
+          "label": "Category",
+          "dataField": "category",
+          "isSelected": true
+        },
+        {
+          "label": "Headcount",
+          "dataField": "headcount",
+          "isSelected": true
         }
       ]
+    },
+    {
+      "id": 1021,
+      "entity": "Customer Management",
+      "subentity": "Campaigns",
+      "topic": "Marketing",
+      "data": []
     }
   ]
 }

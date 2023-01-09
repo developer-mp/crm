@@ -2,9 +2,10 @@ import EntityContent from "./entityContent.js";
 import CustomersContent from "./customersContent.js";
 import ProductsContent from "./productsContent.js";
 import ServicesContent from "./servicesContent.js";
+import dataList from "../../data/content/entities/customers/filter.json" assert { type: "json" };
 //import logger from "../../logger/winston.js";
 import pkg from "lodash";
-const { forEach, filter, startsWith, map, orderBy } = pkg;
+const { forEach, filter, startsWith, map, orderBy, cloneDeep } = pkg;
 
 class IndexContent {
   // static getQueryFilterList(params) {
@@ -183,6 +184,17 @@ class IndexContent {
   //   });
   //   return arrNew;
   // }
+
+  static getDataList() {
+    const { list } = dataList;
+    return cloneDeep(list);
+  }
+
+  static findDataContent(id) {
+    const arr = this.getDataList();
+    let dataContent = arr.find((x) => x.id === id).data;
+    return dataContent;
+  }
 }
 
 export default IndexContent;
