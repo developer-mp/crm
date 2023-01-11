@@ -27,13 +27,13 @@
           "isSelected": true
         },
         {
-          "label": "Country",
-          "dataField": "country",
+          "label": "City",
+          "dataField": "city",
           "isSelected": true
         },
         {
-          "label": "City",
-          "dataField": "city",
+          "label": "Country",
+          "dataField": "country",
           "isSelected": true
         },
         {

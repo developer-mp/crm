@@ -15,15 +15,18 @@ class QueryService {
     let data = IndexContent.findDataContent(searchId);
     const endpoint = searchKey;
     return ApiService.apiCall(endpoint, {}).then((res) => {
-      // function getValueByKey(object, key) {
-      //   return object[key];
-      // }
+      function getValueByKey(object, key) {
+        return object[key];
+      }
 
       let dataFieldArr = data.map((v) => v.dataField);
 
-      let dataFieldArrNotSelected = data
-        .filter((el) => el.isSelected === false)
-        .map((v) => v.dataField);
+      let column = data
+        .filter((el) => el.isSelected === true)
+        .map(({ isSelected, ...item }) => item);
+      // .map((v) => v.label);
+
+      // return { data: res, headers };
 
       // data.forEach((el) => {
       //   for (var i = 0; i < dataFieldArr.length; i++) {
@@ -32,21 +35,21 @@ class QueryService {
       //   }
       // });
 
-      for (var i = 0; i < res.record.length; i++) {
-        res.record[i]["newKey"] = res.record[i]["id"];
-        delete res.record[i]["id"];
-      }
+      // for (var i = 0; i < res.record.length; i++) {
+      //   res.record[i]["newKey"] = res.record[i]["id"];
+      //   delete res.record[i]["id"];
+      // }
 
-      for (var i = 0; i < res.record.length; i++) {
-        for (var j = 0; j < dataFieldArr.length; j++) {
-          for (var k = 0; k < dataFieldArrNotSelected.length; k++) {
-            if (Object.keys(res.record[i])[j] === dataFieldArrNotSelected[k]) {
-              delete res.record[i][dataFieldArrNotSelected[k]];
-            }
-          }
-        }
-      }
-      return res;
+      // for (var i = 0; i < res.record.length; i++) {
+      //   for (var j = 0; j < dataFieldArr.length; j++) {
+      //     for (var k = 0; k < dataFieldArrNotSelected.length; k++) {
+      //       if (Object.keys(res.record[i])[j] === dataFieldArrNotSelected[k]) {
+      //         delete res.record[i][dataFieldArrNotSelected[k]];
+      //       }
+      //     }
+      //   }
+      // }
+      return { data: res, column };
     });
   }
 

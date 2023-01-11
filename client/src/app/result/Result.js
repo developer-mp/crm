@@ -6,41 +6,37 @@ import { Table } from "react-bootstrap";
 
 const Result = () => {
   const { result } = useSelector((store) => store.result);
-  console.log(result.data.record[0].customer);
+
   return (
     <div className="result">
       <List title="Result">
-        <div>{"Number of record(s): " + result.data.count}</div>
-        {/* <Table striped bordered hover>
+        <div>{"Total records: " + result.data.count}</div>
+        <Table striped bordered hover>
           <thead>
             <tr>
-              <th>#</th>
-              {result.data.record.from({ length: 12 }).map((_, index) => (
-                <th key={index}>Table heading</th>
+              {/* <th>#</th> */}
+              {result.column.map((item) => (
+                <th key={item.label}>{item.label}</th>
               ))}
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              {Array.from({ length: 12 }).map((_, index) => (
-                <td key={index}>Table cell {index}</td>
-              ))}
-            </tr>
-            <tr>
-              <td>2</td>
-              {Array.from({ length: 12 }).map((_, index) => (
-                <td key={index}>Table cell {index}</td>
-              ))}
-            </tr>
-            <tr>
-              <td>3</td>
-              {Array.from({ length: 12 }).map((_, index) => (
-                <td key={index}>Table cell {index}</td>
-              ))}
-            </tr>
+            {/* {result.data.record.map((item) => (
+              <tr key={item.id}>
+                {Object.values(item).map((val) => (
+                  <td>{val}</td>
+                ))}
+              </tr>
+            ))} */}
+            {result.data.record.map((item) => (
+              <tr key={item.id}>
+                {result.column.map((col) => (
+                  <td key={col.dataField}>{item[col.dataField]}</td>
+                ))}
+              </tr>
+            ))}
           </tbody>
-        </Table> */}
+        </Table>
       </List>
     </div>
   );
