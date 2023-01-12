@@ -10,7 +10,9 @@ const Result = () => {
   return (
     <div className="result">
       <List title="Result">
-        <div>{"Total records: " + result.data.count}</div>
+        <div className="result-count">
+          {"Total records: " + result.data.count}
+        </div>
         <Table striped bordered hover>
           <thead>
             <tr>

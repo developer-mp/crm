@@ -1,5 +1,5 @@
 .list-group {
-  width: 400px;
+  min-width: 400px;
   margin-top: 2em;
 }
 

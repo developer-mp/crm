@@ -5,6 +5,113 @@
       "entity": "Customer Management",
       "subentity": "Customers",
       "topic": "",
+      "panel": [
+        {
+          "title": "Overview",
+          "data": [
+            {
+              "label": "Customer",
+              "dataField": "customer"
+            },
+            {
+              "label": "Country",
+              "dataField": "country"
+            },
+            {
+              "label": "Industry",
+              "dataField": "industry"
+            }
+          ]
+        },
+        {
+          "title": "General Info",
+          "data": [
+            {
+              "label": "Id",
+              "dataField": "id"
+            },
+            {
+              "label": "Customer",
+              "dataField": "customer"
+            },
+            {
+              "label": "Customer Code",
+              "dataField": "customercode"
+            },
+            {
+              "label": "Website",
+              "dataField": "website"
+            },
+            {
+              "label": "Industry",
+              "dataField": "industry"
+            },
+            {
+              "label": "Category",
+              "dataField": "category"
+            }
+          ]
+        },
+        {
+          "title": "Location",
+          "data": [
+            {
+              "label": "Country",
+              "dataField": "country"
+            },
+            {
+              "label": "City",
+              "dataField": "city"
+            },
+            {
+              "label": "Headquarters",
+              "dataField": "headquarters"
+            },
+            {
+              "label": "Address",
+              "dataField": "address"
+            },
+            {
+              "label": "Postalcode",
+              "dataField": "postalcode"
+            }
+          ]
+        },
+        {
+          "title": "Contacts",
+          "data": [
+            {
+              "label": "Key Principal",
+              "dataField": "keyprincipal"
+            },
+            {
+              "label": "Phone",
+              "dataField": "phone"
+            }
+          ]
+        },
+        {
+          "title": "Miscellaneous",
+          "data": [
+            {
+              "label": "Year Started",
+              "dataField": "yearstarted"
+            },
+            {
+              "label": "Status",
+              "dataField": "status"
+            },
+            {
+              "label": "Ownership",
+              "dataField": "ownership"
+            },
+            {
+              "label": "Headcount",
+              "dataField": "headcount"
+            }
+          ]
+        }
+      ],
       "data": [
         {
           "label": "Id",
@@ -17,13 +124,8 @@
           "isSelected": true
         },
         {
-          "label": "Customer Code",
-          "dataField": "customercode",
-          "isSelected": true
-        },
-        {
-          "label": "Website",
-          "dataField": "website",
+          "label": "Country",
+          "dataField": "country",
           "isSelected": true
         },
         {
@@ -32,18 +134,13 @@
           "isSelected": true
         },
         {
-          "label": "Country",
-          "dataField": "country",
+          "label": "Industry",
+          "dataField": "industry",
           "isSelected": true
         },
         {
           "label": "Category",
           "dataField": "category",
-          "isSelected": true
-        },
-        {
-          "label": "Headcount",
-          "dataField": "headcount",
           "isSelected": true
         }
       ]
