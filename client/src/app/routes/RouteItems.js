@@ -9,9 +9,9 @@ import VerifyEmailContainer from "../verifyEmail/VerifyEmailContainer.js";
 import LoginContainer from "../login/LoginContainer.js";
 import Search from "../search/Search.js";
 import Result from "./../result/Result.js";
+import Detail from "./../detail/Detail.js";
 import { getDashboardItems } from "../../actions/dashboardAction.js";
 import { getMenuItems } from "../../actions/menuAction.js";
-import { createDetails } from "./../../actions/details.js";
 import {
   fetchSearchEntities,
   fetchQueryFilters,
@@ -25,7 +25,6 @@ const RouteItems = () => {
     dispatch(getMenuItems());
     dispatch(fetchSearchEntities());
     dispatch(fetchQueryFilters());
-    dispatch(createDetails());
     // if (user.accessToken) {
     //   axios.defaults.headers.common[
     //     "Authorization"
@@ -47,8 +46,8 @@ const RouteItems = () => {
           element={<VerifyEmailContainer />}
         />
         <Route path="/search/:entityId" element={<Search />} />
-        {/* <Route path="/details" element={<DataGrid />} /> */}
         <Route path="/result" element={<Result />} />
+        <Route path="/detail" element={<Detail />} />
       </Routes>
     </BrowserRouter>
   );

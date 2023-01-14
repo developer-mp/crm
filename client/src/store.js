@@ -18,7 +18,7 @@ import queryFiltersReducer from "./slices/queryFiltersSlice.js";
 import menuReducer from "./slices/menuSlice.js";
 import userReducer from "./slices/userSlice.js";
 import resultReducer from "./slices/result.js";
-import detailReducer from "./slices/details.js";
+import detailReducer from "./slices/detail.js";
 //import searchEntitiesReducer from "./slices/searchSlice.js";
 import sessionStorage from "redux-persist/es/storage/session.js";
 import {

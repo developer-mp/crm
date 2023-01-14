@@ -5,27 +5,116 @@
       "entity": "Customer Management",
       "subentity": "Customers",
       "topic": "",
-      "panel": [
+      "detail": [
         {
-          "title": "Overview",
-          "data": [
+          "panel": [
             {
-              "label": "Customer",
-              "dataField": "customer"
+              "title": "Overview",
+              "data": [
+                {
+                  "label": "Customer",
+                  "dataField": "customer"
+                },
+                {
+                  "label": "Country",
+                  "dataField": "country"
+                },
+                {
+                  "label": "Industry",
+                  "dataField": "industry"
+                }
+              ]
             },
             {
-              "label": "Country",
-              "dataField": "country"
+              "title": "General Info",
+              "data": [
+                {
+                  "label": "Id",
+                  "dataField": "id"
+                },
+                {
+                  "label": "Customer",
+                  "dataField": "customer"
+                },
+                {
+                  "label": "Customer Code",
+                  "dataField": "customercode"
+                },
+                {
+                  "label": "Website",
+                  "dataField": "website"
+                },
+                {
+                  "label": "Industry",
+                  "dataField": "industry"
+                },
+                {
+                  "label": "Category",
+                  "dataField": "category"
+                }
+              ]
             },
             {
-              "label": "Industry",
-              "dataField": "industry"
+              "title": "Location",
+              "data": [
+                {
+                  "label": "Country",
+                  "dataField": "country"
+                },
+                {
+                  "label": "City",
+                  "dataField": "city"
+                },
+                {
+                  "label": "Headquarters",
+                  "dataField": "headquarters"
+                },
+                {
+                  "label": "Address",
+                  "dataField": "address"
+                },
+                {
+                  "label": "Postalcode",
+                  "dataField": "postalcode"
+                }
+              ]
+            },
+            {
+              "title": "Contacts",
+              "data": [
+                {
+                  "label": "Key Principal",
+                  "dataField": "keyprincipal"
+                },
+                {
+                  "label": "Phone",
+                  "dataField": "phone"
+                }
+              ]
+            },
+            {
+              "title": "Miscellaneous",
+              "data": [
+                {
+                  "label": "Year Started",
+                  "dataField": "yearstarted"
+                },
+                {
+                  "label": "Status",
+                  "dataField": "status"
+                },
+                {
+                  "label": "Ownership",
+                  "dataField": "ownership"
+                },
+                {
+                  "label": "Headcount",
+                  "dataField": "headcount"
+                }
+              ]
             }
-          ]
-        },
-        {
-          "title": "General Info",
-          "data": [
+          ],
+          "column": [
             {
               "label": "Id",
               "dataField": "id"
@@ -35,12 +124,12 @@
               "dataField": "customer"
             },
             {
-              "label": "Customer Code",
-              "dataField": "customercode"
+              "label": "Country",
+              "dataField": "country"
             },
             {
-              "label": "Website",
-              "dataField": "website"
+              "label": "City",
+              "dataField": "city"
             },
             {
               "label": "Industry",
@@ -51,97 +140,6 @@
               "dataField": "category"
             }
           ]
-        },
-        {
-          "title": "Location",
-          "data": [
-            {
-              "label": "Country",
-              "dataField": "country"
-            },
-            {
-              "label": "City",
-              "dataField": "city"
-            },
-            {
-              "label": "Headquarters",
-              "dataField": "headquarters"
-            },
-            {
-              "label": "Address",
-              "dataField": "address"
-            },
-            {
-              "label": "Postalcode",
-              "dataField": "postalcode"
-            }
-          ]
-        },
-        {
-          "title": "Contacts",
-          "data": [
-            {
-              "label": "Key Principal",
-              "dataField": "keyprincipal"
-            },
-            {
-              "label": "Phone",
-              "dataField": "phone"
-            }
-          ]
-        },
-        {
-          "title": "Miscellaneous",
-          "data": [
-            {
-              "label": "Year Started",
-              "dataField": "yearstarted"
-            },
-            {
-              "label": "Status",
-              "dataField": "status"
-            },
-            {
-              "label": "Ownership",
-              "dataField": "ownership"
-            },
-            {
-              "label": "Headcount",
-              "dataField": "headcount"
-            }
-          ]
-        }
-      ],
-      "data": [
-        {
-          "label": "Id",
-          "dataField": "id",
-          "isSelected": true
-        },
-        {
-          "label": "Customer",
-          "dataField": "customer",
-          "isSelected": true
-        },
-        {
-          "label": "Country",
-          "dataField": "country",
-          "isSelected": true
-        },
-        {
-          "label": "City",
-          "dataField": "city",
-          "isSelected": true
-        },
-        {
-          "label": "Industry",
-          "dataField": "industry",
-          "isSelected": true
-        },
-        {
-          "label": "Category",
-          "dataField": "category",
-          "isSelected": true
         }
       ]
     },

@@ -12,18 +12,18 @@ class QueryService {
     const searchId = 101;
     const searchKey = SearchEntity.findEntity(searchId);
     // const data = { data: { searchKey } };
-    let data = IndexContent.findDataContent(searchId);
+    let detail = IndexContent.findDataContent(searchId);
     const endpoint = searchKey;
     return ApiService.apiCall(endpoint, {}).then((res) => {
-      function getValueByKey(object, key) {
-        return object[key];
-      }
+      // function getValueByKey(object, key) {
+      //   return object[key];
+      // }
 
-      let dataFieldArr = data.map((v) => v.dataField);
+      // let dataFieldArr = data.map((v) => v.dataField);
 
-      let column = data
-        .filter((el) => el.isSelected === true)
-        .map(({ isSelected, ...item }) => item);
+      // let column = data
+      //   .filter((el) => el.isSelected === true)
+      //   .map(({ isSelected, ...item }) => item);
       // .map((v) => v.label);
 
       // return { data: res, headers };
@@ -49,7 +49,7 @@ class QueryService {
       //     }
       //   }
       // }
-      return { data: res, column };
+      return { data: res, detail };
     });
   }
 

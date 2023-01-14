@@ -192,7 +192,7 @@ class IndexContent {
 
   static findDataContent(id) {
     const arr = this.getDataList();
-    let dataContent = arr.find((x) => x.id === id).data;
+    let dataContent = arr.find((x) => x.id === id).detail;
     return dataContent;
   }
 }
