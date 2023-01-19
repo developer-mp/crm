@@ -1,16 +1,3 @@
-// import { configureStore } from "@reduxjs/toolkit";
-// import dashboardReducer from "./slices/dashboardSlice.js";
-// import menuReducer from "./slices/menuSlice.js";
-// import userReducer from "./slices/userSlice.js";
-
-// export const store = configureStore({
-//   reducer: {
-//     dashboard: dashboardReducer,
-//     menu: menuReducer,
-//     user: userReducer,
-//   },
-// });
-
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import dashboardReducer from "./slices/dashboardSlice.js";
 import searchEntitiesReducer from "./slices/searchSlice.js";
@@ -19,7 +6,6 @@ import menuReducer from "./slices/menuSlice.js";
 import userReducer from "./slices/userSlice.js";
 import resultReducer from "./slices/result.js";
 import detailReducer from "./slices/detail.js";
-//import searchEntitiesReducer from "./slices/searchSlice.js";
 import sessionStorage from "redux-persist/es/storage/session.js";
 import {
   persistStore,

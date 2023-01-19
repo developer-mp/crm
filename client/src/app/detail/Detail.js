@@ -5,12 +5,21 @@ import "./Detail.css";
 
 const Result = () => {
   const { detail } = useSelector((store) => store.detail);
-  console.log(detail);
+  const { result } = useSelector((store) => store.result);
+  console.log(result);
 
   return (
     <div className="detail">
-      <List title="Detail">
-        <Accordion title="Detail" />
+      <List title={"Details: " + detail.customer}>
+        {result.detail?.[0].panel.map((item) => (
+          <Accordion title={item.title} key={item.title}>
+            {result.detail?.[0].panel.map((p) =>
+              p.data.map((d, i) => (
+                <div key={d.dataField + i}>{d.label} : Value</div>
+              ))
+            )}
+          </Accordion>
+        ))}
       </List>
     </div>
   );
