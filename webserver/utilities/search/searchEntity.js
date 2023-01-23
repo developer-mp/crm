@@ -4,8 +4,8 @@ const { cloneDeep, find, flatMap, map, filter, each, forOwn, forEach } = pkg;
 
 class SearchEntity {
   static getEntityList() {
-    const { lst } = entity;
-    return cloneDeep(lst);
+    const { list } = entity;
+    return cloneDeep(list);
   }
 
   static findEntity(id) {
@@ -52,18 +52,18 @@ class SearchEntity {
   //   }));
   // }
 
-  static getResultCode(entity, code, requestKeys, pks) {
-    if (pks.length === 1) return { id: code };
-    const arr = [];
-    each(pks, (item) => {
-      if (requestKeys[item]) {
-        arr.push(requestKeys[item]);
-      } else {
-        arr.push("");
-      }
-    });
-    return { id: arr };
-  }
+  // static getResultCode(entity, code, requestKeys, pks) {
+  //   if (pks.length === 1) return { id: code };
+  //   const arr = [];
+  //   each(pks, (item) => {
+  //     if (requestKeys[item]) {
+  //       arr.push(requestKeys[item]);
+  //     } else {
+  //       arr.push("");
+  //     }
+  //   });
+  //   return { id: arr };
+  // }
 
   // static buildAppRequest(id, filters, name, topic) {
   //   const record = { pk: id };
@@ -145,19 +145,19 @@ class SearchEntity {
   //   return { name: "", id: 0 };
   // }
 
-  static applyUserEntities(list, keys) {
-    _.forEach(list, (entity) => {
-      _.forEach(entity.subentities, (subentity) => {
-        if (subentity.filters.length > 0) {
-          _.remove(subentity.filters, (item) => !keys.includes(item.id));
-        }
-      });
-      _.remove(
-        entity.subentities,
-        (item) => item.filters.length === 0 && !keys.includes(item.id)
-      );
-    });
-  }
+  // static applyUserEntities(list, keys) {
+  //   _.forEach(list, (entity) => {
+  //     _.forEach(entity.subentities, (subentity) => {
+  //       if (subentity.filters.length > 0) {
+  //         _.remove(subentity.filters, (item) => !keys.includes(item.id));
+  //       }
+  //     });
+  //     _.remove(
+  //       entity.subentities,
+  //       (item) => item.filters.length === 0 && !keys.includes(item.id)
+  //     );
+  //   });
+  // }
 
   // static applyPublicEntities(list, arr) {
   //   let item = {};

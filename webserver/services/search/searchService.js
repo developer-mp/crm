@@ -61,12 +61,12 @@ class SearchService {
   //   return { list, info };
   // }
 
-  static async findQueryFilter(params) {
-    const { entityId } = params;
-    const entityName = SearchEntity.findEntity(entityId);
-    const filterList = IndexContent.getQueryFilterList({ entityName });
-    return { filterList };
-  }
+  // static async findQueryFilter(params) {
+  //   const { entityId } = params;
+  //   const entityName = SearchEntity.findEntity(entityId);
+  //   const filterList = IndexContent.getQueryFilterList({ entityName });
+  //   return { filterList };
+  // }
 
   // static queryDelete(request) {
   //   const { user, queryId } = request;
