@@ -1,10 +1,10 @@
+import MenuItem from "./element/MenuItem.js";
+import MenuItemGroup from "./element/MenuItemGroup.js";
+import { logoutUser } from "../../actions/user.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { Navbar, Container } from "react-bootstrap";
-import MenuItem from "./element/MenuItem.js";
-import MenuItemGroup from "./element/MenuItemGroup.js";
-import { logoutUser } from "../../actions/userAction.js";
 import "./Menu.css";
 
 const Menu = () => {

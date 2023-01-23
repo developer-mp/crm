@@ -2,10 +2,10 @@ import { useForm } from "react-hook-form";
 import { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
-import { loginUser } from "../../actions/userAction.js";
+import { loginUser } from "../../actions/user.js";
 import "./Login.css";
 
-const LoginContainer = () => {
+const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -31,9 +31,9 @@ const LoginContainer = () => {
 
   return (
     <div className="login">
-      <div className="loginWrapper">
-        <h1 className="loginTitle">Login</h1>
-        <form className="loginForm" onSubmit={handleSubmit(submitForm)}>
+      <div className="login-wrapper">
+        <h1 className="login-title">Login</h1>
+        <form className="login-form" onSubmit={handleSubmit(submitForm)}>
           {errorLogin && <div>Error</div>}
           <label>Email</label>{" "}
           <input
@@ -55,7 +55,7 @@ const LoginContainer = () => {
             Login
           </button>
         </form>
-        <div className="loginRegister">
+        <div className="login-register">
           <p>Don't have an account?</p>
           <Link to="/register">
             <button>Create account</button>
@@ -66,4 +66,4 @@ const LoginContainer = () => {
   );
 };
 
-export default LoginContainer;
+export default Login;

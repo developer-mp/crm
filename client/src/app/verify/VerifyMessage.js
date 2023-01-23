@@ -1,7 +1,7 @@
 import Email from "../../assets/images/email.png";
-import "./Verify.css";
+import "./VerifyMessage.css";
 
-const VerifyContainer = () => {
+const VerifyMessage = () => {
   return (
     <div className="verify">
       <img src={Email} alt="" />
@@ -14,4 +14,4 @@ const VerifyContainer = () => {
   );
 };
 
-export default VerifyContainer;
+export default VerifyMessage;

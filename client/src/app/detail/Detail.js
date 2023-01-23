@@ -1,9 +1,9 @@
-import List from "../../components/list/List.js";
-import Accordion from "../../components/accordion/Accordion.js";
+import List from "../../component/list/List.js";
+import Accordion from "../../component/accordion/Accordion.js";
 import { useSelector } from "react-redux";
 import "./Detail.css";
 
-const Result = () => {
+const Detail = () => {
   const { detail } = useSelector((store) => store.detail);
   const { result } = useSelector((store) => store.result);
 
@@ -24,19 +24,4 @@ const Result = () => {
   );
 };
 
-export default Result;
-
-// return (
-//     <div className="detail">
-//       <List title={"Details: " + detail.customer}>
-//         {result.detail?.[0].panel.map((item) => (
-//           <Accordion title={item.title} key={item.title}>
-//             {item.data.map((d) => (
-//               <div key={d.label}>{d.label} : Value</div>
-//             ))}
-//           </Accordion>
-//         ))}
-//       </List>
-//     </div>
-//   );
-// };
+export default Detail;

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "./Dashboard.css";
+import "../Dashboard.css";
 
 const DashboardItem = (props) => {
   const navigate = useNavigate();
@@ -15,6 +15,7 @@ const DashboardItem = (props) => {
     backgroundColor: bgColor,
     backgroundImage: "url(" + img + ")",
   };
+
   return (
     <div className="dashboard-item">
       <div className="dashboard-item-box" onClick={handleLink}>

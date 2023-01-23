@@ -1,9 +1,9 @@
-import List from "./../../components/list/List.js";
+import List from "./../../component/list/List.js";
+import { getDetail } from "../../actions/detail.js";
 import { useSelector, useDispatch } from "react-redux";
-import "./Result.css";
 import { Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { getDetail } from "../../actions/detail.js";
+import "./Result.css";
 
 const Result = () => {
   const { result } = useSelector((store) => store.result);

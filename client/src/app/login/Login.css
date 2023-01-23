@@ -7,26 +7,26 @@
   justify-content: center;
 }
 
-.loginWrapper {
+.login-wrapper {
   width: 20%;
   padding: 1em;
   background-color: white;
   border: 1px solid gray;
 }
 
-.loginTitle {
+.login-title {
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 1em;
   text-align: center;
 }
 
-.loginForm {
+.login-form {
   display: flex;
   flex-direction: column;
 }
 
-.loginForm label {
+.login-form label {
   margin-bottom: 0.3em;
 }
 
@@ -35,18 +35,18 @@
   padding: 0.8em;
 }
 
-.loginForm p {
+.login-form p {
   color: #cc0000;
   font-size: 0.8rem;
   margin-bottom: 1em;
 }
 
-.loginForm p::before {
+.login-form p::before {
   display: inline;
   content: "⚠ ";
 }
 
-.loginForm button {
+.login-form button {
   width: 100%;
   border: none;
   padding: 1em;
@@ -57,17 +57,17 @@
   margin: 1em 0 0.5em 0;
 }
 
-.loginRegister {
+.login-register {
   width: 100%;
 }
 
-.loginRegister p {
+.login-register p {
   margin: 1em;
   font-size: 0.8rem;
   text-align: center;
 }
 
-.loginRegister button {
+.login-register button {
   width: 100%;
   border: none;
   padding: 1em;

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getMenuItems } from "../actions/menuAction.js";
+import { getMenuItems } from "../actions/menu.js";
 
 const initialState = {
   menuItems: [],

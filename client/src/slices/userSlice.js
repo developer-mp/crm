@@ -4,7 +4,7 @@ import {
   loginUser,
   logoutUser,
   // verifyEmail,
-} from "../actions/userAction.js";
+} from "../actions/user.js";
 
 const initialState = {
   loadingRegister: false,

@@ -3,19 +3,19 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import Dashboard from "../dashboard/Dashboard.js";
 import Menu from "./../menu/Menu.js";
-import RegisterContainer from "../register/RegisterContainer.js";
-import VerifyContainer from "../verify/VerifyContainer.js";
-import VerifyEmailContainer from "../verifyEmail/VerifyEmailContainer.js";
-import LoginContainer from "../login/LoginContainer.js";
+import Register from "../register/Register.js";
+import VerifyMessage from "../verify/VerifyMessage.js";
+import VerifyEmail from "../verify/VerifyEmail.js";
+import Login from "../login/Login.js";
 import Search from "../search/Search.js";
 import Result from "./../result/Result.js";
 import Detail from "./../detail/Detail.js";
-import { getDashboardItems } from "../../actions/dashboardAction.js";
-import { getMenuItems } from "../../actions/menuAction.js";
+import { getDashboardItems } from "../../actions/dashboard.js";
+import { getMenuItems } from "../../actions/menu.js";
 import {
   fetchSearchEntities,
-  fetchQueryFilters,
-} from "../../actions/searchAction.js";
+  // fetchQueryFilters,
+} from "../../actions/search.js";
 
 const RouteItems = () => {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const RouteItems = () => {
     dispatch(getDashboardItems());
     dispatch(getMenuItems());
     dispatch(fetchSearchEntities());
-    dispatch(fetchQueryFilters());
+    // dispatch(fetchQueryFilters());
     // if (user.accessToken) {
     //   axios.defaults.headers.common[
     //     "Authorization"
@@ -37,13 +37,13 @@ const RouteItems = () => {
       <Menu />
       <Routes>
         <Route path="/" element={<Dashboard />} />
-        <Route path="/register" element={<RegisterContainer />} />
-        <Route path="/login" element={<LoginContainer />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
         {/* <Route path="/" element={<ProtectedRoute />} /> */}
-        <Route path="/verify" element={<VerifyContainer />} />
+        <Route path="/verify" element={<VerifyMessage />} />
         <Route
           path="/verifyemail/:verificationcode"
-          element={<VerifyEmailContainer />}
+          element={<VerifyEmail />}
         />
         <Route path="/search/:entityId" element={<Search />} />
         <Route path="/result" element={<Result />} />

@@ -1,6 +1,6 @@
+import SearchEntity from "./element/SearchEntity.js";
+import List from "../../component/list/List.js";
 import { useParams } from "react-router-dom";
-import SearchConfig from "./config/SearchConfig.js";
-import List from "../../components/list/List.js";
 import "./Search.css";
 
 const Search = () => {
@@ -9,7 +9,7 @@ const Search = () => {
   return (
     <div className="search">
       <List title="Search">
-        <SearchConfig entityId={entityId} />
+        <SearchEntity entityId={entityId} />
       </List>
     </div>
   );

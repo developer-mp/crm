@@ -1,11 +1,11 @@
+import { registerUser } from "../../actions/user.js";
 import { useForm } from "react-hook-form";
 import { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
-import { registerUser } from "../../actions/userAction.js";
 import "./Register.css";
 
-const RegisterContainer = () => {
+const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -136,4 +136,4 @@ const RegisterContainer = () => {
   );
 };
 
-export default RegisterContainer;
+export default Register;

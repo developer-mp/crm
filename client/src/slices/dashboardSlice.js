@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getDashboardItems } from "../actions/dashboardAction.js";
+import { getDashboardItems } from "../actions/dashboard.js";
 
 const initialState = {
   dashboardItems: [],

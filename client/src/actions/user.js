@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import AuthService from "./../services/auth/authService.js";
+import AuthService from "../services/auth/authService.js";
 import UserService from "../services/user/userService.js";
 import axios from "axios";
 import { useParams } from "react-router-dom";

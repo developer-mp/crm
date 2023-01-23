@@ -1,6 +1,5 @@
 import RouteItems from "./routes/RouteItems.js";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
 
 const App = () => {
   return <RouteItems />;

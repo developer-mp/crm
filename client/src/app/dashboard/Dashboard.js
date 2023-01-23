@@ -1,5 +1,5 @@
+import DashboardItem from "../dashboard/element/DashboardItem.js";
 import { useSelector } from "react-redux";
-import DashboardItem from "./DashboardItem.js";
 import "./Dashboard.css";
 
 const Dashboard = () => {

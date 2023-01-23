@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchSearchEntities } from "../actions/searchAction.js";
+import { fetchSearchEntities } from "../actions/search.js";
 
 const initialState = {
   searchEntities: [],

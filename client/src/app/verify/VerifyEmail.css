@@ -1,4 +1,4 @@
-.verifyEmail {
+.verify-email {
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -7,31 +7,31 @@
   justify-content: center;
 }
 
-.verifyEmailWrapper {
+.verify-email-wrapper {
   width: 20%;
   padding: 1em;
   background-color: white;
   border: 1px solid gray;
 }
 
-.verifyEmailTitle {
+.verify-email-title {
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 1em;
   text-align: center;
 }
 
-.verifyEmailForm {
+.verify-email-form {
   display: flex;
   flex-direction: column;
 }
 
-.verifyEmailForm input {
+.verify-email-form input {
   margin-bottom: 1em;
   padding: 0.8em;
 }
 
-.verifyEmailForm button {
+.verify-email-form button {
   width: 100%;
   border: none;
   padding: 1em;

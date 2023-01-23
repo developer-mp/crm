@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchQueryFilters } from "../actions/searchAction.js";
+// import { fetchQueryFilters } from "../actions/searchAction.js";
 
 const initialState = {
   queryFiltersItems: [],

@@ -59,7 +59,7 @@ import axios from "axios";
 import "./VerifyEmail.css";
 axios.defaults.withCredentials = true;
 
-const VerifyEmailContainer = () => {
+const VerifyEmail = () => {
   const navigate = useNavigate();
 
   const { verificationcode } = useParams();
@@ -88,11 +88,11 @@ const VerifyEmailContainer = () => {
     verifyEmail(values);
   };
   return (
-    <div className="verifyEmail">
-      <div className="verifyEmailWrapper">
-        <h1 className="verifyEmailTitle">Email Verification Code</h1>
-        <form className="verifyEmailForm" onSubmit={handleSubmit(submitForm)}>
-          <input name="verificationCode" defaultValue={verificationcode} />
+    <div className="verify-email">
+      <div className="verify-email-wrapper">
+        <h1 className="verify-email-title">Email Verification Code</h1>
+        <form className="verify-email-form" onSubmit={handleSubmit(submitForm)}>
+          <input name="verification-code" defaultValue={verificationcode} />
           <button type="submit" className="button">
             Verify
           </button>
@@ -102,4 +102,4 @@ const VerifyEmailContainer = () => {
   );
 };
 
-export default VerifyEmailContainer;
+export default VerifyEmail;

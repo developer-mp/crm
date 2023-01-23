@@ -1,16 +1,14 @@
 import SelectDropdown from "./SelectDropdown.js";
+import { getResult } from "../../../actions/result.js";
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { openQuery } from "../../../actions/window.js";
-import { getResult } from "./../../../actions/result.js";
-import "./SearchConfig.css";
+import "./SearchEntity.css";
 import pkg from "lodash";
-
 const { find } = pkg;
 
-const SearchConfigContainer = (props) => {
+const SearchEntity = (props) => {
   const { entityId } = props;
   const navigate = useNavigate();
 
@@ -50,50 +48,29 @@ const SearchConfigContainer = (props) => {
     determineSelected(parseInt(entityId) || undefined)
   );
 
-  // useEffect = (prevProps) => {
-  //   if (prevProps.entitiesList !== props.entitiesList) {
-  //     setSelectedId(determineSelected(entityId));
-  //   }
-  // };
-
   const handleSelectEntity = (value) => {
     setSelectedId(determineSelected(value));
-    //props.clearQueryFilters();
   };
 
   const handleSelectSubentity = (value) => {
     setSelectedId(determineSelected(selectedId.entityId, value));
-    //props.clearQueryFilters();
   };
 
   const handleSelectFilter = (value) => {
     setSelectedId(
       determineSelected(selectedId.entityId, selectedId.subentityId, value)
     );
-    //props.clearQueryFilters();
   };
 
-  // const getFilters = (event) => {
-  //   const searchId = getSelectedSearchId();
-  //   props.getQueryFilters(searchId);
-  //   event.preventDefault();
+  // const getSelectedSearchId = () => {
+  //   const { entities } = props;
+  //   const entity = getElement(entities, entityId);
+  //   const subentity = getElement(entity.subentities, entityId);
+  //   const filter = getElement(subentity.filters, this.state.filterId);
+  //   return filter.id || subentity.id || entity.id;
   // };
 
-  const getSelectedSearchId = () => {
-    const { entities } = props;
-    const entity = getElement(entities, entityId);
-    const subentity = getElement(entity.subentities, entityId);
-    const filter = getElement(subentity.filters, this.state.filterId);
-    return filter.id || subentity.id || entity.id;
-  };
-
-  // const handleClearList = () => {
-  //   props.clearQueryFilters();
-  // };
-
-  const handleNewQuery = () => {
-    // const searchId = { entityId };
-    // dispatch(openQuery(searchId));
+  const handleResult = () => {
     dispatch(getResult());
     navigate("/result");
   };
@@ -149,7 +126,7 @@ const SearchConfigContainer = (props) => {
         />
       )}
       {entitiesList && showElement(entitiesList) && (
-        <Button className="search-button" onClick={handleNewQuery}>
+        <Button className="search-button" onClick={handleResult}>
           Search
         </Button>
       )}
@@ -157,4 +134,4 @@ const SearchConfigContainer = (props) => {
   );
 };
 
-export default SearchConfigContainer;
+export default SearchEntity;
