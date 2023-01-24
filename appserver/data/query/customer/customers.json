@@ -3,8 +3,7 @@
     "table": "customers",
     "schema": "public",
     "select": {
-      "column": "id, customer, customercode, website, country, city, headquarters, industry, category, headcount, keyprincipal, address, postalcode, phone, yearstarted, status, ownership",
-      "where": "id=$1"
+      "column": "id, customer, customercode, website, country, city, headquarters, industry, category, headcount, keyprincipal, address, postalcode, phone, yearstarted, status, ownership"
     },
     "insert": {
       "column": "(customer, customercode, website, country, city, headquarters, industry, category, headcount, keyprincipal, address, postalcode, phone, yearstarted, status, ownership) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)"
@@ -13,7 +12,7 @@
       "where": "id=$1"
     },
     "update": {
-      "column": "headcount=$2",
+      "column": "customer=$2",
       "where": "id=$1"
     },
     "upsert": {

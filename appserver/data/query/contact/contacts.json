@@ -1,0 +1,22 @@
+{
+  "contacts": {
+    "table": "contacts",
+    "schema": "public",
+    "select": {
+      "column": "name, position, department, email, phone"
+    },
+    "insert": {
+      "column": "(name, position, department, email, phone) values ($1, $2, $3, $4, $5)"
+    },
+    "del": {
+      "where": "id=$1"
+    },
+    "update": {
+      "column": "name=$2",
+      "where": "id=$1"
+    },
+    "upsert": {
+      "column": "(name, position, department, email, phone) values ($1, $2, $3, $4, $5)"
+    }
+  }
+}

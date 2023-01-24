@@ -1,8 +1,8 @@
 import ApiService from "../app/apiService.js";
 
 class ResultService {
-  static getResultData() {
-    return ApiService.noSecureCall("result", {});
+  static getResultData(searchId) {
+    return ApiService.noSecureCall("result", { searchId });
   }
 }
 

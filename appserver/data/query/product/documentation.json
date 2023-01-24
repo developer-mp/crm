@@ -1,0 +1,23 @@
+{
+  "documentation": {
+    "table": "documentation",
+    "schema": "public",
+    "select": {
+      "column": "document, documentcode, category, description, accesslink",
+      "where": "category=$1"
+    },
+    "insert": {
+      "column": "(document, documentcode, category, description, accesslink) values ($1, $2, $3, $4, $5)"
+    },
+    "del": {
+      "where": "id=$1"
+    },
+    "update": {
+      "column": "document=$2",
+      "where": "id=$1"
+    },
+    "upsert": {
+      "column": "(document, documentcode, category, description, accesslink) values ($1, $2, $3, $4, $5)"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "services": {
+    "table": "services",
+    "schema": "public",
+    "select": {
+      "column": "service, servicecode, category, description, unitmeasure, price, currency"
+    },
+    "insert": {
+      "column": "(service, servicecode, category, description, unitmeasure, price, currency) values ($1, $2, $3, $4, $5, $6, $7)"
+    },
+    "del": {
+      "where": "id=$1"
+    },
+    "update": {
+      "column": "service=$2",
+      "where": "id=$1"
+    },
+    "upsert": {
+      "column": "(service, servicecode, category, description, unitmeasure, price, currency) values ($1, $2, $3, $4, $5, $6, $7)"
+    }
+  }
+}

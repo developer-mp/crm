@@ -71,7 +71,7 @@ const SearchEntity = (props) => {
   // };
 
   const handleResult = () => {
-    dispatch(getResult());
+    dispatch(getResult(101));
     navigate("/result");
   };
 

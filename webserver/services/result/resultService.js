@@ -9,7 +9,8 @@ const { merge, forEach } = pkg;
 
 class ResultService {
   static async queryResult(request) {
-    const searchId = 101;
+    const searchId = request;
+    // const searchId = 101;
     const searchKey = SearchEntity.findEntity(searchId);
     // const data = { data: { searchKey } };
     let detail = IndexContent.findDataContent(searchId);

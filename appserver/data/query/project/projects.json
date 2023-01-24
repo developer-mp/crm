@@ -1,0 +1,22 @@
+{
+  "projects": {
+    "table": "projects",
+    "schema": "public",
+    "select": {
+      "column": "project, projectcode, category, description, status"
+    },
+    "insert": {
+      "column": "(project, projectcode, category, description, status) values ($1, $2, $3, $4, $5)"
+    },
+    "del": {
+      "where": "id=$1"
+    },
+    "update": {
+      "column": "project=$2",
+      "where": "id=$1"
+    },
+    "upsert": {
+      "column": "(project, projectcode, category, description, status) values ($1, $2, $3, $4, $5)"
+    }
+  }
+}

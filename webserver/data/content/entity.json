@@ -2,7 +2,7 @@
   "list": [
     {
       "id": 1,
-      "name": "Customer Management",
+      "name": "Customers",
       "subentities": [
         {
           "id": 101,
@@ -30,59 +30,66 @@
               "key": "customer/campaign/loyalty"
             }
           ]
-        },
-        {
-          "id": 103,
-          "name": "Reports",
-          "filters": [
-            {
-              "id": 1031,
-              "name": "Finance",
-              "key": "customer/report/finance"
-            },
-            {
-              "id": 1032,
-              "name": "Annual meetings",
-              "key": "customer/report/meeting"
-            }
-          ]
         }
       ]
     },
     {
       "id": 2,
-      "name": "Product Management",
-      "key": "product",
+      "name": "Products",
       "subentities": [
         {
           "id": 201,
           "name": "Products",
           "key": "product",
-          "load": { "name": "BaseDetail", "type": "record" },
           "filters": []
         },
         {
-          "id": 201,
-          "name": "Products",
-          "key": "product",
-          "load": { "name": "BaseDetail", "type": "record" },
+          "id": 202,
+          "name": "Documentation",
+          "key": "product/documentation",
           "filters": []
         }
       ]
     },
     {
       "id": 3,
-      "name": "Service Management",
-      "key": "service",
+      "name": "Services",
       "subentities": [
         {
           "id": 301,
           "name": "Services",
           "key": "service",
-          "load": { "name": "BaseDetail", "type": "record" },
+          "filters": []
+        },
+        {
+          "id": 302,
+          "name": "Documentation",
+          "key": "service/documentation",
           "filters": []
         }
       ]
+    },
+    {
+      "id": 4,
+      "name": "Projects",
+      "key": "project"
+    },
+    {
+      "id": 5,
+      "name": "Insights",
+      "subentities": [
+        {
+          "id": 501,
+          "name": "Reports",
+          "key": "insight/report",
+          "filters": []
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Contacts",
+      "key": "contact"
     }
   ]
 }
