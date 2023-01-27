@@ -2,7 +2,7 @@ import SelectDropdown from "./SelectDropdown.js";
 import { getResult } from "../../../actions/result.js";
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from "react-bootstrap";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SearchEntity.css";
 import pkg from "lodash";
@@ -27,26 +27,35 @@ const SearchEntity = (props) => {
       const entity = getElement(entities, initialEntityId);
       const subentity = getElement(entity.subentities, initialSubentityId);
       const filter = getElement(subentity.filters, initialFilterId);
-      const add = entity.add || subentity.add || filter.add;
       return {
         entityId: entity.id,
         subentityId: subentity.id,
         filterId: filter.id,
-        add,
       };
     }
   };
 
   const getElement = (array, id) => {
-    if (array && array.length > 0) {
-      return find(array, (item) => item.id === id) || array[0];
+    if (array) {
+      return find(array, (item) => item.id === id);
     }
-    return { id, name: "" };
+    return { id };
   };
 
   const [selectedId, setSelectedId] = useState(
-    determineSelected(parseInt(entityId) || undefined)
+    determineSelected(parseInt(entityId))
   );
+
+  const getKeyId = () => {
+    let arr = [];
+    let id = "";
+    arr = Object.values(selectedId);
+    arr = arr.filter((item) => item !== undefined);
+    id = Math.max(...arr);
+    return id;
+  };
+
+  console.log(getKeyId());
 
   const handleSelectEntity = (value) => {
     setSelectedId(determineSelected(value));
@@ -62,16 +71,8 @@ const SearchEntity = (props) => {
     );
   };
 
-  // const getSelectedSearchId = () => {
-  //   const { entities } = props;
-  //   const entity = getElement(entities, entityId);
-  //   const subentity = getElement(entity.subentities, entityId);
-  //   const filter = getElement(subentity.filters, this.state.filterId);
-  //   return filter.id || subentity.id || entity.id;
-  // };
-
   const handleResult = () => {
-    dispatch(getResult(101));
+    dispatch(getResult(getKeyId()));
     navigate("/result");
   };
 

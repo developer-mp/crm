@@ -3,6 +3,6 @@ import HealthController from "./healthController.js";
 
 const healthRouter = Express.Router();
 
-healthRouter.get("/", HealthController.getTestItem);
+healthRouter.get("/", HealthController.checkHealth);
 
 export default healthRouter;

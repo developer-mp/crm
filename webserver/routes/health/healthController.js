@@ -1,5 +1,5 @@
 class HealthController {
-  static getTestItem(req, res) {
+  static checkHealth(req, res) {
     res.json({ message: "Health is OK" });
   }
 }

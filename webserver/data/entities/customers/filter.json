@@ -2,7 +2,7 @@
   "list": [
     {
       "id": 101,
-      "entity": "Customer Management",
+      "entity": "Customers",
       "subentity": "Customers",
       "topic": "",
       "detail": [
@@ -145,10 +145,80 @@
     },
     {
       "id": 1021,
-      "entity": "Customer Management",
+      "entity": "Customers",
       "subentity": "Campaigns",
       "topic": "Marketing",
-      "data": []
+      "detail": [
+        {
+          "panel": [
+            {
+              "title": "Overview",
+              "data": [
+                {
+                  "label": "Campaign",
+                  "dataField": "campaign"
+                },
+                {
+                  "label": "Category",
+                  "dataField": "category"
+                }
+              ]
+            },
+            {
+              "title": "General Info",
+              "data": [
+                {
+                  "label": "Id",
+                  "dataField": "id"
+                },
+                {
+                  "label": "Campaign",
+                  "dataField": "campaign"
+                },
+                {
+                  "label": "Campaign Code",
+                  "dataField": "campaigncode"
+                },
+                {
+                  "label": "Description",
+                  "dataField": "description"
+                }
+              ]
+            },
+            {
+              "title": "Performance",
+              "data": [
+                {
+                  "label": "Date Started",
+                  "dataField": "datestarted"
+                },
+                {
+                  "label": "Date Ended",
+                  "dataField": "dateended"
+                },
+                {
+                  "label": "Status",
+                  "dataField": "status"
+                }
+              ]
+            }
+          ],
+          "column": [
+            {
+              "label": "Id",
+              "dataField": "id"
+            },
+            {
+              "label": "Campaign",
+              "dataField": "campaign"
+            },
+            {
+              "label": "Category",
+              "dataField": "category"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

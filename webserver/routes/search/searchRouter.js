@@ -3,6 +3,6 @@ import SearchController from "./searchController.js";
 
 const searchRouter = Express.Router();
 
-searchRouter.post("/entities", SearchController.getEntityList);
+searchRouter.post("/entities", SearchController.getEntity);
 
 export default searchRouter;

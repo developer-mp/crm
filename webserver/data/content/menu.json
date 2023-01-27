@@ -22,29 +22,6 @@
           "id": 31,
           "urlLink": "/account/profile",
           "title": "Profile"
-        },
-        {
-          "id": 32,
-          "urlLink": "/account/settings",
-          "title": "Settings"
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "urlLink": "/admin",
-      "title": "Admin",
-      "isGroup": true,
-      "items": [
-        {
-          "id": 41,
-          "urlLink": "/admin/users",
-          "title": "Manage Users"
-        },
-        {
-          "id": 42,
-          "urlLink": "/admin/analytics",
-          "title": "Analytics"
         }
       ]
     }

@@ -1,8 +1,8 @@
 import SearchService from "../../services/search/searchService.js";
 
 class SearchController {
-  static getEntityList(req, res) {
-    const list = SearchService.entityList(req.user);
+  static getEntity(req, res) {
+    const list = SearchService.getEntityList();
     res.json(list);
   }
 }
