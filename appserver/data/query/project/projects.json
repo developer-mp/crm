@@ -3,7 +3,7 @@
     "table": "projects",
     "schema": "public",
     "select": {
-      "column": "project, projectcode, category, description, status"
+      "column": "id, project, projectcode, category, description, status"
     },
     "insert": {
       "column": "(project, projectcode, category, description, status) values ($1, $2, $3, $4, $5)"

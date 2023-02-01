@@ -3,7 +3,7 @@
     "table": "documentation",
     "schema": "public",
     "select": {
-      "column": "document, documentcode, category, description, accesslink",
+      "column": "id, document, documentcode, category, description, accesslink",
       "where": "category=$1"
     },
     "insert": {

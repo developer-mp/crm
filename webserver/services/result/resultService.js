@@ -6,7 +6,7 @@ class ResultService {
   static async queryResult(request) {
     const searchId = request;
     const searchKey = SearchEntity.findEntity(searchId);
-    let detail = IndexContent.findDataContent(searchId);
+    let detail = IndexContent.findDataContent(201);
     const endpoint = searchKey;
     return ApiService.apiCall(endpoint, {}).then((res) => {
       return { data: res, detail };

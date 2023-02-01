@@ -3,7 +3,7 @@
     "table": "products",
     "schema": "public",
     "select": {
-      "column": "product, productcode, category, description, brand, origin, price, currency, standard, currentversion"
+      "column": "id, product, productcode, category, description, brand, origin, price, currency, standard, currentversion"
     },
     "insert": {
       "column": "(product, productcode, category, description, brand, origin, price, currency, standard, currentversion) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)"

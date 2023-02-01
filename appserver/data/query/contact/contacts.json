@@ -3,7 +3,7 @@
     "table": "contacts",
     "schema": "public",
     "select": {
-      "column": "name, position, department, email, phone"
+      "column": "id, name, position, department, email, phone"
     },
     "insert": {
       "column": "(name, position, department, email, phone) values ($1, $2, $3, $4, $5)"

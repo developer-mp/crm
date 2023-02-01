@@ -1,10 +1,11 @@
-import dataList from "../../data/entities/customers/filter.json" assert { type: "json" };
+import customersData from "../../data/entities/customers/filter.json" assert { type: "json" };
+import productsData from "../../data/entities/products/filter.json" assert { type: "json" };
 import pkg from "lodash";
 const { cloneDeep } = pkg;
 
 class IndexContent {
   static getDataList() {
-    const { list } = dataList;
+    const { list } = productsData;
     return cloneDeep(list);
   }
 

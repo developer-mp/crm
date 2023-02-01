@@ -3,7 +3,7 @@
     "table": "services",
     "schema": "public",
     "select": {
-      "column": "service, servicecode, category, description, unitmeasure, price, currency"
+      "column": "id, service, servicecode, category, description, unitmeasure, price, currency"
     },
     "insert": {
       "column": "(service, servicecode, category, description, unitmeasure, price, currency) values ($1, $2, $3, $4, $5, $6, $7)"

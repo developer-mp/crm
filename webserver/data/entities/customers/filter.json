@@ -219,6 +219,160 @@
           ]
         }
       ]
+    },
+    {
+      "id": 1022,
+      "entity": "Customers",
+      "subentity": "Campaigns",
+      "topic": "Advertising",
+      "detail": [
+        {
+          "panel": [
+            {
+              "title": "Overview",
+              "data": [
+                {
+                  "label": "Campaign",
+                  "dataField": "campaign"
+                },
+                {
+                  "label": "Category",
+                  "dataField": "category"
+                }
+              ]
+            },
+            {
+              "title": "General Info",
+              "data": [
+                {
+                  "label": "Id",
+                  "dataField": "id"
+                },
+                {
+                  "label": "Campaign",
+                  "dataField": "campaign"
+                },
+                {
+                  "label": "Campaign Code",
+                  "dataField": "campaigncode"
+                },
+                {
+                  "label": "Description",
+                  "dataField": "description"
+                }
+              ]
+            },
+            {
+              "title": "Performance",
+              "data": [
+                {
+                  "label": "Date Started",
+                  "dataField": "datestarted"
+                },
+                {
+                  "label": "Date Ended",
+                  "dataField": "dateended"
+                },
+                {
+                  "label": "Status",
+                  "dataField": "status"
+                }
+              ]
+            }
+          ],
+          "column": [
+            {
+              "label": "Id",
+              "dataField": "id"
+            },
+            {
+              "label": "Campaign",
+              "dataField": "campaign"
+            },
+            {
+              "label": "Category",
+              "dataField": "category"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1023,
+      "entity": "Customers",
+      "subentity": "Campaigns",
+      "topic": "Loyalty programs",
+      "detail": [
+        {
+          "panel": [
+            {
+              "title": "Overview",
+              "data": [
+                {
+                  "label": "Campaign",
+                  "dataField": "campaign"
+                },
+                {
+                  "label": "Category",
+                  "dataField": "category"
+                }
+              ]
+            },
+            {
+              "title": "General Info",
+              "data": [
+                {
+                  "label": "Id",
+                  "dataField": "id"
+                },
+                {
+                  "label": "Campaign",
+                  "dataField": "campaign"
+                },
+                {
+                  "label": "Campaign Code",
+                  "dataField": "campaigncode"
+                },
+                {
+                  "label": "Description",
+                  "dataField": "description"
+                }
+              ]
+            },
+            {
+              "title": "Performance",
+              "data": [
+                {
+                  "label": "Date Started",
+                  "dataField": "datestarted"
+                },
+                {
+                  "label": "Date Ended",
+                  "dataField": "dateended"
+                },
+                {
+                  "label": "Status",
+                  "dataField": "status"
+                }
+              ]
+            }
+          ],
+          "column": [
+            {
+              "label": "Id",
+              "dataField": "id"
+            },
+            {
+              "label": "Campaign",
+              "dataField": "campaign"
+            },
+            {
+              "label": "Category",
+              "dataField": "category"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

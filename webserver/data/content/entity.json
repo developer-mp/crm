@@ -3,7 +3,6 @@
     {
       "id": 1,
       "name": "Customers",
-      "key": "customer",
       "subentities": [
         {
           "id": 101,
@@ -14,7 +13,6 @@
         {
           "id": 102,
           "name": "Campaigns",
-          "key": "customer/campaign/marketing",
           "filters": [
             {
               "id": 1021,
@@ -38,7 +36,6 @@
     {
       "id": 2,
       "name": "Products",
-      "key": "product",
       "subentities": [
         {
           "id": 201,
