@@ -1,9 +1,9 @@
 {
   "list": [
     {
-      "id": 201,
-      "entity": "Products",
-      "subentity": "Products",
+      "id": 501,
+      "entity": "Insights",
+      "subentity": "Reports",
       "topic": "",
       "detail": [
         {
@@ -12,20 +12,12 @@
               "title": "Overview",
               "data": [
                 {
-                  "label": "Product",
-                  "dataField": "product"
+                  "label": "Report",
+                  "dataField": "report"
                 },
                 {
                   "label": "Category",
                   "dataField": "category"
-                },
-                {
-                  "label": "Brand",
-                  "dataField": "brand"
-                },
-                {
-                  "label": "Origin",
-                  "dataField": "origin"
                 }
               ]
             },
@@ -37,12 +29,12 @@
                   "dataField": "id"
                 },
                 {
-                  "label": "Product",
-                  "dataField": "product"
+                  "label": "Report",
+                  "dataField": "report"
                 },
                 {
-                  "label": "Product Code",
-                  "dataField": "productcode"
+                  "label": "Report Code",
+                  "dataField": "reportcode"
                 },
                 {
                   "label": "Category",
@@ -58,24 +50,12 @@
               "title": "Attributes",
               "data": [
                 {
-                  "label": "Current Version",
-                  "dataField": "currentversion"
+                  "label": "Frequency",
+                  "dataField": "frequency"
                 },
                 {
-                  "label": "Standard",
-                  "dataField": "standard"
-                },
-                {
-                  "label": "Product Code",
-                  "dataField": "productcode"
-                },
-                {
-                  "label": "Price",
-                  "dataField": "price"
-                },
-                {
-                  "label": "Currency",
-                  "dataField": "currency"
+                  "label": "Audience",
+                  "dataField": "audience"
                 }
               ]
             }
@@ -86,16 +66,20 @@
               "dataField": "id"
             },
             {
-              "label": "Product",
-              "dataField": "product"
+              "label": "Report",
+              "dataField": "report"
             },
             {
-              "label": "Brand",
-              "dataField": "brand"
+              "label": "Category",
+              "dataField": "category"
             },
             {
-              "label": "Origin",
-              "dataField": "origin"
+              "label": "Frequency",
+              "dataField": "frequency"
+            },
+            {
+              "label": "Audience",
+              "dataField": "audience"
             }
           ]
         }

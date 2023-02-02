@@ -1,65 +1,152 @@
 {
-  "data": [
+  "list": [
     {
-      "subentity": "Construction",
-      "topic": "Services",
-      "data": [
+      "id": 301,
+      "entity": "Services",
+      "subentity": "Services",
+      "topic": "",
+      "detail": [
         {
-          "name": "Id",
-          "filterType": 4,
-          "request": "PK",
-          "isSelected": false,
-          "column": "id",
-          "isFilter": true,
-          "isColumnSelected": true
-        },
+          "panel": [
+            {
+              "title": "Overview",
+              "data": [
+                {
+                  "label": "Service",
+                  "dataField": "service"
+                },
+                {
+                  "label": "Category",
+                  "dataField": "category"
+                }
+              ]
+            },
+            {
+              "title": "General Info",
+              "data": [
+                {
+                  "label": "Id",
+                  "dataField": "id"
+                },
+                {
+                  "label": "Service",
+                  "dataField": "service"
+                },
+                {
+                  "label": "Service Code",
+                  "dataField": "servicecode"
+                },
+                {
+                  "label": "Category",
+                  "dataField": "category"
+                },
+                {
+                  "label": "Description",
+                  "dataField": "description"
+                }
+              ]
+            },
+            {
+              "title": "Payment",
+              "data": [
+                {
+                  "label": "Price",
+                  "dataField": "price"
+                },
+                {
+                  "label": "Unit Measure",
+                  "dataField": "unitmeasure"
+                },
+                {
+                  "label": "currency",
+                  "dataField": "currency"
+                }
+              ]
+            }
+          ],
+          "column": [
+            {
+              "label": "Id",
+              "dataField": "id"
+            },
+            {
+              "label": "Service",
+              "dataField": "service"
+            },
+            {
+              "label": "Category",
+              "dataField": "category"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 302,
+      "entity": "Services",
+      "subentity": "Documentation",
+      "topic": "",
+      "detail": [
         {
-          "name": "Customer",
-          "filterType": 4,
-          "isSelected": false,
-          "column": "customer",
-          "isFilter": true,
-          "isColumnSelected": true
-        },
-        {
-          "name": "Customer Code",
-          "filterType": 4,
-          "isSelected": false,
-          "column": "customercode",
-          "isFilter": true,
-          "isColumnSelected": true
-        },
-        {
-          "name": "Website",
-          "filterType": 4,
-          "isSelected": false,
-          "column": "website",
-          "isFilter": true,
-          "isColumnSelected": true
-        },
-        {
-          "name": "Country",
-          "filterType": 4,
-          "isSelected": false,
-          "column": "country",
-          "isFilter": true,
-          "isColumnSelected": true
-        },
-        {
-          "name": "City",
-          "filterType": 4,
-          "isSelected": false,
-          "column": "city",
-          "isFilter": true,
-          "isColumnSelected": true
-        },
-        {
-          "name": "Headcount",
-          "filterType": 4,
-          "isSelected": false,
-          "column": "headcount",
-          "isFilter": true,
-          "isColumnSelected": true
+          "panel": [
+            {
+              "title": "Overview",
+              "data": [
+                {
+                  "label": "Document",
+                  "dataField": "document"
+                },
+                {
+                  "label": "Category",
+                  "dataField": "category"
+                }
+              ]
+            },
+            {
+              "title": "General Info",
+              "data": [
+                {
+                  "label": "Id",
+                  "dataField": "id"
+                },
+                {
+                  "label": "Document",
+                  "dataField": "document"
+                },
+                {
+                  "label": "Document Code",
+                  "dataField": "documentcode"
+                }
+              ]
+            },
+            {
+              "title": "Access",
+              "data": [
+                {
+                  "label": "Description",
+                  "dataField": "description"
+                },
+                {
+                  "label": "Access Link",
+                  "dataField": "accesslink"
+                }
+              ]
+            }
+          ],
+          "column": [
+            {
+              "label": "Id",
+              "dataField": "id"
+            },
+            {
+              "label": "Document",
+              "dataField": "document"
+            },
+            {
+              "label": "Category",
+              "dataField": "category"
+            }
+          ]
         }
       ]
     }

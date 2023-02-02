@@ -1,9 +1,9 @@
 {
   "list": [
     {
-      "id": 201,
-      "entity": "Products",
-      "subentity": "Products",
+      "id": 4,
+      "entity": "Projects",
+      "subentity": "",
       "topic": "",
       "detail": [
         {
@@ -12,20 +12,12 @@
               "title": "Overview",
               "data": [
                 {
-                  "label": "Product",
-                  "dataField": "product"
+                  "label": "Project",
+                  "dataField": "project"
                 },
                 {
                   "label": "Category",
                   "dataField": "category"
-                },
-                {
-                  "label": "Brand",
-                  "dataField": "brand"
-                },
-                {
-                  "label": "Origin",
-                  "dataField": "origin"
                 }
               ]
             },
@@ -37,12 +29,12 @@
                   "dataField": "id"
                 },
                 {
-                  "label": "Product",
-                  "dataField": "product"
+                  "label": "Project",
+                  "dataField": "project"
                 },
                 {
-                  "label": "Product Code",
-                  "dataField": "productcode"
+                  "label": "Project Code",
+                  "dataField": "projectcode"
                 },
                 {
                   "label": "Category",
@@ -51,31 +43,10 @@
                 {
                   "label": "Description",
                   "dataField": "description"
-                }
-              ]
-            },
-            {
-              "title": "Attributes",
-              "data": [
-                {
-                  "label": "Current Version",
-                  "dataField": "currentversion"
                 },
                 {
-                  "label": "Standard",
-                  "dataField": "standard"
-                },
-                {
-                  "label": "Product Code",
-                  "dataField": "productcode"
-                },
-                {
-                  "label": "Price",
-                  "dataField": "price"
-                },
-                {
-                  "label": "Currency",
-                  "dataField": "currency"
+                  "label": "Status",
+                  "dataField": "status"
                 }
               ]
             }
@@ -86,16 +57,16 @@
               "dataField": "id"
             },
             {
-              "label": "Product",
-              "dataField": "product"
+              "label": "Project",
+              "dataField": "project"
             },
             {
-              "label": "Brand",
-              "dataField": "brand"
+              "label": "Category",
+              "dataField": "category"
             },
             {
-              "label": "Origin",
-              "dataField": "origin"
+              "label": "Status",
+              "dataField": "status"
             }
           ]
         }

@@ -1,0 +1,64 @@
+{
+  "list": [
+    {
+      "id": 6,
+      "entity": "Contacts",
+      "subentity": "",
+      "topic": "",
+      "detail": [
+        {
+          "panel": [
+            {
+              "title": "Overview",
+              "data": [
+                {
+                  "label": "Name",
+                  "dataField": "name"
+                },
+                {
+                  "label": "Position",
+                  "dataField": "position"
+                },
+                {
+                  "label": "Department",
+                  "dataField": "department"
+                }
+              ]
+            },
+            {
+              "title": "Contact Info",
+              "data": [
+                {
+                  "label": "Email",
+                  "dataField": "email"
+                },
+                {
+                  "label": "Phone",
+                  "dataField": "phone"
+                }
+              ]
+            }
+          ],
+          "column": [
+            {
+              "label": "Id",
+              "dataField": "id"
+            },
+            {
+              "label": "Name",
+              "dataField": "name"
+            },
+            {
+              "label": "Position",
+              "dataField": "position"
+            },
+            {
+              "label": "Department",
+              "dataField": "department"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
