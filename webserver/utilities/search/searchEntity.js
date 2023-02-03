@@ -12,17 +12,17 @@ class SearchEntity {
     const arr = this.getEntityContent();
     let modArr = [];
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < arr.length; i++) {
       modArr.push({
         id: arr[i]?.id,
         key: arr[i]?.key,
       });
-      for (let j = 0; j < 3; j++) {
+      for (let j = 0; j < arr.length; j++) {
         modArr.push({
           id: arr[i]?.subentities[j]?.id,
           key: arr[i]?.subentities[j]?.key,
         });
-        for (let k = 0; k < 3; k++) {
+        for (let k = 0; k < arr.length; k++) {
           modArr.push({
             id: arr[i]?.subentities[j]?.filters[k]?.id,
             key: arr[i]?.subentities[j]?.filters[k]?.key,

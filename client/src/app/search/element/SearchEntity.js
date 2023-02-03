@@ -55,8 +55,6 @@ const SearchEntity = (props) => {
     return id;
   };
 
-  console.log(getKeyId());
-
   const handleSelectEntity = (value) => {
     setSelectedId(determineSelected(value));
   };

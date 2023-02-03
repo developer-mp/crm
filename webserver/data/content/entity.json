@@ -54,7 +54,6 @@
     {
       "id": 3,
       "name": "Services",
-      "key": "service",
       "subentities": [
         {
           "id": 301,
@@ -79,7 +78,6 @@
     {
       "id": 5,
       "name": "Insights",
-      "key": "insight/report",
       "subentities": [
         {
           "id": 501,
