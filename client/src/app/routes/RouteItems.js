@@ -10,6 +10,7 @@ import Login from "../login/Login.js";
 import Search from "../search/Search.js";
 import Result from "./../result/Result.js";
 import Detail from "./../detail/Detail.js";
+import ProtectedRoute from "./ProtectedRoute.js";
 import { getDashboardItems } from "../../actions/dashboard.js";
 import { getMenuItems } from "../../actions/menu.js";
 import {
@@ -32,22 +33,38 @@ const RouteItems = () => {
     // }
   }, [dispatch]);
 
+  function Protected(Component) {
+    return function ProtectedComponent(props) {
+      return (
+        <ProtectedRoute>
+          <Component {...props} />
+        </ProtectedRoute>
+      );
+    };
+  }
+
+  const ProtectedDashboard = Protected(Dashboard);
+  const ProtectedVerifyMessage = Protected(VerifyMessage);
+  const ProtectedVerifyEmail = Protected(VerifyEmail);
+  const ProtectedSearch = Protected(Search);
+  const ProtectedResult = Protected(Result);
+  const ProtectedDetail = Protected(Detail);
+
   return (
     <BrowserRouter>
       <Menu />
       <Routes>
-        <Route path="/" element={<Dashboard />} />
+        <Route path="/" element={<ProtectedDashboard />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        {/* <Route path="/" element={<ProtectedRoute />} /> */}
         <Route path="/verify" element={<VerifyMessage />} />
         <Route
           path="/verifyemail/:verificationcode"
           element={<VerifyEmail />}
         />
-        <Route path="/search/:entityId" element={<Search />} />
-        <Route path="/result" element={<Result />} />
-        <Route path="/detail" element={<Detail />} />
+        <Route path="/search/:entityId" element={<ProtectedSearch />} />
+        <Route path="/result" element={<ProtectedResult />} />
+        <Route path="/detail" element={<ProtectedDetail />} />
       </Routes>
     </BrowserRouter>
   );

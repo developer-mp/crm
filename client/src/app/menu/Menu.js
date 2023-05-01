@@ -12,9 +12,14 @@ const Menu = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { loadingLogout, errorLogout, successLogout } = useSelector(
-    (state) => state.user
-  );
+  const {
+    successLogin,
+    loadingLogout,
+    errorLogout,
+    successLogout,
+    firstName,
+    lastName,
+  } = useSelector((state) => state.user);
 
   // const user = useSelector((state) => state.user.accessToken);
 
@@ -26,7 +31,7 @@ const Menu = () => {
     dispatch(logoutUser());
   };
 
-  const name = "Alex";
+  const name = firstName + " " + lastName;
 
   const menuItemsList = menuItems.map((item) => {
     if (item.isGroup) {
@@ -36,25 +41,28 @@ const Menu = () => {
     }
   });
 
-  return (
-    //     {/* {user ? (
-    //   <div>accessToken: {user.accessToken}</div>
-    // ) : (
-    //   <div>No accessToken</div>
-    // )} */}
+  //     {/* {user ? (
+  //   <div>accessToken: {user.accessToken}</div>
+  // ) : (
+  //   <div>No accessToken</div>
+  // )} */}
 
-    <Navbar>
-      <Container>
-        <Navbar>{menuItemsList}</Navbar>
-        <Navbar.Text>
-          Welcome, {name}
-          <a onClick={logOut} href="/">
-            Logout
-          </a>
-        </Navbar.Text>
-      </Container>
-    </Navbar>
-  );
+  if (successLogin) {
+    return (
+      <Navbar>
+        <Container>
+          <Navbar>{menuItemsList}</Navbar>
+          <Navbar.Text>
+            Welcome, {name}
+            <a onClick={logOut} href="/">
+              Logout
+            </a>
+          </Navbar.Text>
+        </Container>
+      </Navbar>
+    );
+  }
+  return null;
 };
 
 export default Menu;

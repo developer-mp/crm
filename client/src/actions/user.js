@@ -23,22 +23,22 @@ export const registerUser = createAsyncThunk(
   }
 );
 
-// export const verifyEmail = createAsyncThunk(
-//   "auth/verifyEmail",
-//   (rejectWithValue) => {
-//     const { verificationcode } = useParams();
-//     try {
-//       return AuthService.verifyEmailUserService(verificationcode).then(
-//         (res) => {
-//           return res.data;
-//         }
-//       );
-//     } catch (error) {
-//       console.log(error);
-//       return rejectWithValue(error);
-//     }
-//   }
-// );
+export const verifyEmail = createAsyncThunk(
+  "auth/verifyEmail",
+  (rejectWithValue) => {
+    const { verificationcode } = useParams();
+    try {
+      return AuthService.verifyEmailUserService(verificationcode).then(
+        (res) => {
+          return res.data;
+        }
+      );
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error);
+    }
+  }
+);
 
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
@@ -54,7 +54,7 @@ export const loginUser = createAsyncThunk(
   }
 );
 
-export let token = UserService.storeToken();
+// export let token = UserService.storeToken();
 
 export const logoutUser = createAsyncThunk(
   "auth/logoutUser",

@@ -1,12 +1,14 @@
 import { useSelector } from "react-redux";
-import { Navigate, Outlet } from "react-router-dom";
-import Menu from "./../menu/Menu.js";
+import { Navigate, useLocation } from "react-router-dom";
 
-const ProtectedRoute = () => {
+const ProtectedRoute = ({ children }) => {
   const { successLogin } = useSelector((state) => state.user);
+  let location = useLocation();
 
-  // return successLogin ? <Outlet /> : <Navigate to="/login" />;
-  return successLogin ? <Menu /> : <Navigate to="/login" />;
+  if (!successLogin) {
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  }
+  return children;
 };
 
 export default ProtectedRoute;
