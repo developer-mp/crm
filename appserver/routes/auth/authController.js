@@ -48,7 +48,7 @@ class AuthController {
             });
           } else
             return res.status(400).json({
-              message: "Error has happened while sending a verification email",
+              message: "Error has occured while sending a verification email",
             });
         } catch (error) {
           console.log(error);

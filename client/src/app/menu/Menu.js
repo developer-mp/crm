@@ -1,10 +1,10 @@
 import MenuItem from "./element/MenuItem.js";
 import MenuItemGroup from "./element/MenuItemGroup.js";
-import { logoutUser } from "../../actions/user.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { Navbar, Container } from "react-bootstrap";
+import { logoutUser } from "../../slices/userSlice.js";
 import "./Menu.css";
 
 const Menu = () => {
@@ -14,14 +14,9 @@ const Menu = () => {
 
   const {
     successLogin,
-    loadingLogout,
-    errorLogout,
-    successLogout,
-    firstName,
-    lastName,
-  } = useSelector((state) => state.user);
 
-  // const user = useSelector((state) => state.user.accessToken);
+    successLogout,
+  } = useSelector((state) => state.user);
 
   useEffect(() => {
     if (successLogout) navigate("/");
@@ -31,7 +26,7 @@ const Menu = () => {
     dispatch(logoutUser());
   };
 
-  const name = firstName + " " + lastName;
+  // const name = firstName + " " + lastName;
 
   const menuItemsList = menuItems.map((item) => {
     if (item.isGroup) {
@@ -53,7 +48,8 @@ const Menu = () => {
         <Container>
           <Navbar>{menuItemsList}</Navbar>
           <Navbar.Text>
-            Welcome, {name}
+            Welcome,
+            {/* {user} */}
             <a onClick={logOut} href="/">
               Logout
             </a>

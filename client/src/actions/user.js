@@ -56,15 +56,15 @@ export const loginUser = createAsyncThunk(
 
 // export let token = UserService.storeToken();
 
-export const logoutUser = createAsyncThunk(
-  "auth/logoutUser",
-  (rejectWithValue) => {
-    try {
-      return AuthService.logoutUserService().then((res) => {
-        return res.data;
-      });
-    } catch (error) {
-      return rejectWithValue(error);
-    }
-  }
-);
+// export const logoutUser = createAsyncThunk(
+//   "auth/logoutUser",
+//   (rejectWithValue) => {
+//     try {
+//       return AuthService.logoutUserService().then((res) => {
+//         return res.data;
+//       });
+//     } catch (error) {
+//       return rejectWithValue(error);
+//     }
+//   }
+// );

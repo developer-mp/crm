@@ -1,18 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {
-  registerUser,
-  loginUser,
-  logoutUser,
-  // verifyEmail,
-} from "../actions/user.js";
+import { registerUser, loginUser, verifyEmail } from "../actions/user.js";
 
 const initialState = {
   loadingRegister: false,
   errorRegister: null,
   successRegister: false,
-  // loadingVerifyEmail: false,
-  // errorVerifyEmail: null,
-  // successVerifyEmail: false,
+  loadingVerifyEmail: false,
+  errorVerifyEmail: null,
+  successVerifyEmail: false,
   loadingLogin: false,
   errorLogin: null,
   successLogin: false,
@@ -24,13 +19,18 @@ const initialState = {
   email: "",
   accessToken: "",
   message: "",
-  // verificationCode: "",
+  verificationCode: "",
 };
 
 const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    logoutUser: (state) => {
+      state.successLogin = false;
+      state.successLogout = true;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(registerUser.pending, (state) => {
       state.loadingRegister = true;
@@ -47,19 +47,19 @@ const userSlice = createSlice({
       state.errorRegister = payload;
       state.successRegister = false;
     });
-    // builder.addCase(verifyEmail.pending, (state, { payload }) => {
-    //   state.loadingVerifyEmail = true;
-    //   state.verificationCode = payload;
-    // });
-    // builder.addCase(verifyEmail.fulfilled, (state) => {
-    //   state.loadingVerifyEmail = false;
-    //   state.successVerifyEmail = true;
-    // });
-    // builder.addCase(verifyEmail.rejected, (state, { payload }) => {
-    //   state.loadingVerifyEmail = false;
-    //   state.errorVerifyEmail = payload;
-    //   state.successVerifyEmail = false;
-    // });
+    builder.addCase(verifyEmail.pending, (state) => {
+      state.loadingVerifyEmail = true;
+    });
+    builder.addCase(verifyEmail.fulfilled, (state, { payload }) => {
+      state.loadingVerifyEmail = false;
+      state.successVerifyEmail = true;
+      state.verificationCode = payload;
+    });
+    builder.addCase(verifyEmail.rejected, (state, { payload }) => {
+      state.loadingVerifyEmail = false;
+      state.errorVerifyEmail = payload;
+      state.successVerifyEmail = false;
+    });
     builder.addCase(loginUser.pending, (state) => {
       state.loadingLogin = true;
     });
@@ -74,23 +74,9 @@ const userSlice = createSlice({
       state.errorLogin = payload;
       state.successLogin = false;
     });
-    builder.addCase(logoutUser.pending, (state) => {
-      state.loadingLogout = true;
-    });
-    builder.addCase(logoutUser.fulfilled, (state) => {
-      state.successLogin = false;
-      state.successLogout = true;
-      state.firstName = "";
-      state.lastName = "";
-      state.email = "";
-      state.accessToken = "";
-    });
-    builder.addCase(logoutUser.rejected, (state, { payload }) => {
-      state.loadingLogout = false;
-      state.errorLogout = payload;
-      state.successLogout = false;
-    });
   },
 });
+
+export const { logoutUser } = userSlice.actions;
 
 export default userSlice.reducer;
