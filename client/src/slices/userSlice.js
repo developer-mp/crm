@@ -14,9 +14,8 @@ const initialState = {
   loadingLogout: false,
   errorLogout: null,
   successLogout: false,
-  lastName: "",
   firstName: "",
-  email: "",
+  lastName: "",
   accessToken: "",
   message: "",
   verificationCode: "",
@@ -29,6 +28,12 @@ const userSlice = createSlice({
     logoutUser: (state) => {
       state.successLogin = false;
       state.successLogout = true;
+      state.firstName = "";
+      state.lastName = "";
+    },
+    setUserName: (state, action) => {
+      state.firstName = action.payload.split(" ")[0];
+      state.lastName = action.payload.split(" ")[1];
     },
   },
   extraReducers: (builder) => {
@@ -38,9 +43,6 @@ const userSlice = createSlice({
     builder.addCase(registerUser.fulfilled, (state, { payload }) => {
       state.loadingRegister = false;
       state.successRegister = true;
-      state.firstName = payload;
-      state.lastName = payload;
-      state.email = payload;
     });
     builder.addCase(registerUser.rejected, (state, { payload }) => {
       state.loadingRegister = false;
@@ -77,6 +79,6 @@ const userSlice = createSlice({
   },
 });
 
-export const { logoutUser } = userSlice.actions;
+export const { logoutUser, setUserName } = userSlice.actions;
 
 export default userSlice.reducer;

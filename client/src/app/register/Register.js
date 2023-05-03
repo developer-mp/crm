@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
+import { setUserName } from "../../slices/userSlice.js";
 import "./Register.css";
 
 const Register = () => {
@@ -39,6 +40,7 @@ const Register = () => {
   const submitForm = (data) => {
     data.email = data.email.toLowerCase();
     dispatch(registerUser(data));
+    dispatch(setUserName(`${data.firstName} ${data.lastName}`));
   };
 
   return (
