@@ -10,7 +10,9 @@ import Login from "../login/Login.js";
 import Search from "../search/Search.js";
 import Result from "./../result/Result.js";
 import Detail from "./../detail/Detail.js";
-import ProtectedRoute from "./ProtectedRoute.js";
+import NotFound from "../notFound/NotFound.js";
+import ProtectedLoginRoute from "./ProtectedLoginRoute.js";
+import ProtectedRegisterRoute from "./ProtectedRegisterRoute.js";
 import { getDashboardItems } from "../../actions/dashboard.js";
 import { getMenuItems } from "../../actions/menu.js";
 import {
@@ -36,16 +38,26 @@ const RouteItems = () => {
   function Protected(Component) {
     return function ProtectedComponent(props) {
       return (
-        <ProtectedRoute>
+        <ProtectedLoginRoute>
           <Component {...props} />
-        </ProtectedRoute>
+        </ProtectedLoginRoute>
+      );
+    };
+  }
+
+  function ProtectedRegister(Component) {
+    return function ProtectedComponent(props) {
+      return (
+        <ProtectedRegisterRoute>
+          <Component {...props} />
+        </ProtectedRegisterRoute>
       );
     };
   }
 
   const ProtectedDashboard = Protected(Dashboard);
-  const ProtectedVerifyMessage = Protected(VerifyMessage);
-  const ProtectedVerifyEmail = Protected(VerifyEmail);
+  const ProtectedVerifyMessage = ProtectedRegister(VerifyMessage);
+  const ProtectedVerifyEmail = ProtectedRegister(VerifyEmail);
   const ProtectedSearch = Protected(Search);
   const ProtectedResult = Protected(Result);
   const ProtectedDetail = Protected(Detail);
@@ -57,14 +69,15 @@ const RouteItems = () => {
         <Route path="/" element={<ProtectedDashboard />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/verify" element={<VerifyMessage />} />
+        <Route path="/verify" element={<ProtectedVerifyMessage />} />
         <Route
           path="/verifyemail/:verificationcode"
-          element={<VerifyEmail />}
+          element={<ProtectedVerifyEmail />}
         />
         <Route path="/search/:entityId" element={<ProtectedSearch />} />
         <Route path="/result" element={<ProtectedResult />} />
         <Route path="/detail" element={<ProtectedDetail />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

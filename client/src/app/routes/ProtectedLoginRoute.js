@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
 
-const ProtectedRoute = ({ children }) => {
+const ProtectedLoginRoute = ({ children }) => {
   const { successLogin } = useSelector((state) => state.user);
   let location = useLocation();
 
@@ -11,4 +11,4 @@ const ProtectedRoute = ({ children }) => {
   return children;
 };
 
-export default ProtectedRoute;
+export default ProtectedLoginRoute;

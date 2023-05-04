@@ -28,13 +28,11 @@ const userSlice = createSlice({
     logoutUser: (state) => {
       state.successLogin = false;
       state.successLogout = true;
-      state.firstName = "";
-      state.lastName = "";
     },
-    setUserName: (state, action) => {
-      state.firstName = action.payload.split(" ")[0];
-      state.lastName = action.payload.split(" ")[1];
-    },
+    // setUserName: (state, action) => {
+    //   state.firstName = action.payload.split(" ")[0];
+    //   state.lastName = action.payload.split(" ")[1];
+    // },
   },
   extraReducers: (builder) => {
     builder.addCase(registerUser.pending, (state) => {
