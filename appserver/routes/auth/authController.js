@@ -100,12 +100,16 @@ class AuthController {
       if (isUserSelect.rowCount === 0)
         return res.status(400).json({ message: "Email is not found" });
       else {
+        const user = isUserSelect.rows[0];
         const hashedPassword = isUserSelect.rows[0].password;
         const isPasswordMatch = await bcrypt.compare(password, hashedPassword);
         if (!isPasswordMatch) {
           return res.status(400).json({ message: "Incorrect password" });
         } else {
+          const { firstname, lastname } = user;
           return res.status(200).json({
+            firstname,
+            lastname,
             message: "Credentials are correct",
           });
         }

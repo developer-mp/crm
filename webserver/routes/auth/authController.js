@@ -62,22 +62,22 @@ class AuthController {
       res.clearCookie("refreshToken");
     }
     try {
-      await AuthService.loginUserService(email, password).then(() => {
-        res
-          .cookie("refreshToken", refreshToken, {
-            sameSite: "Lax",
-            maxAge: 24 * 60 * 60 * 1000,
-            httpOnly: true,
-          })
-          .status(200)
-          .json({
-            message: "LoggedIn successfully",
-            accessToken: accessToken,
-            refreshToken: refreshToken,
-          });
-        // console.log(accessToken);
-        //return accessToken;
-      });
+      const response = await AuthService.loginUserService(email, password);
+      const { firstname, lastname } = response;
+      res
+        .cookie("refreshToken", refreshToken, {
+          sameSite: "Lax",
+          maxAge: 24 * 60 * 60 * 1000,
+          httpOnly: true,
+        })
+        .status(200)
+        .json({
+          message: "LoggedIn successfully",
+          accessToken: accessToken,
+          refreshToken: refreshToken,
+          firstName: firstname,
+          lastName: lastname,
+        });
     } catch (error) {
       console.log(error);
       return res.status(400).json({ message: "Error" });

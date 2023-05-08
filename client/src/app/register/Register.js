@@ -42,10 +42,6 @@ const Register = () => {
     data.email = data.email.toLowerCase();
     dispatch(registerUser(data));
     Cookies.set("successRegister", true, { expires: 7 });
-    Cookies.set("userName", `${data.firstName} ${data.lastName}`, {
-      expires: 7,
-    });
-    // dispatch(setUserName(`${data.firstName} ${data.lastName}`));
   };
 
   return (

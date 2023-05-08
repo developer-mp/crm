@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { Navbar, Container } from "react-bootstrap";
 import { logoutUser } from "../../slices/userSlice.js";
 import "./Menu.css";
-import Cookies from "js-cookie";
 
 const Menu = () => {
   const { menuItems } = useSelector((store) => store.menu);
@@ -14,7 +13,9 @@ const Menu = () => {
   const navigate = useNavigate();
   const [isLoggedOut, setIsLoggedOut] = useState(false);
 
-  const { successLogin, successLogout } = useSelector((state) => state.user);
+  const { successLogin, successLogout, firstName, lastName } = useSelector(
+    (state) => state.user
+  );
 
   useEffect(() => {
     if (successLogout && !isLoggedOut) {
@@ -28,7 +29,7 @@ const Menu = () => {
     dispatch(logoutUser());
   };
 
-  const userName = Cookies.get("userName");
+  const userName = firstName + " " + lastName;
 
   const menuItemsList = menuItems.map((item) => {
     if (item.isGroup) {

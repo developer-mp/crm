@@ -45,7 +45,8 @@ export const loginUser = createAsyncThunk(
   ({ email, password }, { rejectWithValue }) => {
     try {
       return AuthService.loginUserService(email, password).then((res) => {
-        UserService.storeToken(res.data.accessToken);
+        // UserService.storeToken(res.data.accessToken);
+        // console.log(res.data);
         return res.data;
       });
     } catch (error) {

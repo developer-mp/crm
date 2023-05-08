@@ -29,10 +29,6 @@ const userSlice = createSlice({
       state.successLogin = false;
       state.successLogout = true;
     },
-    // setUserName: (state, action) => {
-    //   state.firstName = action.payload.split(" ")[0];
-    //   state.lastName = action.payload.split(" ")[1];
-    // },
   },
   extraReducers: (builder) => {
     builder.addCase(registerUser.pending, (state) => {
@@ -68,6 +64,8 @@ const userSlice = createSlice({
       state.successLogin = true;
       state.accessToken = payload;
       state.message = payload;
+      state.firstName = payload.firstName;
+      state.lastName = payload.lastName;
     });
     builder.addCase(loginUser.rejected, (state, { payload }) => {
       state.loadingLogin = false;
