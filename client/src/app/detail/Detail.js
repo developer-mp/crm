@@ -1,5 +1,5 @@
-import List from "../../component/list/List.js";
-import Accordion from "../../component/accordion/Accordion.js";
+import List from "../../components/list/List.js";
+import Accordion from "../../components/accordion/Accordion.js";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { saveAs } from "file-saver";

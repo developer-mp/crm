@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Navbar, Container } from "react-bootstrap";
-import { logoutUser } from "../../slices/userSlice.js";
+import { logoutUser } from "../../slices/user.js";
 import "./Menu.css";
 
 const Menu = () => {

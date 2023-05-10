@@ -1,5 +1,5 @@
 import SearchEntity from "./element/SearchEntity.js";
-import List from "../../component/list/List.js";
+import List from "../../components/list/List.js";
 import { useParams } from "react-router-dom";
 import "./Search.css";
 

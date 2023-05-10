@@ -1,4 +1,4 @@
-import List from "./../../component/list/List.js";
+import List from "./../../components/list/List.js";
 import { getDetail } from "../../actions/detail.js";
 import { useSelector, useDispatch } from "react-redux";
 import { Table } from "react-bootstrap";

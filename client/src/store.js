@@ -1,9 +1,9 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import dashboardReducer from "./slices/dashboard.js";
-import searchEntitiesReducer from "./slices/searchSlice.js";
-import queryFiltersReducer from "./slices/queryFiltersSlice.js";
-import menuReducer from "./slices/menuSlice.js";
-import userReducer from "./slices/userSlice.js";
+import searchEntitiesReducer from "./slices/search.js";
+import queryFiltersReducer from "./slices/queryFilters.js";
+import menuReducer from "./slices/menu.js";
+import userReducer from "./slices/user.js";
 import resultReducer from "./slices/result.js";
 import detailReducer from "./slices/detail.js";
 import sessionStorage from "redux-persist/es/storage/session.js";
