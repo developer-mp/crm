@@ -12,19 +12,6 @@
               "title": "Overview",
               "data": [
                 {
-                  "label": "Project",
-                  "dataField": "project"
-                },
-                {
-                  "label": "Category",
-                  "dataField": "category"
-                }
-              ]
-            },
-            {
-              "title": "General Info",
-              "data": [
-                {
                   "label": "Id",
                   "dataField": "id"
                 },
@@ -39,7 +26,12 @@
                 {
                   "label": "Category",
                   "dataField": "category"
-                },
+                }
+              ]
+            },
+            {
+              "title": "Attributes",
+              "data": [
                 {
                   "label": "Description",
                   "dataField": "description"

@@ -12,27 +12,6 @@
               "title": "Overview",
               "data": [
                 {
-                  "label": "Product",
-                  "dataField": "product"
-                },
-                {
-                  "label": "Category",
-                  "dataField": "category"
-                },
-                {
-                  "label": "Brand",
-                  "dataField": "brand"
-                },
-                {
-                  "label": "Origin",
-                  "dataField": "origin"
-                }
-              ]
-            },
-            {
-              "title": "General Info",
-              "data": [
-                {
                   "label": "Id",
                   "dataField": "id"
                 },
@@ -51,6 +30,14 @@
                 {
                   "label": "Description",
                   "dataField": "description"
+                },
+                {
+                  "label": "Brand",
+                  "dataField": "brand"
+                },
+                {
+                  "label": "Origin",
+                  "dataField": "origin"
                 }
               ]
             },
@@ -64,10 +51,6 @@
                 {
                   "label": "Standard",
                   "dataField": "standard"
-                },
-                {
-                  "label": "Product Code",
-                  "dataField": "productcode"
                 },
                 {
                   "label": "Price",
@@ -113,19 +96,6 @@
               "title": "Overview",
               "data": [
                 {
-                  "label": "Document",
-                  "dataField": "document"
-                },
-                {
-                  "label": "Category",
-                  "dataField": "category"
-                }
-              ]
-            },
-            {
-              "title": "General Info",
-              "data": [
-                {
                   "label": "Id",
                   "dataField": "id"
                 },
@@ -136,6 +106,10 @@
                 {
                   "label": "Document Code",
                   "dataField": "documentcode"
+                },
+                {
+                  "label": "Category",
+                  "dataField": "category"
                 }
               ]
             },

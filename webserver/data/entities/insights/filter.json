@@ -12,19 +12,6 @@
               "title": "Overview",
               "data": [
                 {
-                  "label": "Report",
-                  "dataField": "report"
-                },
-                {
-                  "label": "Category",
-                  "dataField": "category"
-                }
-              ]
-            },
-            {
-              "title": "General Info",
-              "data": [
-                {
                   "label": "Id",
                   "dataField": "id"
                 },

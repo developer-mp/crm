@@ -12,19 +12,6 @@
               "title": "Overview",
               "data": [
                 {
-                  "label": "Service",
-                  "dataField": "service"
-                },
-                {
-                  "label": "Category",
-                  "dataField": "category"
-                }
-              ]
-            },
-            {
-              "title": "General Info",
-              "data": [
-                {
                   "label": "Id",
                   "dataField": "id"
                 },
@@ -58,7 +45,7 @@
                   "dataField": "unitmeasure"
                 },
                 {
-                  "label": "currency",
+                  "label": "Currency",
                   "dataField": "currency"
                 }
               ]

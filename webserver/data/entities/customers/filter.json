@@ -12,23 +12,6 @@
               "title": "Overview",
               "data": [
                 {
-                  "label": "Customer",
-                  "dataField": "customer"
-                },
-                {
-                  "label": "Country",
-                  "dataField": "country"
-                },
-                {
-                  "label": "Industry",
-                  "dataField": "industry"
-                }
-              ]
-            },
-            {
-              "title": "General Info",
-              "data": [
-                {
                   "label": "Id",
                   "dataField": "id"
                 },
@@ -155,19 +138,6 @@
               "title": "Overview",
               "data": [
                 {
-                  "label": "Campaign",
-                  "dataField": "campaign"
-                },
-                {
-                  "label": "Category",
-                  "dataField": "category"
-                }
-              ]
-            },
-            {
-              "title": "General Info",
-              "data": [
-                {
                   "label": "Id",
                   "dataField": "id"
                 },
@@ -178,6 +148,10 @@
                 {
                   "label": "Campaign Code",
                   "dataField": "campaigncode"
+                },
+                {
+                  "label": "Category",
+                  "dataField": "category"
                 },
                 {
                   "label": "Description",
@@ -232,19 +206,6 @@
               "title": "Overview",
               "data": [
                 {
-                  "label": "Campaign",
-                  "dataField": "campaign"
-                },
-                {
-                  "label": "Category",
-                  "dataField": "category"
-                }
-              ]
-            },
-            {
-              "title": "General Info",
-              "data": [
-                {
                   "label": "Id",
                   "dataField": "id"
                 },
@@ -255,6 +216,10 @@
                 {
                   "label": "Campaign Code",
                   "dataField": "campaigncode"
+                },
+                {
+                  "label": "Category",
+                  "dataField": "category"
                 },
                 {
                   "label": "Description",
@@ -309,19 +274,6 @@
               "title": "Overview",
               "data": [
                 {
-                  "label": "Campaign",
-                  "dataField": "campaign"
-                },
-                {
-                  "label": "Category",
-                  "dataField": "category"
-                }
-              ]
-            },
-            {
-              "title": "General Info",
-              "data": [
-                {
                   "label": "Id",
                   "dataField": "id"
                 },
@@ -332,6 +284,10 @@
                 {
                   "label": "Campaign Code",
                   "dataField": "campaigncode"
+                },
+                {
+                  "label": "Category",
+                  "dataField": "category"
                 },
                 {
                   "label": "Description",
