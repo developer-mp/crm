@@ -7,22 +7,22 @@ import "./Detail.css";
 const Detail = () => {
   const { detail } = useSelector((store) => store.detail);
   const { result } = useSelector((store) => store.result);
-  const [isEditMode, setIsEditMode] = useState(false);
   const [editedData, setEditedData] = useState(detail);
+  const [editMode, setEditMode] = useState({});
 
-  const handleEditClick = () => {
-    setIsEditMode(true);
+  const handleEditClick = (panelTitle) => {
+    setEditMode((prevMode) => ({ ...prevMode, [panelTitle]: true }));
     setEditedData(detail);
   };
 
-  const handleCancelClick = () => {
-    setIsEditMode(false);
+  const handleCancelClick = (panelTitle) => {
+    setEditMode((prevMode) => ({ ...prevMode, [panelTitle]: false }));
     setEditedData(detail);
   };
 
   // const handleSaveClick = () => {
   //   dispatch(updateDetail(editedData));
-  //   setIsEditMode(false);
+  //   setEditModes({});
   // };
 
   const handleInputChange = (event) => {
@@ -35,9 +35,12 @@ const Detail = () => {
       <List title={"Details: " + detail.customer}>
         {result.detail?.[0].panel.map((item) => (
           <Accordion title={item.title} key={item.title}>
-            {isEditMode ? (
+            {editMode[item.title] ? (
               <div>
-                <button className="detail-button" onClick={handleCancelClick}>
+                <button
+                  className="detail-button"
+                  onClick={() => handleCancelClick(item.title)}
+                >
                   Cancel
                 </button>
                 <button
@@ -48,12 +51,15 @@ const Detail = () => {
                 </button>
               </div>
             ) : (
-              <button className="detail-button" onClick={handleEditClick}>
+              <button
+                className="detail-button"
+                onClick={() => handleEditClick(item.title)}
+              >
                 Edit
               </button>
             )}
             {item.data.map((d) =>
-              isEditMode ? (
+              editMode[item.title] ? (
                 <div key={d.label}>
                   <b>{d.label}</b> :{" "}
                   <input
