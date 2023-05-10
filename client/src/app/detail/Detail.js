@@ -2,6 +2,8 @@ import List from "../../component/list/List.js";
 import Accordion from "../../component/accordion/Accordion.js";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import { saveAs } from "file-saver";
+import { useRef } from "react";
 import "./Detail.css";
 
 const Detail = () => {
@@ -9,6 +11,7 @@ const Detail = () => {
   const { result } = useSelector((store) => store.result);
   const [editedData, setEditedData] = useState(detail);
   const [editMode, setEditMode] = useState({});
+  const detailRef = useRef(null);
 
   const handleEditClick = (panelTitle) => {
     setEditMode((prevMode) => ({ ...prevMode, [panelTitle]: true }));
@@ -30,9 +33,24 @@ const Detail = () => {
     setEditedData({ ...editedData, [name]: value });
   };
 
+  const exportToCSV = () => {
+    const rows = [[detail.customer]];
+    result.detail[0].panel.forEach((panel) => {
+      panel.data.forEach((item) => {
+        rows.push([panel.title, item.label, detail[item.dataField]]);
+      });
+    });
+    const csvData = rows.join("\n");
+    const blob = new Blob([csvData], { type: "text/csv;charset=utf-8" });
+    saveAs(blob, "detail.csv");
+  };
+
   return (
     <div className="detail">
       <List title={"Details: " + detail.customer}>
+        <button className="detail-button-export" onClick={exportToCSV}>
+          Export
+        </button>
         {result.detail?.[0].panel.map((item) => (
           <Accordion title={item.title} key={item.title}>
             {editMode[item.title] ? (

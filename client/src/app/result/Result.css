@@ -5,6 +5,12 @@
   justify-content: center;
 }
 
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .result-count {
   margin: 0.5em 0 0.5em 0;
   font-size: 0.9em;
@@ -13,4 +19,18 @@
 thead,
 tbody {
   text-align: center;
+}
+
+.result-button {
+  width: 3.7rem;
+  text-align: center;
+  background-color: #878787;
+  color: white;
+  padding: 0.5em 1em;
+  border: none;
+  margin-bottom: 1em;
+  margin-right: 1em;
+  border-radius: 0.6em;
+  font-size: 0.7em;
+  cursor: pointer;
 }
