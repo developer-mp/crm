@@ -11,8 +11,8 @@ import Search from "../search/Search.js";
 import Result from "./../result/Result.js";
 import Detail from "./../detail/Detail.js";
 import NotFound from "../notFound/NotFound.js";
-import ProtectedLoginRoute from "./ProtectedLoginRoute.js";
-import ProtectedRegisterRoute from "./ProtectedRegisterRoute.js";
+import VerifiedEmail from "./../verify/VerifiedEmail.js";
+import ProtectedRoute from "./ProtectedRoute.js";
 import { getDashboardItems } from "../../actions/dashboard.js";
 import { getMenuItems } from "../../actions/menu.js";
 import {
@@ -35,29 +35,20 @@ const RouteItems = () => {
     // }
   }, [dispatch]);
 
-  function Protected(Component) {
+  function Protected(Component, verifyProp) {
     return function ProtectedComponent(props) {
       return (
-        <ProtectedLoginRoute>
+        <ProtectedRoute verify={verifyProp}>
           <Component {...props} />
-        </ProtectedLoginRoute>
-      );
-    };
-  }
-
-  function ProtectedRegister(Component) {
-    return function ProtectedComponent(props) {
-      return (
-        <ProtectedRegisterRoute>
-          <Component {...props} />
-        </ProtectedRegisterRoute>
+        </ProtectedRoute>
       );
     };
   }
 
   const ProtectedDashboard = Protected(Dashboard);
-  const ProtectedVerifyMessage = ProtectedRegister(VerifyMessage);
-  const ProtectedVerifyEmail = ProtectedRegister(VerifyEmail);
+  const ProtectedVerifyMessage = Protected(VerifyMessage, true);
+  const ProtectedVerifyEmail = Protected(VerifyEmail, true);
+  const ProtectedVerifiedEmail = Protected(VerifiedEmail, true);
   const ProtectedSearch = Protected(Search);
   const ProtectedResult = Protected(Result);
   const ProtectedDetail = Protected(Detail);
@@ -74,6 +65,7 @@ const RouteItems = () => {
           path="/verifyemail/:verificationcode"
           element={<ProtectedVerifyEmail />}
         />
+        <Route path="/verified" element={<ProtectedVerifiedEmail />} />
         <Route path="/search/:entityId" element={<ProtectedSearch />} />
         <Route path="/result" element={<ProtectedResult />} />
         <Route path="/detail" element={<ProtectedDetail />} />

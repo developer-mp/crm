@@ -40,7 +40,7 @@ class AuthController {
       });
     } catch (error) {
       console.log(error);
-      return res.status(400).json({ message: "Error" });
+      return res.status(400).json({ message: "Error has occured" });
     }
   }
 
@@ -63,7 +63,7 @@ class AuthController {
     }
     try {
       const response = await AuthService.loginUserService(email, password);
-      const { firstname, lastname } = response;
+      const { firstname, lastname, verified } = response;
       res
         .cookie("refreshToken", refreshToken, {
           sameSite: "Lax",
@@ -77,6 +77,7 @@ class AuthController {
           refreshToken: refreshToken,
           firstName: firstname,
           lastName: lastname,
+          verified: verified,
         });
     } catch (error) {
       console.log(error);

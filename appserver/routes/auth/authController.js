@@ -106,11 +106,12 @@ class AuthController {
         if (!isPasswordMatch) {
           return res.status(400).json({ message: "Incorrect password" });
         } else {
-          const { firstname, lastname } = user;
+          const { firstname, lastname, verified } = user;
           return res.status(200).json({
             firstname,
             lastname,
             message: "Credentials are correct",
+            verified,
           });
         }
       }

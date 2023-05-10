@@ -25,8 +25,7 @@ export const registerUser = createAsyncThunk(
 
 export const verifyEmail = createAsyncThunk(
   "auth/verifyEmail",
-  (rejectWithValue) => {
-    const { verificationcode } = useParams();
+  async (verificationcode, { rejectWithValue }) => {
     try {
       return AuthService.verifyEmailUserService(verificationcode).then(
         (res) => {
@@ -46,7 +45,6 @@ export const loginUser = createAsyncThunk(
     try {
       return AuthService.loginUserService(email, password).then((res) => {
         // UserService.storeToken(res.data.accessToken);
-        // console.log(res.data);
         return res.data;
       });
     } catch (error) {

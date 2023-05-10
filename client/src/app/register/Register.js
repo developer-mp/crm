@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
-// import { setUserName } from "../../slices/userSlice.js";
 import "./Register.css";
 import Cookies from "js-cookie";
 
@@ -41,7 +40,7 @@ const Register = () => {
   const submitForm = (data) => {
     data.email = data.email.toLowerCase();
     dispatch(registerUser(data));
-    Cookies.set("successRegister", true, { expires: 7 });
+    Cookies.set("successRegister", true, { expires: 3 });
   };
 
   return (

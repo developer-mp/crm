@@ -13,10 +13,6 @@ const Login = () => {
     (state) => state.user
   );
 
-  // const successVerifyEmail = useSelector((state) => state.user);
-
-  // console.log(successVerifyEmail);
-
   useEffect(() => {
     if (successLogin) navigate("/");
   }, [navigate, successLogin]);

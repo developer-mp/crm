@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { registerUser, loginUser, verifyEmail } from "../actions/user.js";
+import { registerUser, loginUser } from "../actions/user.js";
 
 const initialState = {
   loadingRegister: false,
@@ -16,9 +16,9 @@ const initialState = {
   successLogout: false,
   firstName: "",
   lastName: "",
+  verified: false,
   accessToken: "",
   message: "",
-  verificationCode: "",
 };
 
 const userSlice = createSlice({
@@ -41,20 +41,6 @@ const userSlice = createSlice({
     builder.addCase(registerUser.rejected, (state, { payload }) => {
       state.loadingRegister = false;
       state.errorRegister = payload;
-      state.successRegister = false;
-    });
-    builder.addCase(verifyEmail.pending, (state) => {
-      state.loadingVerifyEmail = true;
-    });
-    builder.addCase(verifyEmail.fulfilled, (state, { payload }) => {
-      state.loadingVerifyEmail = false;
-      state.successVerifyEmail = true;
-      state.verificationCode = payload;
-    });
-    builder.addCase(verifyEmail.rejected, (state, { payload }) => {
-      state.loadingVerifyEmail = false;
-      state.errorVerifyEmail = payload;
-      state.successVerifyEmail = false;
     });
     builder.addCase(loginUser.pending, (state) => {
       state.loadingLogin = true;
@@ -75,6 +61,6 @@ const userSlice = createSlice({
   },
 });
 
-export const { logoutUser, setUserName } = userSlice.actions;
+export const { logoutUser } = userSlice.actions;
 
 export default userSlice.reducer;
