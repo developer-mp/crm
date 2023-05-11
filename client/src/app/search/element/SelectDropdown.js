@@ -10,13 +10,14 @@ const SelectDropdown = (props) => {
   return (
     <Form.Group controlId={name}>
       <Form.Label className="select-dropdown-label">{label}</Form.Label>
-      <Form.Select onChange={handleChange} value={selectedId}>
-        <option selected disabled>
-          --Choose an option--
-        </option>
+      <Form.Select onChange={handleChange} defaultValue={selectedId}>
         {items &&
-          items.map((item) => (
-            <option key={item.id} value={item.id}>
+          items.map((item, index) => (
+            <option
+              key={item.id}
+              value={item.id}
+              // selected={index === 0}
+            >
               {item.name}
             </option>
           ))}

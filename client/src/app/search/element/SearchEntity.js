@@ -2,7 +2,7 @@ import SelectDropdown from "./SelectDropdown.js";
 import { getResult } from "../../../actions/result.js";
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SearchEntity.css";
 import pkg from "lodash";
@@ -10,6 +10,7 @@ const { find } = pkg;
 
 const SearchEntity = (props) => {
   const { entityId } = props;
+
   const navigate = useNavigate();
 
   const { searchEntities } = useSelector((store) => store.searchEntities);
@@ -27,10 +28,19 @@ const SearchEntity = (props) => {
       const entity = getElement(entities, initialEntityId);
       const subentity = getElement(entity.subentities, initialSubentityId);
       const filter = getElement(subentity.filters, initialFilterId);
+      const index = entitiesList[initialEntityId - 1]?.subentities?.findIndex(
+        (subentity) => subentity.filters.length > 0
+      );
       return {
         entityId: entity.id,
-        subentityId: subentity.id,
-        filterId: filter.id,
+        subentityId:
+          subentity.id || entitiesList[initialEntityId - 1]?.subentities[0]?.id,
+        filterId:
+          filter.id ||
+          (subentity.id % 10 > 1
+            ? entitiesList[initialEntityId - 1]?.subentities[index]?.filters[0]
+                ?.id
+            : filter.id),
       };
     }
   };
@@ -46,15 +56,6 @@ const SearchEntity = (props) => {
     determineSelected(parseInt(entityId))
   );
 
-  const getKeyId = () => {
-    let arr = [];
-    let id = "";
-    arr = Object.values(selectedId);
-    arr = arr.filter((item) => item !== undefined);
-    id = Math.max(...arr);
-    return id;
-  };
-
   const handleSelectEntity = (value) => {
     setSelectedId(determineSelected(value));
   };
@@ -67,6 +68,17 @@ const SearchEntity = (props) => {
     setSelectedId(
       determineSelected(selectedId.entityId, selectedId.subentityId, value)
     );
+  };
+
+  console.log(selectedId);
+
+  const getKeyId = () => {
+    let arr = [];
+    let id = "";
+    arr = Object.values(selectedId);
+    arr = arr.filter((item) => item !== undefined);
+    id = Math.max(...arr);
+    return id;
   };
 
   const handleResult = () => {
