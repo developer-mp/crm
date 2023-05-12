@@ -9,9 +9,11 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { loadingLogin, errorLogin, successLogin } = useSelector(
+  const { loadingLogin, errorLogin, successLogin, verified } = useSelector(
     (state) => state.user
   );
+
+  console.log(verified);
 
   useEffect(() => {
     if (successLogin) navigate("/");
@@ -34,7 +36,8 @@ const Login = () => {
       <div className="login-wrapper">
         <h1 className="login-title">Login</h1>
         <form className="login-form" onSubmit={handleSubmit(submitForm)}>
-          {errorLogin && <div>Error</div>}
+          {/* {errorLogin && <div>Error</div>} */}
+          {!verified && <div>Please verify your email</div>}
           <label>Email</label>{" "}
           <input
             type="email"

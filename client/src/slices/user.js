@@ -52,6 +52,7 @@ const userSlice = createSlice({
       state.message = payload;
       state.firstName = payload.firstName;
       state.lastName = payload.lastName;
+      state.verified = payload.verified;
     });
     builder.addCase(loginUser.rejected, (state, { payload }) => {
       state.loadingLogin = false;

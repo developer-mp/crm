@@ -4,14 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { saveAs } from "file-saver";
-import { useRef } from "react";
 import "./Result.css";
 
 const Result = () => {
   const { result } = useSelector((store) => store.result);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const resultRef = useRef(null);
 
   const viewRecord = (row) => {
     navigate("/detail");
@@ -39,7 +37,7 @@ const Result = () => {
             Export
           </button>
         </div>
-        <Table striped bordered hover ref={resultRef}>
+        <Table striped bordered hover>
           <thead>
             <tr>
               {result.detail?.[0].column.map((item) => (

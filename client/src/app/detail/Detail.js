@@ -3,7 +3,6 @@ import Accordion from "../../components/accordion/Accordion.js";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { saveAs } from "file-saver";
-import { useRef } from "react";
 import "./Detail.css";
 
 const Detail = () => {
@@ -11,7 +10,6 @@ const Detail = () => {
   const { result } = useSelector((store) => store.result);
   const [editedData, setEditedData] = useState(detail);
   const [editMode, setEditMode] = useState({});
-  const detailRef = useRef(null);
 
   const handleEditClick = (panelTitle) => {
     setEditMode((prevMode) => ({ ...prevMode, [panelTitle]: true }));
@@ -34,7 +32,7 @@ const Detail = () => {
   };
 
   const exportToCSV = () => {
-    const rows = [[detail.customer]];
+    const rows = [];
     result.detail[0].panel.forEach((panel) => {
       panel.data.forEach((item) => {
         rows.push([panel.title, item.label, detail[item.dataField]]);
@@ -47,7 +45,7 @@ const Detail = () => {
 
   return (
     <div className="detail">
-      <List title={"Details: " + detail.customer}>
+      <List title={"Details"}>
         <button className="detail-button-export" onClick={exportToCSV}>
           Export
         </button>

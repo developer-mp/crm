@@ -1,6 +1,8 @@
 .register {
-  width: 100vw;
-  height: 100vh;
+  /* width: 100vw;
+  height: 100vh; */
+  margin-top: 2em;
+  margin-bottom: 2em;
   display: flex;
   flex-direction: column;
   align-items: center;

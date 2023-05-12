@@ -70,8 +70,6 @@ const SearchEntity = (props) => {
     );
   };
 
-  console.log(selectedId);
-
   const getKeyId = () => {
     let arr = [];
     let id = "";
