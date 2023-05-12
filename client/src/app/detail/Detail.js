@@ -2,7 +2,7 @@ import List from "../../components/list/List.js";
 import Accordion from "../../components/accordion/Accordion.js";
 import { useSelector } from "react-redux";
 import { useState } from "react";
-import { saveAs } from "file-saver";
+import ExportService from "../../services/exportService.js";
 import "./Detail.css";
 
 const Detail = () => {
@@ -31,7 +31,7 @@ const Detail = () => {
     setEditedData({ ...editedData, [name]: value });
   };
 
-  const exportToCSV = () => {
+  const exportDetailToCSV = () => {
     const rows = [];
     result.detail[0].panel.forEach((panel) => {
       panel.data.forEach((item) => {
@@ -39,14 +39,13 @@ const Detail = () => {
       });
     });
     const csvData = rows.join("\n");
-    const blob = new Blob([csvData], { type: "text/csv;charset=utf-8" });
-    saveAs(blob, "detail.csv");
+    ExportService.exportToCSV(csvData, "detail");
   };
 
   return (
     <div className="detail">
       <List title={"Details"}>
-        <button className="detail-button-export" onClick={exportToCSV}>
+        <button className="detail-button-export" onClick={exportDetailToCSV}>
           Export
         </button>
         {result.detail?.[0].panel.map((item) => (

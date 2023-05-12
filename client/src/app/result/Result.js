@@ -3,7 +3,7 @@ import { getDetail } from "../../actions/detail.js";
 import { useSelector, useDispatch } from "react-redux";
 import { Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { saveAs } from "file-saver";
+import ExportService from "../../services/exportService.js";
 import "./Result.css";
 
 const Result = () => {
@@ -16,14 +16,13 @@ const Result = () => {
     dispatch(getDetail(row));
   };
 
-  const exportToCSV = () => {
+  const exportResultToCSV = () => {
     const rows = [result.detail[0].column.map((col) => col.label)];
     result.data.record.forEach((item) => {
       rows.push(result.detail[0].column.map((col) => item[col.dataField]));
     });
     const csvData = rows.map((row) => row.join(",")).join("\n");
-    const blob = new Blob([csvData], { type: "text/csv;charset=utf-8" });
-    saveAs(blob, "result.csv");
+    ExportService.exportToCSV(csvData, "result");
   };
 
   return (
@@ -33,7 +32,7 @@ const Result = () => {
           <div className="result-count">
             {"Total records: " + result.data?.count}
           </div>
-          <button className="result-button" onClick={exportToCSV}>
+          <button className="result-button" onClick={exportResultToCSV}>
             Export
           </button>
         </div>

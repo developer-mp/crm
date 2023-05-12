@@ -1,16 +1,10 @@
-import { Parser } from "json2csv";
-import FileSaver from "file-saver";
+import { saveAs } from "file-saver";
 
 class ExportService {
-  static parseResultsToScv(headers, data) {
-    const fields = headers.map((header) => ({
-      label: header.text,
-      value: header.datafield,
-    }));
-    const csv = new Parser({ fields }).parser(data);
-    var blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
-    FileSaver.saveAs(blob, "export.csv");
-  }
+  static exportToCSV = (data, file) => {
+    const blob = new Blob([data], { type: "text/csv;charset=utf-8" });
+    saveAs(blob, `${file}.csv`);
+  };
 }
 
 export default ExportService;
