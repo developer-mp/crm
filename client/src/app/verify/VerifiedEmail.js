@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
 
 const VerifiedEmail = () => {
-  Cookies.remove("successRegister");
+  Cookies.remove("pendingRegister");
   return (
     <div className="verify">
       <img src={Email} alt="" />

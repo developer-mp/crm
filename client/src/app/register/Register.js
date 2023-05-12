@@ -40,7 +40,7 @@ const Register = () => {
   const submitForm = (data) => {
     data.email = data.email.toLowerCase();
     dispatch(registerUser(data));
-    Cookies.set("successRegister", true, { expires: 3 });
+    Cookies.set("pendingRegister", true, { expires: 3 });
   };
 
   return (

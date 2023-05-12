@@ -9,14 +9,13 @@ const initialState = {
   errorVerifyEmail: null,
   successVerifyEmail: false,
   loadingLogin: false,
-  errorLogin: null,
+  errorLogin: false,
   successLogin: false,
   loadingLogout: false,
   errorLogout: null,
   successLogout: false,
   firstName: "",
   lastName: "",
-  verified: false,
   accessToken: "",
   message: "",
 };
@@ -33,10 +32,12 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(registerUser.pending, (state) => {
       state.loadingRegister = true;
+      state.errorRegister = null;
     });
     builder.addCase(registerUser.fulfilled, (state, { payload }) => {
       state.loadingRegister = false;
       state.successRegister = true;
+      state.errorRegister = null;
     });
     builder.addCase(registerUser.rejected, (state, { payload }) => {
       state.loadingRegister = false;
@@ -44,19 +45,21 @@ const userSlice = createSlice({
     });
     builder.addCase(loginUser.pending, (state) => {
       state.loadingLogin = true;
+      state.errorLogin = false;
     });
     builder.addCase(loginUser.fulfilled, (state, { payload }) => {
       state.loadingLogin = false;
       state.successLogin = true;
       state.accessToken = payload;
-      state.message = payload;
+      state.message = payload.message;
       state.firstName = payload.firstName;
       state.lastName = payload.lastName;
-      state.verified = payload.verified;
+      state.errorLogin = false;
     });
     builder.addCase(loginUser.rejected, (state, { payload }) => {
       state.loadingLogin = false;
-      state.errorLogin = payload;
+      state.errorLogin = true;
+      // state.message = payload.response.data.message;
       state.successLogin = false;
     });
   },

@@ -81,7 +81,7 @@ class AuthController {
         });
     } catch (error) {
       console.log(error);
-      return res.status(400).json({ message: "Error" });
+      return res.status(400).json({ message: "Error has occured" });
     }
   }
 

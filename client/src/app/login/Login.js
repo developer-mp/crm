@@ -1,19 +1,22 @@
 import { useForm } from "react-hook-form";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { loginUser } from "../../actions/user.js";
 import "./Login.css";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { loadingLogin, errorLogin, successLogin, verified } = useSelector(
+  const [error, setError] = useState(false);
+
+  const { loadingLogin, errorLogin, successLogin } = useSelector(
     (state) => state.user
   );
 
-  console.log(verified);
+  const isRegistered = Cookies.get("pendingRegister") === "true";
 
   useEffect(() => {
     if (successLogin) navigate("/");
@@ -28,6 +31,10 @@ const Login = () => {
   email.current = watch("email", "");
 
   const submitForm = (data) => {
+    if (isRegistered) {
+      setError(true);
+      return;
+    }
     dispatch(loginUser(data));
   };
 
@@ -36,8 +43,8 @@ const Login = () => {
       <div className="login-wrapper">
         <h1 className="login-title">Login</h1>
         <form className="login-form" onSubmit={handleSubmit(submitForm)}>
-          {/* {errorLogin && <div>Error</div>} */}
-          {!verified && <div>Please verify your email</div>}
+          {errorLogin && <div className="login-error">Wrong credentials</div>}
+          {error && <div className="login-error">Please verify your email</div>}
           <label>Email</label>{" "}
           <input
             type="email"

@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 
 const ProtectedRoute = ({ children, verify }) => {
   const { successLogin } = useSelector((state) => state.user);
-  const isRegistered = Cookies.get("successRegister") === "true";
+  const isRegistered = Cookies.get("pendingRegister") === "true";
   const isAuthenticated = verify ? isRegistered : successLogin;
   let location = useLocation();
 

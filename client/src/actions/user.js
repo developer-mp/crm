@@ -45,11 +45,14 @@ export const loginUser = createAsyncThunk(
     try {
       return AuthService.loginUserService(email, password).then((res) => {
         // UserService.storeToken(res.data.accessToken);
-        console.log(res.data);
         return res.data;
       });
     } catch (error) {
-      return rejectWithValue(error);
+      if (!error.response) {
+        throw error;
+      }
+      const message = error.response.data.message;
+      return rejectWithValue(message);
     }
   }
 );
