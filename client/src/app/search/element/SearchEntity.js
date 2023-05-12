@@ -21,26 +21,26 @@ const SearchEntity = (props) => {
   const determineSelected = (
     initialEntityId,
     initialSubentityId,
-    initialFilterId
+    initialCategoryId
   ) => {
     if (entitiesList) {
       const { entities } = entitiesList;
       const entity = getElement(entities, initialEntityId);
       const subentity = getElement(entity.subentities, initialSubentityId);
-      const filter = getElement(subentity.filters, initialFilterId);
+      const category = getElement(subentity.categories, initialCategoryId);
       const index = entitiesList[initialEntityId - 1]?.subentities?.findIndex(
-        (subentity) => subentity.filters.length > 0
+        (subentity) => subentity.categories.length > 0
       );
       return {
         entityId: entity.id,
         subentityId:
           subentity.id || entitiesList[initialEntityId - 1]?.subentities[0]?.id,
-        filterId:
-          filter.id ||
+        categoryId:
+          category.id ||
           (subentity.id % 10 > 1
-            ? entitiesList[initialEntityId - 1]?.subentities[index]?.filters[0]
-                ?.id
-            : filter.id),
+            ? entitiesList[initialEntityId - 1]?.subentities[index]
+                ?.categories[0]?.id
+            : category.id),
       };
     }
   };
@@ -64,7 +64,7 @@ const SearchEntity = (props) => {
     setSelectedId(determineSelected(selectedId.entityId, value));
   };
 
-  const handleSelectFilter = (value) => {
+  const handleSelectCategory = (value) => {
     setSelectedId(
       determineSelected(selectedId.entityId, selectedId.subentityId, value)
     );
@@ -95,11 +95,11 @@ const SearchEntity = (props) => {
       subentities,
       (subentity) => subentity.id === selectedId.subentityId
     );
-    const filters = subentity ? subentity.filters : [];
-    return { entities, subentities, filters };
+    const categories = subentity ? subentity.categories : [];
+    return { entities, subentities, categories };
   };
 
-  const { entities, subentities, filters } = buildOptions();
+  const { entities, subentities, categories } = buildOptions();
 
   const showElement = (elem) => {
     if (elem.length !== 0) return true;
@@ -125,13 +125,13 @@ const SearchEntity = (props) => {
           items={subentities}
         />
       )}
-      {filters && showElement(filters) && (
+      {categories && showElement(categories) && (
         <SelectDropdown
           label="Subtopic"
-          name="filter"
-          selectedId={selectedId.filterId}
-          updateSelection={handleSelectFilter}
-          items={filters}
+          name="category"
+          selectedId={selectedId.categoryId}
+          updateSelection={handleSelectCategory}
+          items={categories}
         />
       )}
       {entitiesList && showElement(entitiesList) && (

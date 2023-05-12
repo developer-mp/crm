@@ -1,5 +1,5 @@
 {
-  "entity": [
+  "entities": [
     {
       "id": 1,
       "name": "Customers",
@@ -8,12 +8,12 @@
           "id": 101,
           "name": "Customers",
           "key": "customer",
-          "filters": []
+          "categories": []
         },
         {
           "id": 102,
           "name": "Campaigns",
-          "filters": [
+          "categories": [
             {
               "id": 1021,
               "name": "Marketing",
@@ -41,13 +41,13 @@
           "id": 201,
           "name": "Products",
           "key": "product",
-          "filters": []
+          "categories": []
         },
         {
           "id": 202,
           "name": "Documentation",
           "key": "product/documentation",
-          "filters": []
+          "categories": []
         }
       ]
     },
@@ -59,13 +59,13 @@
           "id": 301,
           "name": "Services",
           "key": "service",
-          "filters": []
+          "categories": []
         },
         {
           "id": 302,
           "name": "Documentation",
           "key": "service/documentation",
-          "filters": []
+          "categories": []
         }
       ]
     },
@@ -83,7 +83,7 @@
           "id": 501,
           "name": "Reports",
           "key": "insight/report",
-          "filters": []
+          "categories": []
         }
       ]
     },

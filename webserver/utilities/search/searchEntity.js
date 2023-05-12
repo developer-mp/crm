@@ -1,11 +1,11 @@
-import entityContent from "../../data/content/entity.json" assert { type: "json" };
+import dataContent from "../../data/content/content.json" assert { type: "json" };
 import pkg from "lodash";
 const { cloneDeep } = pkg;
 
 class SearchEntity {
   static getEntityContent() {
-    const { entity } = entityContent;
-    return cloneDeep(entity);
+    const { entities } = dataContent;
+    return cloneDeep(entities);
   }
 
   static findEntity(id) {
@@ -24,8 +24,8 @@ class SearchEntity {
         });
         for (let k = 0; k < arr.length; k++) {
           modArr.push({
-            id: arr[i]?.subentities[j]?.filters[k]?.id,
-            key: arr[i]?.subentities[j]?.filters[k]?.key,
+            id: arr[i]?.subentities[j]?.categories[k]?.id,
+            key: arr[i]?.subentities[j]?.categories[k]?.key,
           });
         }
       }

@@ -1,4 +1,4 @@
-import insightsData from "../../data/entities/insights/filter.json" assert { type: "json" };
+import insightsData from "../../data/entities/insights/data.json" assert { type: "json" };
 import pkg from "lodash";
 const { cloneDeep } = pkg;
 
