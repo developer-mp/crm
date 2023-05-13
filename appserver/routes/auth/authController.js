@@ -25,7 +25,7 @@ class AuthController {
           .digest("hex");
         const role = "user";
         const sqlInsertUser =
-          "INSERT INTO users (firstName, lastName, email, password, role, verificationcode) values ($1, $2, $3, $4, $5, $6)";
+          "INSERT INTO users (firstName, lastName, email, password, role, verificationcode, createdat) values ($1, $2, $3, $4, $5, $6, $7)";
         await pool.query(sqlInsertUser, [
           firstName,
           lastName,
@@ -33,6 +33,7 @@ class AuthController {
           hashedPassword,
           role,
           hashedVerificationCode,
+          new Date(),
         ]);
         const url = `${CLIENT_URL}/verifyemail/${verificationCode}`;
         try {
