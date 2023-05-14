@@ -30,18 +30,13 @@
   margin-bottom: 0.3em;
 }
 
-.loginForm input {
-  margin-bottom: 1em;
-  padding: 0.8em;
-}
-
 .login-form p {
   color: #cc0000;
   font-size: 0.8rem;
   margin-bottom: 1em;
 }
 
-.login-form p::before {
+.login-error::before {
   display: inline;
   content: "⚠ ";
 }
@@ -80,4 +75,13 @@
 
 .login-error {
   color: red;
+}
+
+.login-forgot-password {
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.login-forgot-password-link {
+  text-decoration: none;
 }

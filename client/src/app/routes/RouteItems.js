@@ -12,6 +12,7 @@ import Result from "./../result/Result.js";
 import Detail from "./../detail/Detail.js";
 import NotFound from "../notFound/NotFound.js";
 import VerifiedEmail from "./../verify/VerifiedEmail.js";
+import ForgotPassword from "../forgotPassword/ForgotPassword.js";
 import ProtectedRoute from "./ProtectedRoute.js";
 import { getDashboardItems } from "../../actions/dashboard.js";
 import { getMenuItems } from "../../actions/menu.js";
@@ -60,6 +61,7 @@ const RouteItems = () => {
         <Route path="/" element={<ProtectedDashboard />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/forgot" element={<ForgotPassword />} />
         <Route path="/verify" element={<ProtectedVerifyMessage />} />
         <Route
           path="/verifyemail/:verificationcode"
