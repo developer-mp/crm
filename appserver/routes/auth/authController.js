@@ -121,6 +121,21 @@ class AuthController {
     }
   }
 
+  static async forgotPassword(req, res) {
+    const { email } = req.body;
+    try {
+      const sqlSelectUser = "SELECT * FROM users WHERE email = $1";
+      const isUserSelect = await pool.query(sqlSelectUser, [email]);
+      if (isUserSelect.rowCount === 0)
+        return res.status(400).json({ message: "Email is not found" });
+      else {
+        const user = isUserSelect.rows[0];
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   // static async token(req, res) {
   //   const cookies = req.cookies;
   //   if (!cookies?.jwt) return res.send({ error: "User not authorized" });

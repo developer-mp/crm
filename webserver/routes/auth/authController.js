@@ -85,6 +85,20 @@ class AuthController {
     }
   }
 
+  static async forgotPassword(req, res) {
+    const { email } = req.body;
+    try {
+      await AuthService.forgotPasswordService(email).then(() => {
+        res.status(200).json({
+          message: "Password has been reset successfully",
+        });
+      });
+    } catch (error) {
+      console.log(error);
+      return res.status(400).json({ message: "Error has occured" });
+    }
+  }
+
   // static async login(req, res) {
   //   const { email, password } = req.body;
   //   try {

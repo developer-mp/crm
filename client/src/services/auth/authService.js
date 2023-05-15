@@ -21,6 +21,12 @@ class AuthService {
     });
   }
 
+  static async forgotPasswordService(email) {
+    return await ApiService.noSecureCall("auth/forgot", {
+      email,
+    });
+  }
+
   static async logoutUserService() {
     return await ApiService.noSecureCall("auth/logout", {});
   }
