@@ -26,6 +26,10 @@ class AuthService {
     return await ApiService.apiCall("auth/forgot", { email });
   }
 
+  static async resetPasswordService(email, password) {
+    return await ApiService.apiCall("auth/reset", { email, password });
+  }
+
   // static async authenticateUser(username, password) {
   //   const request = { data: { email: username, password } };
   //   const endpoint = "auth";

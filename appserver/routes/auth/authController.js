@@ -130,6 +130,48 @@ class AuthController {
         return res.status(400).json({ message: "Email is not found" });
       else {
         const user = isUserSelect.rows[0];
+        const { firstname, lastname, email } = user;
+        const url = `${CLIENT_URL}/reset`;
+        try {
+          if (user) {
+            await AuthService.sendForgotPasswordEmail(
+              firstname,
+              lastname,
+              email,
+              url
+            );
+            return res.status(200).json({
+              message: "Email with a password reset has been sent",
+            });
+          } else
+            return res.status(400).json({
+              message: "Error has occured while sending a password reset email",
+            });
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  static async resetPassword(req, res) {
+    const { email, password } = req.body;
+    try {
+      const sqlSelectUser = "SELECT * FROM users WHERE email = $1";
+      const isUserSelect = await pool.query(sqlSelectUser, [email]);
+      if (isUserSelect.rowCount === 0)
+        return res.status(400).json({ message: "Email is not found" });
+      else {
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+        const userUpdatePassword =
+          "UPDATE users SET password = $1 WHERE email = $2";
+        await pool.query(userUpdatePassword, [hashedPassword, email]);
+        return res
+          .status(200)
+          .json({ message: "Password has been updated successfully" });
       }
     } catch (error) {
       console.log(error);

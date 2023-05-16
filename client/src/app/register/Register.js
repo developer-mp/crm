@@ -50,6 +50,7 @@ const Register = () => {
         <form className="registerForm" onSubmit={handleSubmit(submitForm)}>
           {errorRegister && <div>Error</div>}
           <label>First name</label>
+          {errors.firstName && <p>{errors.firstName.message}</p>}
           <input
             style={{ border: errors.firstName ? "2px solid #cc0000" : "" }}
             type="text"
@@ -63,8 +64,8 @@ const Register = () => {
             })}
             required
           />
-          {errors.firstName && <p>{errors.firstName.message}</p>}
           <label>Last name</label>
+          {errors.lastName && <p>{errors.lastName.message}</p>}
           <input
             type="text"
             name="lastName"
@@ -77,8 +78,8 @@ const Register = () => {
             })}
             required
           />
-          {errors.lastName && <p>{errors.lastName.message}</p>}
-          <label>Email</label>{" "}
+          <label>Email</label>
+          {errors.email && <p>{errors.email.message}</p>}
           <input
             type="email"
             name="email"
@@ -91,8 +92,8 @@ const Register = () => {
             })}
             required
           />
-          {errors.email && <p>{errors.email.message}</p>}
           <label>Password</label>
+          {errors.password && <p>{errors.password.message}</p>}
           <input
             type="password"
             name="password"
@@ -110,8 +111,8 @@ const Register = () => {
             })}
             required
           />
-          {errors.password && <p>{errors.password.message}</p>}
           <label>Confirm password</label>
+          {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
           <input
             type="password"
             name="confirmPassword"
@@ -122,7 +123,6 @@ const Register = () => {
                 value === password.current || "Passwords do not match",
             })}
           />
-          {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
           <button type="submit" className="button" disabled={loadingRegister}>
             Register
           </button>

@@ -74,6 +74,23 @@ export const forgotPassword = createAsyncThunk(
   }
 );
 
+export const resetPassword = createAsyncThunk(
+  "auth/resetPassword",
+  ({ email, password }, { rejectWithValue }) => {
+    try {
+      return AuthService.resetPasswordService(email, password).then((res) => {
+        return res.data;
+      });
+    } catch (error) {
+      if (!error.response) {
+        throw error;
+      }
+      const message = error.response.data.message;
+      return rejectWithValue(message);
+    }
+  }
+);
+
 // export let token = UserService.storeToken();
 
 // export const logoutUser = createAsyncThunk(

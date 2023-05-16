@@ -72,6 +72,17 @@ class AuthService {
       "Console account verification code"
     );
   }
+
+  static async sendForgotPasswordEmail(firstName, lastName, email, url) {
+    this.createVerificationEmail(
+      firstName,
+      lastName,
+      email,
+      url,
+      "forgotPassword",
+      "Console password reset"
+    );
+  }
 }
 
 export default AuthService;

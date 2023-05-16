@@ -90,6 +90,20 @@ class AuthController {
     try {
       await AuthService.forgotPasswordService(email).then(() => {
         res.status(200).json({
+          message: "Email with password reset has been successfully",
+        });
+      });
+    } catch (error) {
+      console.log(error);
+      return res.status(400).json({ message: "Error has occured" });
+    }
+  }
+
+  static async resetPassword(req, res) {
+    const { email, password } = req.body;
+    try {
+      await AuthService.resetPasswordService(email, password).then(() => {
+        res.status(200).json({
           message: "Password has been reset successfully",
         });
       });

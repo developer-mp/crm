@@ -27,6 +27,13 @@ class AuthService {
     });
   }
 
+  static async resetPasswordService(email, password) {
+    return await ApiService.noSecureCall("auth/reset", {
+      email,
+      password,
+    });
+  }
+
   static async logoutUserService() {
     return await ApiService.noSecureCall("auth/logout", {});
   }
