@@ -15,6 +15,7 @@ import VerifiedEmail from "./../verify/VerifiedEmail.js";
 import ForgotPassword from "../forgotPassword/ForgotPassword.js";
 import ResetPassword from "../forgotPassword/ResetPassword.js";
 import ProtectedRoute from "./ProtectedRoute.js";
+import ProtectedRouteReset from "./ProtectedRouteReset.js";
 import { getDashboardItems } from "../../actions/dashboard.js";
 import { getMenuItems } from "../../actions/menu.js";
 import {
@@ -47,10 +48,21 @@ const RouteItems = () => {
     };
   }
 
+  function ProtectedPassword(Component) {
+    return function ProtectedComponent(props) {
+      return (
+        <ProtectedRouteReset>
+          <Component {...props} />
+        </ProtectedRouteReset>
+      );
+    };
+  }
+
   const ProtectedDashboard = Protected(Dashboard);
   const ProtectedVerifyMessage = Protected(VerifyMessage, true);
   const ProtectedVerifyEmail = Protected(VerifyEmail, true);
   const ProtectedVerifiedEmail = Protected(VerifiedEmail, true);
+  const ProtectedReset = ProtectedPassword(ResetPassword);
   const ProtectedSearch = Protected(Search);
   const ProtectedResult = Protected(Result);
   const ProtectedDetail = Protected(Detail);
@@ -63,7 +75,7 @@ const RouteItems = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/forgot" element={<ForgotPassword />} />
-        <Route path="/reset" element={<ResetPassword />} />
+        <Route path="/reset" element={<ProtectedReset />} />
         <Route path="/verify" element={<ProtectedVerifyMessage />} />
         <Route
           path="/verifyemail/:verificationcode"

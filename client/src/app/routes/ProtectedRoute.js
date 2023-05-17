@@ -6,11 +6,13 @@ const ProtectedRoute = ({ children, verify }) => {
   const { successLogin } = useSelector((state) => state.user);
   const isRegistered = Cookies.get("pendingRegister") === "true";
   const isAuthenticated = verify ? isRegistered : successLogin;
+
   let location = useLocation();
 
   if (!isAuthenticated) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
+
   return children;
 };
 

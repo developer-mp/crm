@@ -15,7 +15,9 @@ const ForgotPassword = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { register, handleSubmit, watch } = useForm({ mode: "onChange" });
+  const { register, handleSubmit, watch, reset } = useForm({
+    mode: "onChange",
+  });
 
   const email = useRef({});
   email.current = watch("email", "");
@@ -24,6 +26,7 @@ const ForgotPassword = () => {
     const userEmail = data.email;
     Cookies.set("email", userEmail, { expires: 3 });
     dispatch(forgotPassword(data));
+    reset();
   };
 
   useEffect(() => {
@@ -31,7 +34,7 @@ const ForgotPassword = () => {
       const timer = setTimeout(() => {
         dispatch(resetForgotPassword());
         navigate("/login");
-      }, 2000);
+      }, 1000);
       return () => clearTimeout(timer);
     }
   }, [dispatch, navigate, successForgotPassword]);

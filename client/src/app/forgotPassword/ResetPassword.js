@@ -15,7 +15,10 @@ const ResetPassword = () => {
   console.log(successResetPassword);
 
   useEffect(() => {
-    if (successResetPassword) navigate("/login");
+    if (successResetPassword) {
+      Cookies.remove("email");
+      navigate("/login");
+    }
   }, [navigate, successResetPassword]);
 
   const {
