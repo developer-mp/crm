@@ -21,10 +21,17 @@ const Detail = () => {
     setEditedData(detail);
   };
 
-  // const handleSaveClick = () => {
-  //   dispatch(updateDetail(editedData));
-  //   setEditModes({});
-  // };
+  const handleSaveClick = () => {
+    const modifiedData = {};
+    for (const key in editedData) {
+      if (editedData.hasOwnProperty(key) && editedData[key] !== detail[key]) {
+        modifiedData[key] = editedData[key];
+      }
+    }
+    // dispatch(updateDetail({ modifiedData }));
+    console.log(modifiedData);
+    setEditMode({});
+  };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -58,10 +65,7 @@ const Detail = () => {
                 >
                   Cancel
                 </button>
-                <button
-                  className="detail-button"
-                  // onClick={handleSaveClick}
-                >
+                <button className="detail-button" onClick={handleSaveClick}>
                   Save
                 </button>
               </div>

@@ -32,9 +32,13 @@ const Result = () => {
           <div className="result-count">
             {"Total records: " + result.data?.count}
           </div>
-          <button className="result-button" onClick={exportResultToCSV}>
-            Export
-          </button>
+          <div className="result-button-container">
+            <button className="result-button">Add</button>
+            <button className="result-button">Delete</button>
+            <button className="result-button" onClick={exportResultToCSV}>
+              Export
+            </button>
+          </div>
         </div>
         <Table striped bordered hover>
           <thead>

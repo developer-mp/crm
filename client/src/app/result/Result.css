@@ -35,3 +35,8 @@ tbody {
   font-size: 0.7em;
   cursor: pointer;
 }
+
+.result-button-container {
+  display: flex;
+  margin-right: 1em;
+}
