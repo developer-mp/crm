@@ -15,4 +15,4 @@ To run the application, execute the following commands:
 
 - `a.bat` for the app server
 - `s.bat` for the web server
-- `c.bat` for client
+- `c.bat` for the client
