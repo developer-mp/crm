@@ -1,4 +1,4 @@
-### CRM (in development)
+### CRM
 
 This is a CRM web application based on content and settings defined in JSON files. This approach allows modifying the application content without touching the codebase.
 
